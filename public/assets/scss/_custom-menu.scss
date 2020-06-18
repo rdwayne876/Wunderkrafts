@@ -1,0 +1,464 @@
+/* 
+-----------------------------
+    : Custom - Menu css :
+-----------------------------
+*/
+.horizontal-menu-toggle {
+    display: none;
+    button {
+      border: none;
+      margin-left: 10px;
+      vertical-align: middle;
+      cursor: pointer;
+      i {
+        vertical-align: middle;
+      }
+    }
+}
+.menubar {
+    background-color: transparent;
+}
+.horizontal-nav {
+  border-radius: 0;
+  z-index: 999;
+  left: 0;
+  right: 0;
+  ul,
+  ul ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  ul li a {
+    display: block;
+    font-family: $font-primary;
+    line-height: 20px;
+    text-decoration: none;
+    white-space:normal;
+    background: transparent;
+  }
+  .animated {
+    animation-fill-mode: both;
+  }
+  .container,
+  .container-fluid{
+    position: relative;
+  }
+  .dropdown-toggle::after {
+    width: inherit;
+    height: inherit;
+    border: 0;
+    margin: 0;
+  }
+  .dropdown {
+    position: relative;
+  }
+  .dropdown-menu {
+    position: absolute;
+    display: none;
+    top: 56px;
+    left: -15px;
+    padding: 10px 0;
+    z-index: 1000;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 9px;
+      top: -9px;      
+      display: block;      
+      background-color: transparent;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 15px solid $card-bg;
+      z-index: 9999;
+    }
+  }
+  .open > .dropdown-menu {
+    display: block;
+  }
+  .collapse:not(.show) {
+    display: none;
+  }
+  .collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+  }
+  .navbar-collapse {
+    overflow-x: visible;
+    padding-right: 15px;
+    padding-left: 15px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .navbar-collapse.show {
+    overflow-y: auto;
+  }
+  .navbar-collapse:before,
+  .navbar-collapse:after {
+    content: " ";
+    display: table;
+  }
+  .navbar-collapse:after {
+    clear: both;
+  }
+  .horizontal-menu {
+    li {
+      a {
+        position: relative;
+        display: block;
+        font-size: 14px;
+      }
+      .fa-icon-left {
+        margin-right: 8px;
+      }
+      .fa-icon-right {
+        margin-left: 8px;
+      }
+    }
+    > li {
+      > a {
+        padding: 10px 30px 10px 0;
+        color: $dark;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        img {
+            display: inline-block;
+            width: 18px;
+            vertical-align: middle;
+            margin-right: 7px;
+            filter: invert(0.6) sepia(1) saturate(1) hue-rotate(185deg);
+        }
+        i {
+          display: inline-block;
+          width: 25px;
+          font-size: 18px;
+          vertical-align: middle;
+        }
+        span {
+          vertical-align: middle;
+        }
+        .new-icon {
+            position: absolute;
+            top: 10px;
+            margin: 0 3px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid $card-bg;
+            background-color: $success;
+        }
+      }
+      &.active > a,
+      > a:hover,
+      > a:focus {
+        color: $primary;
+        background-color: transparent;
+        img {
+            filter: invert(0.7) sepia(1) saturate(14) hue-rotate(195deg);
+        }
+      }
+    }
+    li .description{
+      font-style: italic;
+      font-size: 90%;
+      margin: 6px 0 0;
+      font-weight: 400;
+    }    
+    .dropdown-menu {
+      background-color: $card-bg;
+      margin: 0;
+      li {
+        a {
+          color: $dark;
+          font-size: 15px;
+          &:before {
+            content: "\eb64";
+            font-family: "remixicon" !important;
+            font-size: 5px;
+            line-height: 10px;
+            padding-right: 5px;
+            vertical-align: middle;
+          }
+          .i {
+            font-size: 5px;
+            margin-right: 10px;
+            vertical-align: middle;
+          }
+        }
+        &.active > a,
+        > a:hover,
+        > a:focus{
+          color: $primary;
+        }
+      }
+    }
+    .dropdown-toggle:focus {
+      outline: 0;
+    }
+    .mega-menu-col-title:before,
+    .dropdown .dropdown-toggle:before,
+    .dropdown .dropdown-toggle:after{
+      font-family: 'remixicon';
+    }
+  }
+  .navbar-collapse{
+    padding: 0;
+  }
+  /* -- Mega Menu -- */
+  .menu-item-has-mega-menu.dropdown{
+    position: static;
+    .mega-menu.dropdown-menu {
+      width: 100%;
+      padding: 0;
+      background-color: $card-bg;
+    }
+    .mega-menu-row {
+      width: 100%;
+      float: left;
+    }
+    .mega-menu-col{
+      list-style: none;
+      color: $dark;
+      a {
+        color: $dark;
+      }
+      .active > a,
+      > a:hover,
+      > a:focus{
+        color: $primary;
+        background: transparent;
+      }
+    }
+    .mega-menu-col-title {
+      font-size: 15px;
+      line-height: 20px;
+      margin: 0;
+    }
+  }
+  /* -- Fixed Navbar -- */
+  &.fixed-navbar {
+    position: relative;
+  }
+}
+/* -- Responsive -- */
+@media (min-width: 992px) {
+  .horizontal-nav {
+    .navbar-toggle {
+      display: none;
+    }
+    .navbar-collapse.collapse {
+      display: block;
+    }
+    /* -- Dropdown Menu -- */
+    .horizontal-menu {
+      float: left;
+      > li {
+        float: left;
+      }
+      > .dropdown > .dropdown-toggle {
+        &:after{
+          display: none;
+          content: "\e844";
+          position: absolute;
+          font-size: 16px;
+          font-weight: 700;
+          top: 20px;
+          right: 5px;
+        }
+      }
+      .dropdown .dropdown-menu {
+        box-shadow: $shadow;
+        border-radius: 3px;
+        width: 200px;
+        border: none;
+        .dropdown-menu {
+          left: 100%;
+          top: 0;
+          &:before {
+              border-top: 15px solid transparent;
+              border-bottom: 15px solid transparent;
+              border-right: 15px solid $card-bg;
+              left: -25px;
+              top: 5px;              
+          }
+        }
+        .dropdown:first-child .dropdown-menu {
+          top: -1px;
+        }
+        > li {
+          > a{
+            padding: 8px 15px;
+          }
+          &:first-child > a{
+            border-top: 0;
+          }
+        }
+        .dropdown > .dropdown-toggle {
+          &:after{
+            float: right;
+            content: "\ea6c";
+            position: absolute;
+            font-size: 14px;
+            right: 14px;
+          }
+        }
+      }
+      /* -- Mega Menu -- */
+      .dropdown .mega-menu.dropdown-menu{
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      .mega-menu-col{
+        padding: 10px 15px;
+        float: left;
+        .sub-menu{
+          a {
+            padding: 10px 12px;
+            display: inline-block;
+            &:hover,
+            &:focus{
+              color: $primary;
+              background: transparent;
+            }
+          }
+        }
+      }
+      .mega-menu-col-title{
+        font-weight: 700;
+        padding: 6px 10px;
+        display: inline-block;
+      }
+      .mega-menu-col-content{
+        padding: 4px 10px;
+      } 
+    }
+  }
+}
+@media (max-width: 991px) {
+  /* -- Horizontal Navbar -- */
+  .horizontal-nav {
+    background-color: transparent;
+    border-color: transparent;  
+    .dropdown-menu {
+        top: 0;
+        padding: 0;
+    }  
+    .navbar-collapse {
+      overflow-y: auto !important;
+    }
+    /* -- Dropdown Mega Menu -- */
+    .mega-menu-col .mega-menu-col-title,
+    .dropdown .dropdown-toggle {
+      padding: 12px 30px 12px 12px;
+      &:after{
+        float: right;
+        content: "\ea6c";
+        font-family: "remixicon" !important;
+        font-size: 14px;
+        position: absolute;
+        right: 14px;
+      }
+    }
+    .mega-menu-col.on .mega-menu-col-title:after,
+    .dropdown.on > .dropdown-toggle:after {
+        transform: rotate(-270deg);
+    }
+    .horizontal-menu {
+      float: none !important;
+      li {
+        float: none;
+        .mega-menu-col-title,
+        a {
+          max-width: inherit;
+          padding: 10px;
+          font-weight: 400;
+          display: block;
+          cursor: pointer;
+          font-size: 16px;
+          line-height: 20px;
+          color: $dark;
+          img {
+            filter: invert(0.6) sepia(1) saturate(1) hue-rotate(185deg);
+          }
+        }
+        a:hover,
+        a:focus,
+        &.active > a,
+        .mega-menu-col-title:hover,
+        .mega-menu.dropdown-menu .mega-menu-col .active > a,
+        .dropdown-menu li.active > a,
+        .dropdown-menu li a:hover,
+        .dropdown-menu li a:focus,
+        .mega-menu .mega-menu-col ul li a:hover,
+        .mega-menu .mega-menu-col ul li a:focus {
+          color: $primary;
+          background-color: transparent;
+          img {
+            filter: invert(0.7) sepia(1) saturate(14) hue-rotate(195deg);
+          }
+        }
+      }
+      > li:first-child > a {
+        border-top: 0;
+      }
+    }
+    /* -- Dropdown Mega Menu -- */
+    .horizontal-menu .dropdown .mega-menu.dropdown-menu,
+    .horizontal-menu .dropdown .dropdown-menu {
+      float: none;
+      position: relative;
+      left: 0;
+      box-shadow: 0px 0px 0px;
+      border-radius: 0px 0px 0px;
+      border: 0;
+      background-color: transparent;
+    }
+    .horizontal-menu .dropdown .dropdown-menu {
+      padding-left: 28px;
+      .dropdown-menu {
+        padding-left: 18px;
+      }
+    }
+    /* -- Mega Menu -- */
+    .horizontal-menu .dropdown .mega-menu.dropdown-menu .mega-menu-row{
+      float: none;
+      .mega-menu-col {
+        padding: 0;
+      }
+      .mega-menu-col-title{
+        font-size: 14px;
+      }
+    }
+  }
+  /* -- Mobile Navbar -- */
+  .horizontal-nav.mobile-navbar {
+    .navbar-collapse {
+      position: fixed;
+      overflow-x: hidden;
+      display: block;
+      z-index: 99;
+      width: 100%;
+      height: 390px !important;
+      max-height: 100%;
+      left: 100%;
+      top: 70px;
+      margin: 0;
+      background-color: $card-bg;
+      box-shadow: $shadow;
+      transition: all 0.2s ease-in-out;
+      border-top: 1px solid $border-color;
+      &.show{
+        left: 0;
+      }
+      .mega-menu-col {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+    .horizontal-menu {
+      padding: 15px;
+      margin: 0;
+    }
+  }
+}
