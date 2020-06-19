@@ -3,11 +3,6 @@
     : Custom - Responsive css :
 -----------------------------------
 */
-@media (max-width: 1199px) {
-  .container-fluid {
-    width: 100%;
-  }
-}
 @media (min-width: 768px) and (max-width: 991px) {
   body {
     overflow-x: hidden;
@@ -38,19 +33,7 @@
         width: 165px;
       }
     }
-    .infobar {
-      .menubar-toggle {
-        display: inline-block;
-      }
-    }
-  }
-  .navigationbar {
-    background-color: transparent;
-    padding: 0;
-  } 
-  .breadcrumbbar {
-    margin: 101px 30px 0 30px;
-  } 
+  }  
 }
 @media (min-width: 768px) {  
   .vertical-layout {
@@ -81,6 +64,10 @@
             .vertical-menu li.active > .vertical-submenu {
                 display: block !important;
             }
+            .vertical-menu > li .new-icon {
+                display: inline-block;
+                margin: 0 5px;
+            }
             .vertical-header {
               display: block;
             }
@@ -110,6 +97,10 @@
       }
       .vertical-menu li.active > .vertical-submenu {
           display: none !important;
+      }
+      .vertical-menu > li .new-icon {
+          display: inline-block;
+          margin: 0 20px;
       }
       .vertical-header {
         display: none;
@@ -163,7 +154,7 @@
     display: block;
     position: fixed;
     width: 100%;
-    z-index: 10;
+    z-index: 1;
   }
   .topbar {
     display: none;
@@ -172,9 +163,6 @@
     }
     .infobar {
       margin-right: 0;
-      .menubar-toggle {
-        display: none;
-      }
     }
   }
   .topbar-toggle-menu {
@@ -185,12 +173,8 @@
         left: 0;
         z-index: 1;
         margin-top: 71px;
-        padding: 15px;
       } 
   } 
-  .contentbar {
-    padding: 30px 15px;
-  }
   .footerbar {
       left: 0;
   }  
@@ -205,7 +189,8 @@
     }
   }
   .breadcrumbbar {
-    margin: 101px 15px 0 15px;
+    margin: 100px 0 0 0;
+    padding: 0;
     .page-title {
       text-align: center;
       margin-bottom: 10px;
@@ -221,8 +206,8 @@
     .media {
       display: block;
       .breadcrumb-icon {
-        display: block;
-        margin: 0 auto 15px !important;
+          display: block;
+          margin: 0 auto 15px !important;
       }
     }
   }
@@ -237,7 +222,7 @@
     .analytic-chart-piety {
       text-align: left;
     }
-  }
+  }  
 }
 @media (max-width: 620px) {
  

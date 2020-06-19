@@ -3,11 +3,25 @@
     : Custom - Topbar css :
 -------------------------------
 */
+.toggle-menu {
+  .leftbar {
+    position: fixed;
+    width: 250px;
+    margin-left: 0;
+    transition: all 0.3s ease;    
+  }
+  .rightbar {
+    margin-left: 80px;
+    .topbar {
+      left: 80px;
+    }
+  }
+}
+
 .topbar-mobile {
     display: none;
     background-color: $white;
     padding: 15px 25px;
-    left: 0;
     border-bottom: 1px solid $border-color;
     .mobile-logobar {
       display: inline-block;  
@@ -89,8 +103,8 @@
     background-color: $topbar-bg-color;
     padding: 15px 30px;
     position: fixed;
-    z-index: 10;
-    left: 0;
+    z-index: 1;
+    left: 250px;
     right: 0;
     border-bottom: 1px solid $border-color;
     .dropdown-toggle {
@@ -300,7 +314,6 @@
               line-height: 20px;
               vertical-align: middle;
               text-align: center;
-              background-color: $white;
               border-radius: 50%;
               background-size: cover;
               background-position: center;
@@ -373,31 +386,6 @@
             }
             .live-icon {
               font-size: 14px;
-            }
-        }
-        .menubar-toggle {
-            display: none;
-            .menu-hamburger {
-              color: $dark;
-              border-radius: 50%;
-              display: flex;
-              line-height: 40px;
-              width: 40px;
-              height: 40px;
-              padding: 10px;
-              border: 1px solid $border-color;
-              i {
-                vertical-align: middle;
-                line-height: 20px;
-                font-size: 17px;
-              }
-              .menu-hamburger-close {
-                display: none;
-              }
-              &:hover {
-                  color: $dark;
-                  background-color: $secondary-rgba;
-              }
             }
         }
     }  
@@ -478,7 +466,7 @@
 }
 
 .breadcrumbbar {
-    margin: 174px 30px 0 30px;
+    margin: 100px 30px 0 30px;
     padding: 0;
     background-color: $card-bg;
     border-radius: 3px;  

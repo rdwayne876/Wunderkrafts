@@ -16,9 +16,6 @@ body {
   color: $muted;
   line-height: 1.5;
 }
-.container-fluid {
-    width: 90%;
-}
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     color: $heading-color;
@@ -79,12 +76,16 @@ code {
   color: $primary;
 }
 .logobar {
+  padding: 15px 0;
+  margin-bottom: 15px;
+  text-align: center;
+  border-bottom: 1px solid $border-color;
   .logo {
     &.logo-small {
       display: none;
     }
     img {
-      width: 138px;
+      width: 150px;
     }
   }
 }
@@ -98,9 +99,10 @@ code {
   transition: all 0.3s ease;
 }
 .rightbar {
-    overflow: hidden;
-    min-height: 500px;
-    transition: all 0.3s ease;
+  margin-left: 250px;
+  overflow: hidden;
+  min-height: 500px;
+  transition: all 0.3s ease;
 }
 .contentbar {
   padding: 30px;
@@ -110,7 +112,7 @@ code {
   position: absolute;
   bottom: 0;
   right: 0;
-  left: 0;
+  left: 250px;
   padding: 20px 30px;
   text-align: center;
   background-color: $card-bg;
@@ -125,14 +127,10 @@ code {
     z-index: 0 !important;
 }
 .navigationbar {
-    background-color: $white;
-    padding: 15px 30px;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    right: 0;
-    top: 70px;
-    border-bottom: 1px solid $border-color;
+    height: calc(100vh - 100px);
+    overflow: auto;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
 }
 ::-webkit-scrollbar {
   width: 0;

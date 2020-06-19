@@ -20,7 +20,7 @@
         <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
         <!-- End CSS -->
     </head>
-    <body class="horizontal-layout">    
+    <body class="vertical-layout">    
         <!-- Start Infobar Setting Sidebar -->
         <div id="infobar-settings-sidebar" class="infobar-settings-sidebar">
             <div class="infobar-settings-sidebar-head d-flex w-100 justify-content-between">
@@ -66,9 +66,9 @@
         <div class="infobar-settings-sidebar-overlay"></div>
         <!-- End Infobar Setting Sidebar -->
         <!-- Start Containerbar -->
-        <div id="containerbar" class="container-fluid">  
+        <div id="containerbar">     
             <!-- Start Leftbar -->
-            
+            @include('layouts.admin_layout.leftbar')
             <!-- End Leftbar -->
             <!-- Start Rightbar -->
             @include('layouts.admin_layout.rightbar')          
@@ -83,7 +83,7 @@
         <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
         <script src="{{ asset('assets/js/detect.js') }}"></script>
         <script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
-        <script src="{{ asset('assets/js/horizontal-menu.js') }}"></script> 
+        <script src="{{ asset('assets/js/vertical-menu.js') }}"></script> 
         <script src="{{ asset('assets/plugins/switchery/switchery.min.js') }}"></script> 
         @yield('script')
         <!-- Core JS -->
