@@ -19,6 +19,8 @@
 <body class="horizontal-layout">
     <!-- Start Containerbar -->
     <div id="containerbar" class="containerbar authenticate-bg">
+
+        
         <!-- Start Container -->
         <div class="container">
             <div class="auth-box login-box">
@@ -30,16 +32,40 @@
                         <div class="auth-box-right">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="#">
+                                    <form action=" {{ url('/admin') }} " method="POST" >
+                                        @csrf
                                         <div class="form-head">
                                             <a href="{{url('/')}}" class="logo"><img src="assets/images/logo.svg" class="img-fluid" alt="logo"></a>
                                         </div>                                        
                                         <h4 class="text-primary my-4">Log in !</h4>
+
+                                        @if (Session::has('error'))
+                                            <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                                                {{ Session::get('error')}}
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>   
+                                        @endif
+
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        @endif
+
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="username" placeholder="Email ID" required>
+                                            <input name="email" type="email" class="form-control" id="email" placeholder="Email ID" required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="password" placeholder="Password" required>
+                                            <input name="password" id="password" type="password" class="form-control" id="password" placeholder="Password" required>
                                         </div>
                                         <div class="form-row mb-3">
                                             <div class="col-sm-6">

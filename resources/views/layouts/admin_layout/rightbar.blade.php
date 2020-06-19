@@ -131,7 +131,7 @@
                                             <a class="dropdown-item" href="#"><i class="ri-user-6-line"></i>My Profile</a>
                                             <a class="dropdown-item" href="#"><i class="ri-mail-line"></i>Email</a>
                                             <a class="dropdown-item" href="#"><i class="ri-settings-3-line"></i>Settings</a>
-                                            <a class="dropdown-item text-danger" href="#"><i class="ri-shut-down-line"></i>Logout</a>
+                                            <a class="dropdown-item text-danger" href=" {{url('admin/logout')}} "><i class="ri-shut-down-line"></i>Logout</a>
                                         </div>
                                     </div>
                                 </div>                                   
