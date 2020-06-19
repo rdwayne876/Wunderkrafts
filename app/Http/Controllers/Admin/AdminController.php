@@ -14,6 +14,10 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
+    public function settings() {
+        return view('admin.settings');
+    }
+
     public function login(Request $request) {
         if ($request->isMethod('POST')) {
             $data = $request->all();
