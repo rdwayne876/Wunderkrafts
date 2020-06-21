@@ -88,6 +88,8 @@
         @yield('script')
         <!-- Core JS -->
         <script src="{{ asset('assets/js/core.js') }}"></script>
+        <!--Custom js -->
+        <script src=" {{ asset('js/admin/scripts.js') }} "></script>
         <!-- End JS -->
     </body>
 </html>    

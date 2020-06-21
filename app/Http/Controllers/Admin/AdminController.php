@@ -37,4 +37,14 @@ class AdminController extends Controller
         Auth::guard('admin')->logout();
         return redirect('/admin');
     }
+
+    public function checkCurrentPassword(Request $request) {
+        $data = $request->all();
+        
+        if (Hash::check($data['currentPassword'], Auth::guard('admin')->user()->password)) {
+            echo "true";
+        } else {
+            echo "false";
+        }
+    }
 }
