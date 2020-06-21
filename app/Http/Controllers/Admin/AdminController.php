@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Session;
 use Hash;
 use Auth;
+use App\Admin;
 
 class AdminController extends Controller
 {
@@ -46,5 +47,28 @@ class AdminController extends Controller
         } else {
             echo "false";
         }
+    }
+
+    public function updateCurrentPassword(Request $request) {
+        $data = $request->all();
+
+        if (Hash::check($data['currentPassword'], Auth::guard('admin')->user()->password)) {
+            if ($data['newPassword'] == $data['confirmPassword']) {
+                if ($data['currentPassword'] == $data['newPassword']) {
+                    Session::flash('error', 'New Password cannot be the same as old password');
+                    return redirect()->back();
+                } else {
+                    Admin::where('id', Auth::guard('admin')->user()->id)->update(['password'=>bcrypt($data['newPassword'])]);
+                    Session::flash('success', 'Password has been updated successfully!');
+                    return redirect()->back();
+                }
+            } else {
+                Session::flash('error', 'New Passwords do not match');
+                return redirect()->back();
+            }
+        } else {
+            Session::flash('error', 'Incorrect Password');
+            return redirect()->back();
+        }    
     }
 }

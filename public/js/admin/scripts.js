@@ -9,11 +9,6 @@ $(document).ready(function(){
             url: '/admin/checkCurrentPassword',
             data: {currentPassword:currentPassword},
             success: function(resp){
-                alert(resp);
-
-                if (resp == 'false') {
-                    $("#checkCurrentPassword").html("Current Password is incorrect!")
-                } 
                 
             }, error: function() {
                 alert("Error");

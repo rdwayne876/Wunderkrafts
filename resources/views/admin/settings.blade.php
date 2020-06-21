@@ -20,7 +20,39 @@ Settings
                             <h4 class="card-title">Update Password</h5>
                         </div>
                         <div class="card-body">
-                            <form role="form" method="POST" action=" {{ url('/admin/update-password') }} " name="updateAdminPasswordForm" id="updateAdminPasswordForm" >
+
+                            @if (Session::has('error'))
+                                <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                                    {{ Session::get('error')}}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>   
+                            @endif
+
+                            @if (Session::has('success'))
+                                <div class="alert alert-success alert-dismissable fade show" role="alert">
+                                    {{ Session::get('success')}}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>   
+                            @endif
+
+                            @if ($errors->any())
+                                <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
+
+                            <form role="form" method="POST" action=" {{ url('/admin/updateCurrentPassword') }} " name="updateAdminPasswordForm" id="updateAdminPasswordForm" >
                                 @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email address</label>
@@ -29,18 +61,17 @@ Settings
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Current Password</label>
-                                    <input type="password" class="form-control" id="currentPassword" name="currentPassword" placeholder="Current Password">
+                                    <input type="password" class="form-control" id="currentPassword" name="currentPassword" placeholder="Current Password" required>
                                     <small id="checkCurrentPassword" class="form-text text-muted"></small>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">New Password</label>
-                                    <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="New Password">
+                                    <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="New Password" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Confirm Password</label>
-                                    <input type="password" class="form-control" id="confirmPassword" name="currentPassword" placeholder="Confirm Password">
+                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
                                 </div>
-
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>

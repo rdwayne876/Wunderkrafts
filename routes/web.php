@@ -30,6 +30,7 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
         Route::get('settings', 'AdminController@settings');
         Route::get('logout', 'AdminController@logout');
         Route::post('checkCurrentPassword', 'AdminController@checkCurrentPassword');
+        Route::post('updateCurrentPassword', 'AdminController@updateCurrentPassword');
     });
     
 
