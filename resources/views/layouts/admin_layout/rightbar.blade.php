@@ -128,7 +128,7 @@
                         <li class="list-inline-item">
                             <div class="profilebar">
                                 <div class="dropdown">
-                                  <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/profile.svg" class="img-fluid" alt="profile"><span class="live-icon"> {{Auth::guard('admin')->user()->name}} </span></a>
+                                  <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{url('img/admin/photos/'.Auth::guard('admin')->user()->image)}}" class="img-fluid rounded-circle" alt="profile"><span class="live-icon"> {{Auth::guard('admin')->user()->name}} </span></a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profilelink">
                                         <a class="dropdown-item" href="#"><i class="ri-user-6-line"></i>My Profile</a>
                                         <a class="dropdown-item" href="#"><i class="ri-mail-line"></i>Email</a>

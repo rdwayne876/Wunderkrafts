@@ -45,14 +45,14 @@ Settings
                                         @foreach ($errors->all() as $error)
                                             <li>{{ $error }}</li>
                                         @endforeach
-                                    </ul>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </ul>   
                                 </div>
                             @endif
 
-                            <form role="form" method="POST" action=" {{ url('/admin/updateInfo') }} " name="updateInfoForm" id="updateInfoForm" >
+                            <form role="form" method="POST" action=" {{ url('/admin/updateInfo') }} " name="updateInfoForm" id="updateInfoForm" enctype="multipart/form-data" >
                                 @csrf
                                 <div class="form-group">
                                     <label for="Email">Email address</label>
@@ -68,23 +68,21 @@ Settings
 
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value=" {{ Auth::guard('admin')->user()->name }} " required>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value="{{ Auth::guard('admin')->user()->name }}" required>
                                     <small id="checkCurrentPassword" class="form-text text-muted"></small>
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter new phone number" value=" {{ Auth::guard('admin')->user()->phone }} " required>
+                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter new phone number" value="{{ Auth::guard('admin')->user()->mobile }}" required>
                                 </div>
 
-                                <label for="image">Image</label>
-                                <div class=" form-group input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                                    </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="image" aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                    </div>
+                                <div class=" form-group">
+                                    <label for="image">Image</label>
+                                    <input type="file" class="form-control" name="image" id="image">
+                                    @if (!empty(Auth::guard('admin')->user()->image))
+                                        <a target="_blank" href=" {{url('img/admin/photos/'.Auth::guard('admin')->user()->image)}} ">View Image</a>
+                                        <input type="hidden" name="currentImage" value=" {{Auth::guard('admin')->user()->image}} ">
+                                    @endif
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>

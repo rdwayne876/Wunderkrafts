@@ -8,6 +8,7 @@ use Session;
 use Hash;
 use Auth;
 use App\Admin;
+use Image;
 
 class AdminController extends Controller
 {
@@ -79,21 +80,42 @@ class AdminController extends Controller
             $data = $request->all();
 
             $rules = [
-                'name' => 'required|regex:/^[\pL\s\-]+$/u',
-                'phone' => 'required|numeric'
-
+                'name'  => 'required|regex:/^[\pL\s\-]+$/u',
+                'phone' => 'required|numeric',
+                'image' => 'mimes:jpeg,jpg,png,gif'
             ];
 
             $customMessages = [
-                'name.alpha' => 'Valid Name is required',
-                'mobile.numeric' => 'Valid phone number is required'
+                'name.alpha'        => 'Valid Name is required',
+                'mobile.numeric'    => 'Valid phone number is required',
+                'image'             => 'Valid image is required'
             ];
 
             $this->validate($request, $rules, $customMessages);
 
+            // upload image
+            if ($request->hasFile('image')) {
+                $tempImage = $request->file('image');
+                if ($tempImage->isValid()) {
+                    //get extension
+                    $extension = $tempImage->getClientOriginalExtension();
+
+                    //generate new image name
+                    $imageName = rand(111, 99999).'.'.$extension;
+                    $imagePath = 'img/admin/photos/'.$imageName;
+
+                    //upload the image
+                    Image::make($tempImage)->save($imagePath);
+                } else if (!empty($data['currentImage'])) {
+                    $imageName = $data['currentImage'];
+                } else {
+                    $imageName = "";
+                }
+            }
+
             //Update admin info
             Admin::where('email', Auth::guard('admin')->user()->email)
-                ->update(['name' => $data['name'], 'mobile' => $data['phone']]);
+                ->update(['name' => $data['name'], 'mobile' => $data['phone'], 'image' => $imageName]);
             Session::flash('success', 'Admin information updated succcesfully');
             
             return redirect()->back();
