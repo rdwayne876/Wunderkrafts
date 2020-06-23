@@ -36,8 +36,12 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
         //Sections
         Route::get('sections', 'SectionController@sections');
         Route::post('updateSectionStatus', 'SectionController@updateSectionStatus');
+        
+        //Categories
         Route::get('categories', 'CategoryController@categories');
         Route::post('updateCategoryStatus', 'CategoryController@updateCategoryStatus');
+        Route::match(['get', 'post'], 'addEditCategory/{id?}', 'CategoryController@addEditCategory');
+
     });
     
 

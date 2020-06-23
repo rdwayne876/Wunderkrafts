@@ -18,7 +18,9 @@ Catalogue
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Categories</h5>
+                    <h5 class="card-title">Categories
+                        <a href="{{url('admin/addEditCategory')}}" style="float: right; display:inline-block" class="btn btn-primary"><i class="ri-add-line align-middle mr-2"></i>Add Category</a>
+                    </h5>
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">With DataTables you can alter the ordering characteristics of the table at initialisation time.</h6>
