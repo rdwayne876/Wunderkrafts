@@ -1,7 +1,7 @@
 @section('title') 
 Settings
 @endsection 
-@extends('layouts.admin_layout.main')
+@extends('layouts.admin.main')
 @section('style')
 
 @endsection 

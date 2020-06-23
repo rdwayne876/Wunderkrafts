@@ -1,7 +1,7 @@
 @section('title') 
 eCommerce
 @endsection 
-@extends('layouts.admin_layout.main')
+@extends('layouts.admin.main')
 @section('style')
 <!-- Apex css -->
 <link href="{{ asset('assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />

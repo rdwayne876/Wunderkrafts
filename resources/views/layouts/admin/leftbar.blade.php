@@ -33,6 +33,15 @@
                 </li>
                 <li>
                     <a href="javaScript:void();">
+                        <i class="ri-pencil-ruler-2-line"></i><span>Sections</span><i class="ri-arrow-right-s-line"></i>
+                    </a>
+                    <ul class="vertical-submenu">
+                        <li><a href="{{url('admin/sections')}}">Sections</a></li>
+                        <li><a href="{{url('admin/updateInfo')}}">Personal Information</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javaScript:void();">
                         <i class="ri-pencil-ruler-line"></i><span>Basic UI</span><i class="ri-arrow-right-s-line"></i>
                     </a>
                     <ul class="vertical-submenu">

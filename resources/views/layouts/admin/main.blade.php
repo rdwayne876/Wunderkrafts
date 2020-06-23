@@ -68,10 +68,10 @@
         <!-- Start Containerbar -->
         <div id="containerbar">     
             <!-- Start Leftbar -->
-            @include('layouts.admin_layout.leftbar')
+            @include('layouts.admin.leftbar')
             <!-- End Leftbar -->
             <!-- Start Rightbar -->
-            @include('layouts.admin_layout.rightbar')          
+            @include('layouts.admin.rightbar')          
             @yield('content')
             <!-- End Rightbar --> 
         </div>
