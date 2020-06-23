@@ -1,5 +1,5 @@
 @section('title') 
-Datatable
+Catalogue
 @endsection 
 @extends('layouts.admin.main')
 @section('style')
@@ -38,9 +38,11 @@ Datatable
                                         <td> {{ $section-> name }} </td>
                                         <td> 
                                             @if ($section->status == 1)
-                                                Active
+                                                <a class="updateSectionStatus" id="section-{{ $section->id }}" 
+                                                    section_id="{{$section->id}}" href="javascript:void(0)">Active</a> 
                                             @else
-                                                Inactive                                            
+                                                <a class="updateSectionStatus" id="section-{{ $section->id }}" 
+                                                    section_id="{{$section->id}}" href="javascript:void(0)">Inactive</a>                                            
                                             @endif 
                                         </td>
                                     </tr>                       

@@ -3,8 +3,7 @@
     <div class="sidebar">
         <!-- Start Logobar -->
         <div class="logobar">
-            <a href="{{url('/')}}" class="logo logo-large"><img src="assets/images/logo.svg" class="img-fluid" alt="logo"></a>
-            <a href="{{url('/')}}" class="logo logo-small"><img src="assets/images/small_logo.svg" class="img-fluid" alt="logo"></a>
+            <a href="{{url('/')}}" class="logo logo-large"><img src="{{asset('img/logo.png')}}" class="img-fluid" alt="logo"></a>
         </div>
         <!-- End Logobar -->
         <!-- Start Navigationbar -->
@@ -33,7 +32,7 @@
                 </li>
                 <li>
                     <a href="javaScript:void();">
-                        <i class="ri-pencil-ruler-2-line"></i><span>Sections</span><i class="ri-arrow-right-s-line"></i>
+                        <i class="ri-pencil-ruler-2-line"></i><span>Catalogue</span><i class="ri-arrow-right-s-line"></i>
                     </a>
                     <ul class="vertical-submenu">
                         <li><a href="{{url('admin/sections')}}">Sections</a></li>
