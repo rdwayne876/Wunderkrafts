@@ -21,16 +21,16 @@
                     <form class="form-validate" action="#" method="post">
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-categoryName">Category Name<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="categoryName">Category Name<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="val-categoryName" name="val-categoryName" placeholder="Enter Category Name">
+                                <input type="text" class="form-control" id="categoryName" name="category_name" placeholder="Enter Category Name">
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-section">Section <span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="section">Section<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <select class="form-control" id="val-section" name="section_id">
+                                <select class="form-control" id="section" name="section_id">
                                     <option value="">Please select</option>
                                     @foreach ($getSections as $section)
                                         <option value=" {{$section->name}} ">{{$section->name}}</option>   
@@ -40,19 +40,19 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-section">Select Catgeory Level<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="categoryLevel">Select Catgeory Level<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <select class="form-control" id="val-categgoryLevel" name="parent_id">
+                                <select class="form-control" id="categoryLevel" name="parent_id">
                                     <option value="0">Main Category</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-section">Category Image<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="categoryImage">Category Image<span class="text-danger">*</span></label>
                             <div class="input-group col-lg-6">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile02">
+                                    <input type="file" class="custom-file-input" id="categoryImage" name="category_image">
                                     <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
                                 </div>
                                 <div class="input-group-append">
@@ -62,102 +62,57 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-categoryName">Category Discount<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="catgeoryDiscount">Category Discount<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="category_discount" name="val-categoryName" placeholder="Enter Category Name">
+                                <input type="text" class="form-control" id="categoryDiscount" name="category_discount" placeholder="Enter Category Discount">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-categoryName">Category URL<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="categoryDescription">Category Description <span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="val-categoryName" name="val-categoryName" placeholder="Enter Category Name">
+                                <textarea class="form-control" id="categoryDescription" name="description" rows="5" placeholder="Enter Description."></textarea>
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="categoryURL">Category URL<span class="text-danger">*</span></label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="categoryURL" name="url" placeholder="Enter Category URL">
+                            </div>
+                        </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-email">Email <span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="metaTitle">Meta Title<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="val-email" name="val-email" placeholder="Enter Email ID">
+                                <input type="text" class="form-control" id="metaTitle" name="meta_title" placeholder="Enter Meta Title">
                             </div>
                         </div>
+
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-password">Password <span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="metaDescription">Meta Description<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <input type="password" class="form-control" id="val-password" name="val-password" placeholder="Enter Password">
+                                <textarea class="form-control" id="metaDescription" name="meta_description" rows="5" placeholder="Enter Meta Description."></textarea>
                             </div>
                         </div>
+
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-confirm-password">Re-Type Password <span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="metaKeywords">Meta Keywords<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <input type="password" class="form-control" id="val-confirm-password" name="val-confirm-password" placeholder="Enter again passward for confirm">
+                                <textarea class="form-control" id="metaKeywords" name="meta_keywords" rows="5" placeholder="Enter Meta Keywords."></textarea>
                             </div>
                         </div>
+
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-suggestions">Description <span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="categoryStatus">Active or Inactive<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <textarea class="form-control" id="val-suggestions" name="val-suggestions" rows="5" placeholder="Enter Your Details."></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-skill">Skill <span class="text-danger">*</span></label>
-                            <div class="col-lg-6">
-                                <select class="form-control" id="val-skill" name="val-skill">
-                                    <option value="">Please select</option>
-                                    <option value="web-development">Web Development</option>
-                                    <option value="web-designing">Web Designing</option>
-                                    <option value="ui-designing">UI Designing</option>
-                                    <option value="marketing">Marketing</option>
-                                    <option value="testing">Testing</option>
+                                <select class="form-control" id="categoryStatus" name="status">
+                                    <option value="0">Active</option>
+                                    <option value="1">Inactive</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-currency">Currency <span class="text-danger">*</span></label>
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control" id="val-currency" name="val-currency" placeholder="$45.75">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-website">Website <span class="text-danger">*</span></label>
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control" id="val-website" name="val-website" placeholder="http://demo.com">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-phoneus">Phone <span class="text-danger">*</span></label>
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control" id="val-phoneus" name="val-phoneus" placeholder="999-888-0000">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-digits">Digits <span class="text-danger">*</span></label>
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control" id="val-digits" name="val-digits" placeholder="9">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-number">Number <span class="text-danger">*</span></label>
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control" id="val-number" name="val-number" placeholder="9.1">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="val-range">Range [1, 5] <span class="text-danger">*</span></label>
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control" id="val-range" name="val-range" placeholder="3">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label">Terms &amp; Conditions <span class="text-danger">*</span></label>
-                            <div class="col-lg-8">
-                                <label class="css-control css-control-primary css-checkbox" for="val-terms">
-                                    <input type="checkbox" class="css-control-input" id="val-terms" name="val-terms" value="1">
-                                    <span class="css-control-indicator"></span> I agree to the terms & conditions of Minaati
-                                </label>
-                            </div>
-                        </div>
+
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label"></label>
                             <div class="col-lg-8">
