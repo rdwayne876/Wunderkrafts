@@ -8,12 +8,24 @@ Catalogue
 <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 <!-- Responsive Datatable css -->
 <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+<!-- Sweet Alert css -->
+<link href="{{ asset('assets/plugins/sweet-alert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection 
 @section('rightbar-content')
-<!-- Start Contentbar -->    
+<!-- Start Contentbar --> 
+
+<!-- Start col -->
 <div class="contentbar">                
     <!-- Start row -->
     <div class="row">
+        @if (Session::has('success'))
+            <div class="alert alert-success alert-dismissable fade show" role="alert">
+                {{ Session::get('success')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>   
+        @endif
         <!-- Start col -->
         <div class="col-lg-12">
             <div class="card m-b-30">
@@ -78,4 +90,7 @@ Catalogue
 <script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom/custom-table-datatable.js') }}"></script>
+<!-- Sweet-Alert js -->
+<script src="{{ asset('assets/plugins/sweet-alert2/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-sweet-alert.js') }}"></script>
 @endsection 

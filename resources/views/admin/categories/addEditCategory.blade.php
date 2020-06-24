@@ -18,12 +18,45 @@
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Add new Category</h6>
-                    <form class="form-validate" action="#" method="post">
 
+                @if (Session::has('error'))
+                    <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                        {{ Session::get('error')}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>   
+                @endif
+
+                @if (Session::has('success'))
+                    <div class="alert alert-success alert-dismissable fade show" role="alert">
+                        {{ Session::get('success')}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>   
+                @endif
+
+                @if ($errors->any())
+                    <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </ul>   
+                    </div>
+                @endif
+                
+                <form name="categoryForm" id="categoryForm" class="form-validate" action="{{url('admin/addEditCategory')}}" 
+                    method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="categoryName">Category Name<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="categoryName" name="category_name" placeholder="Enter Category Name">
+                                <input type="text" class="form-control" id="categoryName" name="category_name" placeholder="Enter Category Name" required>
                             </div>
                         </div>
                         
@@ -49,20 +82,20 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="categoryImage">Category Image<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="categoryImage">Category Image</label>
                             <div class="input-group col-lg-6">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="categoryImage" name="category_image">
-                                    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+                                    <label class="custom-file-label" for="categoryImage" aria-describedby="inputGroupFileAddon02">Choose file</label>
                                 </div>
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="catgeoryDiscount">Category Discount<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="catgeoryDiscount">Category Discount</label>
                             <div class="col-lg-6">
                                 <input type="text" class="form-control" id="categoryDiscount" name="category_discount" placeholder="Enter Category Discount">
                             </div>
@@ -71,33 +104,33 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="categoryDescription">Category Description <span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <textarea class="form-control" id="categoryDescription" name="description" rows="5" placeholder="Enter Description."></textarea>
+                                <textarea class="form-control" id="categoryDescription" name="description" rows="5" placeholder="Enter Description." required></textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="categoryURL">Category URL<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="categoryURL" name="url" placeholder="Enter Category URL">
+                                <input type="text" class="form-control" id="categoryURL" name="url" placeholder="Enter Category URL" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="metaTitle">Meta Title<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="metaTitle">Meta Title</label>
                             <div class="col-lg-6">
                                 <input type="text" class="form-control" id="metaTitle" name="meta_title" placeholder="Enter Meta Title">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="metaDescription">Meta Description<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="metaDescription">Meta Description</label>
                             <div class="col-lg-6">
                                 <textarea class="form-control" id="metaDescription" name="meta_description" rows="5" placeholder="Enter Meta Description."></textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="metaKeywords">Meta Keywords<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="metaKeywords">Meta Keywords</label>
                             <div class="col-lg-6">
                                 <textarea class="form-control" id="metaKeywords" name="meta_keywords" rows="5" placeholder="Enter Meta Keywords."></textarea>
                             </div>
