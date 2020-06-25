@@ -42,15 +42,24 @@ Catalogue
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th>Section</th>
+                                    <th>Parent Category</th>
+                                    <th>Category</th>
                                     <th>URL</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($categories as $category)
+                                    @if(!isset($category->parentcategory->category_name))
+                                        <?php $parent_category = "Root"; ?>
+                                    @else
+                                        <?php $parent_category = $category->parentcategory->category_name; ?>
+                                    @endif
                                     <tr>
                                         <td> {{ $category-> id }} </td>
+                                        <td> {{ $category->section->name }} </td>
+                                        <td> {{ $parent_category}} </td>
                                         <td> {{ $category-> category_name }} </td>
                                         <td> {{ $category-> url }} </td>
                                         <td> 
