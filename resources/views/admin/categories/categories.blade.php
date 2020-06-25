@@ -17,17 +17,18 @@ Catalogue
 <!-- Start col -->
 <div class="contentbar">                
     <!-- Start row -->
-    <div class="row">
-        @if (Session::has('success'))
-            <div class="alert alert-success alert-dismissable fade show" role="alert">
-                {{ Session::get('success')}}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>   
-        @endif
         <!-- Start col -->
         <div class="col-lg-12">
+
+            @if (Session::has('success'))
+                <div class="alert alert-success alert-dismissable fade show" role="alert">
+                    {{ Session::get('success')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>   
+            @endif
+
             <div class="card m-b-30">
                 <div class="card-header">
                     <h5 class="card-title">Categories

@@ -63,22 +63,17 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="section">Section<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <select class="form-control" id="section" name="section_id">
+                                <select class="form-control" id="section_id" name="section_id">
                                     <option value="">Please select</option>
                                     @foreach ($getSections as $section)
-                                        <option value=" {{$section->name}} ">{{$section->name}}</option>   
+                                <option value="{{$section->id}}">{{$section->name}}</option>   
                                     @endforeach
                                 </select>
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="categoryLevel">Select Catgeory Level<span class="text-danger">*</span></label>
-                            <div class="col-lg-6">
-                                <select class="form-control" id="categoryLevel" name="parent_id">
-                                    <option value="0">Main Category</option>
-                                </select>
-                            </div>
+                        <div id="appendLevel">
+                            @include('admin.categories.appendLevel')
                         </div>
 
                         <div class="form-group row">
@@ -140,8 +135,8 @@
                             <label class="col-lg-3 col-form-label" for="categoryStatus">Active or Inactive<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
                                 <select class="form-control" id="categoryStatus" name="status">
-                                    <option value="0">Active</option>
-                                    <option value="1">Inactive</option>
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
                                 </select>
                             </div>
                         </div>

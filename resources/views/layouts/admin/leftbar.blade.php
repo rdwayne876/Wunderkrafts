@@ -9,7 +9,7 @@
         <!-- Start Navigationbar -->
         <div class="navigationbar">
             <ul class="vertical-menu">
-                <li>
+                <!-- <li>
                     <a href="{{url('/')}}">
                         <i class="ri-user-6-fill"></i><span>CRM</span>
                     </a>
@@ -19,7 +19,7 @@
                         <i class="ri-store-2-fill"></i><span>Dashboard</span>
                     </a>
                 </li>
-                <li class="vertical-header"></li>
+                <li class="vertical-header"></li> -->
 
                 <li>
                     <a href="javaScript:void();">
@@ -39,6 +39,8 @@
                         <li><a href="{{url('admin/categories')}}">Categories</a></li>
                     </ul>
                 </li>
+                
+                <!--
                 <li>
                     <a href="javaScript:void();">
                         <i class="ri-pencil-ruler-line"></i><span>Basic UI</span><i class="ri-arrow-right-s-line"></i>
@@ -232,13 +234,15 @@
                                 <li><a href="{{url('/error-500')}}">Error 500</a></li>
                             </ul>
                         </li>
-                    </ul>
+                    </ul> 
                 </li>   
                 <li>
                     <a href="{{url('/widgets')}}">
                         <i class="ri-palette-line"></i><span>Widgets</span><span class="new-icon"></span>
                     </a>
-                </li>                                          
+                </li>  
+                
+                -->
             </ul>
         </div>
         <!-- End Navigationbar -->

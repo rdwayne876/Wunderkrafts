@@ -6,7 +6,7 @@
 "use strict";
 $(document).ready(function() {
     /* -- Table - Datatable -- */
-    $('#datatable').DataTable({
+    $('#sections').DataTable({
         responsive: true
     });
     $('#default-datatable').DataTable( {
