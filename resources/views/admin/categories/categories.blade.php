@@ -47,6 +47,7 @@ Catalogue
                                     <th>Category</th>
                                     <th>URL</th>
                                     <th>Status</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -70,6 +71,11 @@ Catalogue
                                                 <a class="updateCategoryStatus" id="category-{{ $category->id }}" 
                                                     category_id="{{$category->id}}" href="javascript:void(0)">Inactive</a>                                            
                                             @endif 
+                                        </td>
+                                        <td> 
+                                            <a href="{{url('admin/addEditCategory/'.$category->id)}}">
+                                                <button type="button" class="btn btn-warning"><i class="feather icon-upload mr-2"></i> Update</button>
+                                            </a> 
                                         </td>
                                     </tr>                       
                                 @endforeach

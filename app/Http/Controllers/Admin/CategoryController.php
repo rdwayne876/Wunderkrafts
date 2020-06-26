@@ -41,11 +41,24 @@ class CategoryController extends Controller
 
     public function addEditCategory(Request $request, $id=null) {
         if($id=="") {
+            
+            // Create new catefory
             $title = "Add Category";
-
             $category = new Category;
+            $categorydata = array();
+            $getCategories =array();
+
         } else {
+            // Edit existing title
             $title = "Edit Category";
+
+            // Gert Category data
+            $categorydata= Category::where('id', $id)->first();
+            $getCategories = Category::with('subcategories')->where(['parent_id'=>0, 'section_id'=>
+                $categorydata['section_id']])->get();
+            //$categorydata = json_decode(json_encode($categorydata));
+            //echo "<pre>"; print_r($categorydata);die;
+
         }
 
         if($request->isMethod('post')) {
@@ -118,7 +131,7 @@ class CategoryController extends Controller
         $getSections = Section::get();
 
         return view('admin.categories.addEditCategory')
-            ->with(compact('title', 'getSections'));
+            ->with(compact('title', 'getSections', 'categorydata'));
     }
 
     public function appendLevel(Request $request) {
