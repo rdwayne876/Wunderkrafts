@@ -72,10 +72,15 @@ Catalogue
                                                     category_id="{{$category->id}}" href="javascript:void(0)">Inactive</a>                                            
                                             @endif 
                                         </td>
-                                        <td> 
-                                            <a href="{{url('admin/addEditCategory/'.$category->id)}}">
-                                                <button type="button" class="btn btn-warning"><i class="feather icon-upload mr-2"></i> Update</button>
-                                            </a> 
+                                        <td>
+                                            <span style="display: inline-block">
+                                                <a href="{{url('admin/addEditCategory/'.$category->id)}}">
+                                                    <button type="button" class="btn btn-sm btn-warning"><i class="feather icon-upload mr-2"></i> Update</button>
+                                                </a>
+                                                <a href="{{url('admin/delete/'.$category->id)}}">
+                                                    <button type="button" class="btn btn-sm btn-danger"><i class="feather icon-trash-2 mr-2"></i> Delete</button>
+                                                </a> 
+                                            </span>   
                                         </td>
                                     </tr>                       
                                 @endforeach

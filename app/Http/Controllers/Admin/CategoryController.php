@@ -62,7 +62,7 @@ class CategoryController extends Controller
             //echo "<pre>"; print_r($getCategories);die;
 
             $category = Category::find($id);
-            $message = "Category updated successfully!";
+            $message = "$category->category_name updated successfully!";
 
         }
 
@@ -149,10 +149,38 @@ class CategoryController extends Controller
 
             $getCategories = json_decode(json_encode($getCategories), true);
             
-            echo "<pre>"; print_r($getCategories);
+            //echo "<pre>"; print_r($getCategories);
 
             return view('admin.categories.appendLevel')
                 ->with(compact('getCategories'));
         }
+    }
+
+    public function deleteImage($id) {
+        // Get  Image
+        $categoryImage = Category::select('category_image')->where('id', $id)->first();
+
+        //Get image path
+        $imagePath = 'img/category/';
+
+        //Delete image from folder
+        if(file_exists($imagePath.$categoryImage->category_image)) {
+            unlink($imagePath.$categoryImage->category_image);
+        }
+
+        // Delete from db
+        Category::where('id', $id)->update(['category_image'=>'']);
+
+        Session::flash('success', 'Image deleted successfully');
+
+        return redirect()->back();
+    }
+
+    public function delete($id) {
+        //Find and delete category
+        Category::where('id', $id)->delete();
+
+        Session::flash('success', 'Category deleted successfully');
+        return redirect()->back();
     }
 }

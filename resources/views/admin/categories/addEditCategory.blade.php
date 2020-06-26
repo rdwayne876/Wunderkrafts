@@ -96,6 +96,12 @@
                                     <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
                                 </div>
                             </div>
+                            <div class="col-md-6 offset-md-3">
+                                @if(!empty($categorydata['category_image']))
+                                    <img src=" {{asset('img/category/'.$categorydata['category_image'])}} " width="100px">
+                                @endif
+                                <a href=" {{url('admin/deleteImage/'.$categorydata['id'])}} "><button type="button" class="btn btn-danger-rgba"><i class="feather icon-trash-2 mr-2"></i> Delete</button></a> 
+                            </div>
                         </div> 
 
                         <div class="form-group row">
