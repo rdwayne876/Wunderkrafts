@@ -46,7 +46,8 @@ class CategoryController extends Controller
             $title = "Add Category";
             $category = new Category;
             $categorydata = array();
-            $getCategories =array();
+            $getCategories = array();
+            $message = "Category added successfully!";
 
         } else {
             // Edit existing title
@@ -54,10 +55,14 @@ class CategoryController extends Controller
 
             // Gert Category data
             $categorydata= Category::where('id', $id)->first();
-            $getCategories = Category::with('subcategories')->where(['parent_id'=>0, 'section_id'=>
-                $categorydata['section_id']])->get();
+            $getCategories = Category::with('subCategories')->where(['parent_id'=>0, 'section_id'=>$categorydata['section_id']])
+                ->get();
+            $getCategories = json_decode(json_encode($getCategories), true);
             //$categorydata = json_decode(json_encode($categorydata));
-            //echo "<pre>"; print_r($categorydata);die;
+            //echo "<pre>"; print_r($getCategories);die;
+
+            $category = Category::find($id);
+            $message = "Category updated successfully!";
 
         }
 
@@ -123,7 +128,7 @@ class CategoryController extends Controller
             $category->status = $data['status'];
             $category->save();
 
-            Session::flash('success','Category added succesfully');
+            Session::flash('success', $message);
             return redirect('admin/categories');
         }
 
@@ -131,7 +136,7 @@ class CategoryController extends Controller
         $getSections = Section::get();
 
         return view('admin.categories.addEditCategory')
-            ->with(compact('title', 'getSections', 'categorydata'));
+            ->with(compact('title', 'getSections', 'categorydata', 'getCategories'));
     }
 
     public function appendLevel(Request $request) {

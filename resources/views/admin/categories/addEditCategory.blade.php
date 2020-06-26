@@ -109,9 +109,7 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="categoryDescription">Category Description <span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <textarea class="form-control" id="categoryDescription" name="description" rows="5" placeholder="Enter Description." required>
-                                    @if(!empty($categorydata['description'])){{$categorydata['description']}}@else{{old('description')}}@endif
-                                </textarea>
+                                <textarea class="form-control" id="categoryDescription" name="description" rows="5" placeholder="Enter Description." required>@if(!empty($categorydata['description'])){{$categorydata['description']}}@else{{old('description')}}@endif</textarea>
                             </div>
                         </div>
 
@@ -134,16 +132,14 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="metaDescription">Meta Description</label>
                             <div class="col-lg-6">
-                                <textarea class="form-control" id="metaDescription" name="meta_description" rows="5" placeholder="Enter Meta Description."
-                                @if(!empty($categorydata['meta_description'])) value="{{$categorydata['meta_description']}}" @else value="{{old('meta_description')}}" @endif></textarea>
+                                <textarea class="form-control" id="metaDescription" name="meta_description" rows="5" placeholder="Enter Meta Description.">@if(!empty($categorydata['meta_description'])) {{$categorydata['meta_description']}} @else {{old('meta_description')}} @endif</textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="metaKeywords">Meta Keywords</label>
                             <div class="col-lg-6">
-                                <textarea class="form-control" id="metaKeywords" name="meta_keywords" rows="5" placeholder="Enter Meta Keywords."
-                                @if(!empty($categorydata['meta_keywords'])) value="{{$categorydata['meta_keywords']}}" @else value="{{old('meta_keywords')}}" @endif></textarea>
+                                <textarea class="form-control" id="metaKeywords" name="meta_keywords" rows="5" placeholder="Enter Meta Keywords.">@if(!empty($categorydata['meta_keywords'])) {{$categorydata['meta_keywords']}} @else {{old('meta_keywords')}} @endif</textarea>
                             </div>
                         </div>
 
