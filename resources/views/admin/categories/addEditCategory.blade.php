@@ -3,6 +3,8 @@
 @endsection 
 @extends('layouts.admin.main')
 @section('style')
+<!-- Sweet Alert css -->
+<link href="{{ asset('assets/plugins/sweet-alert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 
 @endsection 
 @section('rightbar-content')
@@ -96,12 +98,12 @@
                                     <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
                                 </div>
                             </div>
-                            <div class="col-md-6 offset-md-3">
-                                @if(!empty($categorydata['category_image']))
+                            @if(!empty($categorydata['category_image']))
+                                <div class="col-md-6 offset-md-3">
                                     <img src=" {{asset('img/category/'.$categorydata['category_image'])}} " width="100px">
-                                @endif
-                                <a href=" {{url('admin/deleteImage/'.$categorydata['id'])}} "><button type="button" class="btn btn-danger-rgba"><i class="feather icon-trash-2 mr-2"></i> Delete</button></a> 
-                            </div>
+                                    <a href="javascript:void(0)" class="confirmDelete" record="deleteImage" recordid="{{$categorydata['id']}}" <?php /* href="{{url('admin/deleteImage/'.$categorydata['id'])}} " */ ?>><button type="button" class="btn btn-danger-rgba"><i class="feather icon-trash-2 mr-2"></i> Delete</button></a> 
+                                </div>
+                            @endif
                         </div> 
 
                         <div class="form-group row">
@@ -181,4 +183,7 @@
 <!-- Validate js -->
 <script src="{{ asset('assets/js/custom/custom-validate.js') }}"></script>
 <script src="{{ asset('assets/js/custom/custom-form-validation.js') }}"></script>
+<!-- Sweet-Alert js -->
+<script src="{{ asset('assets/plugins/sweet-alert2/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-sweet-alert.js') }}"></script>
 @endsection 

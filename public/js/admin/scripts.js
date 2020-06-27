@@ -84,4 +84,50 @@ $(document).ready(function(){
             }
         });
     });
+
+    // Confirm delete
+    /* $(".confirmDelete").click(function() {
+        var name =$(this).attr("name");
+
+        if(confirm("Are you sure you want to delete this "+name+"?")) {
+            return true;
+        }
+        return false;
+    }); */
+
+    /* -- Sweet Alert - Parameter -- */
+    $(".confirmDelete").click(function() { 
+
+        var record =$(this).attr("record");
+        var recordid = $(this).attr("recordid");
+
+        swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger m-l-10',
+            buttonsStyling: false
+        }).then(function () {
+            swal(
+                'Deleted!',
+                'Your data has been deleted.',
+                'success'
+                )
+
+                window.location.href="/admin/"+record+"/"+recordid;
+
+        }, function (dismiss) {
+            if (dismiss === 'cancel') {
+                swal(
+                    'Cancelled',
+                    'Your data is safe',
+                    'error'
+                    )
+            }
+        })
+    });
 });
