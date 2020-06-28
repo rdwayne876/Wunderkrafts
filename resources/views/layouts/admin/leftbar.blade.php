@@ -37,6 +37,7 @@
                     <ul class="vertical-submenu">
                         <li><a href="{{url('admin/sections')}}">Sections</a></li>
                         <li><a href="{{url('admin/categories')}}">Categories</a></li>
+                        <li><a href="{{url('admin/products')}}">Products</a></li>
                     </ul>
                 </li>
                 

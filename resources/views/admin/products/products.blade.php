@@ -31,8 +31,8 @@ Catalogue
 
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Categories
-                        <a href="{{url('admin/addEditCategory')}}" style="float: right; display:inline-block" class="btn btn-success"><i class="ri-add-line align-middle mr-2"></i>Add Category</a>
+                    <h5 class="card-title">Products
+                        <a href="{{url('admin/addEditProduct')}}" style="float: right; display:inline-block" class="btn btn-success"><i class="ri-add-line align-middle mr-2"></i>Add Product</a>
                     </h5>
                 </div>
                 <div class="card-body">
@@ -42,42 +42,35 @@ Catalogue
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Section</th>
-                                    <th>Parent Category</th>
-                                    <th>Category</th>
-                                    <th>URL</th>
+                                    <th>Name</th>
+                                    <th>Product Code</th>
+                                    <th>color</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $category)
-                                    @if(!isset($category->parentcategory->category_name))
-                                        <?php $parent_category = "Root"; ?>
-                                    @else
-                                        <?php $parent_category = $category->parentcategory->category_name; ?>
-                                    @endif
+                                @foreach ($products as $product)
                                     <tr>
-                                        <td> {{ $category-> id }} </td>
-                                        <td> {{ $category->section->name }} </td>
-                                        <td> {{ $parent_category}} </td>
-                                        <td> {{ $category-> category_name }} </td>
-                                        <td> {{ $category-> url }} </td>
+                                        <td> {{ $product->id }} </td>
+                                        <td> {{ $product->name }} </td>
+                                        <td> {{ $product->code}} </td>
+                                        <td> {{ $product->color }} </td>
                                         <td> 
-                                            @if ($category->status == 1)
-                                                <a class="updateCategoryStatus" id="category-{{ $category->id }}" 
-                                                    category_id="{{$category->id}}" href="javascript:void(0)">Active</a> 
+                                            @if ($product->status == 1)
+                                                <a class="updateProductStatus" id="product-{{ $product->id }}" 
+                                                    product_id="{{$product->id}}" href="javascript:void(0)">Active</a> 
                                             @else
-                                                <a class="updateCategoryStatus" id="category-{{ $category->id }}" 
-                                                    category_id="{{$category->id}}" href="javascript:void(0)">Inactive</a>                                            
+                                                <a class="updateProductStatus" id="product-{{ $product->id }}" 
+                                                    product_id="{{$product->id}}" href="javascript:void(0)">Inactive</a>                                            
                                             @endif 
                                         </td>
                                         <td>
                                             <span style="display: inline">
-                                                <a href="{{url('admin/addEditCategory/'.$category->id)}}">
+                                                <a href="{{url('admin/addEditProduct/'.$product->id)}}">
                                                     <button type="button" class="btn btn-round btn-warning"><i class="feather icon-upload mr-2"></i></button>
                                                 </a>
-                                                <a href="javascript:void(0)" class="confirmDelete" record="delete" recordid="{{$category->id}}" <?php /* href="{{url('admin/delete/'.$category->id)}}" */ ?>>
+                                                <a href="javascript:void(0)" class="confirmDelete" record="delete" recordid="{{$product->id}}" <?php /* href="{{url('admin/delete/'.$product->id)}}" */ ?>>
                                                     <button type="button" class="btn btn-round btn-danger"><i class="feather icon-trash-2 mr-2"></i></button>
                                                 </a>   
                                             </span>   
