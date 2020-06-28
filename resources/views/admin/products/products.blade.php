@@ -41,7 +41,8 @@ Catalogue
                         <table id="sections" class="display table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>Section</th>
+                                    <th>Category</th>
                                     <th>Name</th>
                                     <th>Product Code</th>
                                     <th>color</th>
@@ -52,7 +53,8 @@ Catalogue
                             <tbody>
                                 @foreach ($products as $product)
                                     <tr>
-                                        <td> {{ $product->id }} </td>
+                                        <td> {{ $product->section->name }} </td>
+                                        <td> {{ $product->category->category_name }} </td>
                                         <td> {{ $product->name }} </td>
                                         <td> {{ $product->code}} </td>
                                         <td> {{ $product->color }} </td>
