@@ -32,7 +32,7 @@ Catalogue
             <div class="card m-b-30">
                 <div class="card-header">
                     <h5 class="card-title">Products
-                        <a href="{{url('admin/addEditProduct')}}" style="float: right; display:inline-block" class="btn btn-success"><i class="ri-add-line align-middle mr-2"></i>Add Product</a>
+                        <a href="{{url('admin/products/addedit')}}" style="float: right; display:inline-block" class="btn btn-success"><i class="ri-add-line align-middle mr-2"></i>Add Product</a>
                     </h5>
                 </div>
                 <div class="card-body">

@@ -49,7 +49,8 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
         Route::get('products', 'ProductController@products');
         Route::post('updateProductStatus', 'ProductController@updateProductStatus');
         Route::get('delete/{id}', 'ProductController@delete');
-
+        Route::match(['get', 'post'], 'products/addedit/{id?}', 'ProductController@addEditProduct');
+        
     });
     
 

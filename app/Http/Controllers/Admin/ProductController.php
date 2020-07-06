@@ -47,4 +47,30 @@ class ProductController extends Controller
         Session::flash('success', 'Product deleted successfully');
         return redirect()->back();
     }
+
+    public function addEditProduct(Request $request, $id=null) {
+        if($id=="") {
+            
+            // Create new product
+            $title = "Add Product";
+            $product = new Product;
+
+
+        } else {
+            // Edit existing title
+            $title = "Edit Product";
+
+        }
+
+        /* 
+        Array Filters
+        $materialArray = array('Beads', 'Stones', 'Leather');
+
+        pass into view when in use
+        */
+
+        return view('admin.products.addEdit')->with(compact('title'));
+    
+    }
+    
 }
