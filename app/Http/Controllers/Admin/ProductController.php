@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Section;
 use App\Product;
 use Session;
 
@@ -65,12 +66,14 @@ class ProductController extends Controller
         /* 
         Array Filters
         $materialArray = array('Beads', 'Stones', 'Leather');
-
         pass into view when in use
         */
 
-        return view('admin.products.addEdit')->with(compact('title'));
-    
+        //Sections with Categories and sub categories
+        $categories = Section::with('categories')->get();
+        $categories = json_decode(json_encode($categories), true);
+        // echo "<pre>"; print_r($categories); die;
+
+        return view('admin.products.addEdit')->with(compact('title', 'categories'));
     }
-    
 }

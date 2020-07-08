@@ -69,10 +69,23 @@
                         </div>
                         
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="section">Category<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="category">Category<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <select class="form-control" id="section_id" name="section_id">
-                                    <option value="">Please select</option>
+                                <select class="form-control" id="category_id" name="category_id">
+                                    <option value="">Please Select</option>
+                                        @foreach ($categories as $section)
+                                            <optgroup label="{{ $section['name'] }}"></optgroup>
+                                            @foreach($section['categories'] as $category)
+                                                <option value=" {{$category['id']}} ">
+                                                    &nbsp;&nbsp;&nbsp;{{$category['category_name']}}
+                                                    @foreach($category['subcategories'] as $subcategory)
+                                                        <option value="{{$subcategory['id']}}">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&raquo;&nbsp;{{$subcategory['category_name']}}
+                                                        </option>
+                                                    @endforeach
+                                                </option>
+                                            @endforeach
+                                        @endforeach
                                 </select>
                             </div>
                         </div>
@@ -155,6 +168,20 @@
                             </div>
                         </div>
 
+                        <?php /*
+                        Passing filter
+                        <div class="form-group row">
+                            <label for="material" class="col-lg-3 col-form-label">Material</label>
+                            <div class="col-lg-6">
+                                <select name="material" id="material" class="form-control">
+                                    <option value="">Select</option>
+                                    @foreach ( $materialArray as $material )
+                                        <option value="{{material}}">{{ $material }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        */ ?>
 
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="metaTitle">Meta Title</label>
@@ -175,6 +202,13 @@
                             <label class="col-lg-3 col-form-label" for="metaKeywords">Meta Keywords</label>
                             <div class="col-lg-6">
                                 <textarea class="form-control" id="metaKeywords" name="meta_keywords" rows="5" placeholder="Enter Meta Keywords.">@if(!empty($productdata['meta_keywords'])) {{$productdata['meta_keywords']}} @else {{old('meta_keywords')}} @endif</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="isFeatured">Featured</label>
+                            <div class="col-lg-6">
+                                <input type="checkbox" name="is_featured">
                             </div>
                         </div>
 
