@@ -73,14 +73,14 @@ Catalogue
                                             @endif 
                                         </td>
                                         <td>
-                                            <span style="display: inline">
-                                                <a href="{{url('admin/addEditCategory/'.$category->id)}}">
-                                                    <button type="button" class="btn btn-round btn-warning"><i class="feather icon-upload mr-2"></i></button>
+                                            <div class="button-list">
+                                                <a href="{{url('admin/addEditCategory/'.$category->id)}}" class="btn btn-success-rgba">
+                                                    <i class="ri-pencil-line"></i>
                                                 </a>
-                                                <a href="javascript:void(0)" class="confirmDelete" record="delete" recordid="{{$category->id}}" <?php /* href="{{url('admin/delete/'.$category->id)}}" */ ?>>
-                                                    <button type="button" class="btn btn-round btn-danger"><i class="feather icon-trash-2 mr-2"></i></button>
-                                                </a>   
-                                            </span>   
+                                                <a href="javascript:void(0)" class="btn btn-danger-rgba confirmDelete" record="delete" recordid="{{$category->id}}">
+                                                    <i class="ri-delete-bin-3-line"></i>
+                                                </a>
+                                            </div>   
                                         </td>
                                     </tr>                       
                                 @endforeach

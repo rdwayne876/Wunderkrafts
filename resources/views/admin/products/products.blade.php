@@ -43,6 +43,7 @@ Catalogue
                                 <tr>
                                     <th>Section</th>
                                     <th>Category</th>
+                                    <th>Image</th>
                                     <th>Name</th>
                                     <th>Product Code</th>
                                     <th>color</th>
@@ -55,6 +56,14 @@ Catalogue
                                     <tr>
                                         <td> {{ $product->section->name }} </td>
                                         <td> {{ $product->category->category_name }} </td>
+                                        <td>
+                                            <?php $product_image_path = "img/product/small/".$product->main_image; ?>
+                                            @if(!empty($product->main_image) && file_exists($product_image_path))
+                                                <img style="width: 90px;" src=" {{asset('img/product/small/'.$product->main_image)}} " alt="{{$product->name}}" >
+                                            @else 
+                                                <img style="width: 90px;" src=" {{asset('img/product/small/no_image.png')}} " alt="no image" >
+                                            @endif 
+                                        </td>        
                                         <td> {{ $product->name }} </td>
                                         <td> {{ $product->code}} </td>
                                         <td> {{ $product->color }} </td>
@@ -68,14 +77,14 @@ Catalogue
                                             @endif 
                                         </td>
                                         <td>
-                                            <span style="display: inline">
-                                                <a href="{{url('admin/addEditProduct/'.$product->id)}}">
-                                                    <button type="button" class="btn btn-round btn-warning"><i class="feather icon-upload mr-2"></i></button>
+                                            <div class="button-list">
+                                                <a href="{{url('admin/addEditProduct/'.$product->id)}}" class="btn btn-success-rgba">
+                                                    <i class="ri-pencil-line"></i>
                                                 </a>
-                                                <a href="javascript:void(0)" class="confirmDelete" record="delete" recordid="{{$product->id}}" <?php /* href="{{url('admin/delete/'.$product->id)}}" */ ?>>
-                                                    <button type="button" class="btn btn-round btn-danger"><i class="feather icon-trash-2 mr-2"></i></button>
-                                                </a>   
-                                            </span>   
+                                                <a href="javascript:void(0)" class="btn btn-danger-rgba confirmDelete" record="delete" recordid="{{$product->id}}">
+                                                    <i class="ri-delete-bin-3-line"></i>
+                                                </a>
+                                            </div>
                                         </td>
                                     </tr>                       
                                 @endforeach
