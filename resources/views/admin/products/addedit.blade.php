@@ -56,7 +56,7 @@
                     @if(empty($productdata['id']))
                         action="{{url('admin/products/addedit')}}"
                     @else 
-                        action="{{url('admin/addEditProduct/'.$productdata['id'])}}"
+                        action="{{url('admin/products/addedit/'.$productdata['id'])}}"
                     @endif
                     method="post" enctype="multipart/form-data">
                         @csrf
@@ -64,7 +64,7 @@
                             <label class="col-lg-3 col-form-label" for="productName">Product Name<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
                                 <input type="text" class="form-control" id="productName" name="product_name" placeholder="Enter Product Name" required
-                                @if(!empty($productdata['product_name'])) value="{{$productdata['product_name']}}" @else value="{{old('product_name')}}" @endif>
+                                @if(!empty($productdata['name'])) value="{{$productdata['name']}}" @else value="{{old('product_name')}}" @endif>
                             </div>
                         </div>
                         
@@ -79,11 +79,15 @@
                                                 <option value=" {{$category['id']}} " 
                                                     @if( !empty( @old( 'category_id')) && $category['id'] == @old( 'category_id'))
                                                         selected=""
+                                                    @elseif( !empty( $productdata['category_id']) && $productdata['category_id'] == $category['id'])
+                                                        selected=""
                                                     @endif>
                                                     &nbsp;&nbsp;&nbsp;{{$category['category_name']}}
                                                     @foreach($category['subcategories'] as $subcategory)
                                                         <option value="{{$subcategory['id']}}"
                                                             @if( !empty( @old( 'category_id')) && $subcategory['id'] == @old( 'category_id'))
+                                                                selected=""
+                                                            @elseif( !empty( $productdata['category_id']) && $productdata['category_id'] == $subcategory['id'])
                                                                 selected=""
                                                             @endif>
                                                             &nbsp;&nbsp;&nbsp;&nbsp;&raquo;&nbsp;{{$subcategory['category_name']}}
@@ -100,7 +104,7 @@
                             <label class="col-lg-3 col-form-label" for="productCode">Product Code<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
                                 <input type="text" class="form-control" id="productCode" name="product_code" placeholder="Enter Product Code" required
-                                @if(!empty($productdata['product_code'])) value="{{$productdata['product_code']}}" @else value="{{old('product_code')}}" @endif>
+                                @if(!empty($productdata['code'])) value="{{$productdata['code']}}" @else value="{{old('product_code')}}" @endif>
                             </div>
                         </div>
 
@@ -108,7 +112,7 @@
                             <label class="col-lg-3 col-form-label" for="productColour">Product Colour<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
                                 <input type="text" class="form-control" id="productColour" name="product_colour" placeholder="Product Colour" required
-                                @if(!empty($productdata['product_colour'])) value="{{$productdata['product_colour']}}" @else value="{{old('product_colour')}}" @endif>
+                                @if(!empty($productdata['color'])) value="{{$productdata['color']}}" @else value="{{old('product_colour')}}" @endif>
                             </div>
                         </div>
 
@@ -116,7 +120,7 @@
                             <label class="col-lg-3 col-form-label" for="productSize">Size<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
                                 <input type="text" class="form-control" id="productSize" name="product_size" placeholder="Product Size" required
-                                @if(!empty($productdata['product_size'])) value="{{$productdata['product_size']}}" @else value="{{old('product_size')}}" @endif>
+                                @if(!empty($productdata['size'])) value="{{$productdata['size']}}" @else value="{{old('product_size')}}" @endif>
                             </div>
                         </div>
 
@@ -124,7 +128,7 @@
                             <label class="col-lg-3 col-form-label" for="price">Price<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
                                 <input type="text" class="form-control" id="price" name="product_price" placeholder="Enter Price" required
-                                @if(!empty($productdata['product_price'])) value="{{$productdata['product_price']}}" @else value="{{old('product_price')}}" @endif>
+                                @if(!empty($productdata['price'])) value="{{$productdata['price']}}" @else value="{{old('product_price')}}" @endif>
                             </div>
                         </div>
 
@@ -132,7 +136,7 @@
                             <label class="col-lg-3 col-form-label" for="productDiscount">Discount (%)<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
                                 <input type="text" class="form-control" id="productDiscount" name="product_discount" placeholder="Product Discount"
-                                @if(!empty($productdata['product_discount'])) value="{{$productdata['product_discount']}}" @else value="{{old('product_discount')}}" @endif>
+                                @if(!empty($productdata['discount'])) value="{{$productdata['discount']}}" @else value="{{old('product_discount')}}" @endif>
                             </div>
                         </div>
 
@@ -149,7 +153,7 @@
                             </div>
                             @if(!empty($productdata['main_image']))
                                 <div class="col-md-6 offset-md-3">
-                                    <img src=" {{asset('img/product/'.$productdata['product_image'])}} " width="100px">
+                                    <img src=" {{asset('img/product/medium/'.$productdata['main_image'])}} " width="100px">
                                     <a href="javascript:void(0)" class="confirmDelete" record="deleteImage" recordid="{{$productdata['id']}}" <?php /* href="{{url('admin/deleteImage/'.$productdata['id'])}} " */ ?>><button type="button" class="btn btn-danger-rgba"><i class="feather icon-trash-2 mr-2"></i> Delete</button></a> 
                                 </div>
                             @endif
@@ -168,7 +172,7 @@
                             </div>
                             @if(!empty($productdata['product_video']))
                                 <div class="col-md-6 offset-md-3">
-                                    <img src=" {{asset('img/product/'.$productdata['product_image'])}} " width="100px">
+                                    <img src=" {{asset('vid/product/'.$productdata['video'])}} " width="100px">
                                     <a href="javascript:void(0)" class="confirmDelete" record="deleteImage" recordid="{{$productdata['id']}}" <?php /* href="{{url('admin/deleteImage/'.$productdata['id'])}} " */ ?>><button type="button" class="btn btn-danger-rgba"><i class="feather icon-trash-2 mr-2"></i> Delete</button></a> 
                                 </div>
                             @endif
@@ -189,7 +193,12 @@
                                 <select name="material" id="material" class="form-control">
                                     <option value="">Select</option>
                                     @foreach ( $materialArray as $material )
-                                        <option value="{{material}}">{{ $material }}</option>
+                                        <option value="{{material}}"
+                                            @if( !empty( $productdata['material']) && $productdata['material'] == $material)
+                                                selected=""
+                                            @endif>
+                                            {{ $material }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -221,7 +230,11 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="isFeatured">Featured</label>
                             <div class="col-lg-6">
-                                <input type="checkbox" name="is_featured" id="isFeatured" value="Yes">
+                                <input type="checkbox" name="is_featured" id="isFeatured" value="Yes"
+                                @if( !empty( $productdata['is_featured']) && $productdata['is_featured'] == 
+                                "Yes")
+                                    checked=""
+                                @endif>
                             </div>
                         </div>
 

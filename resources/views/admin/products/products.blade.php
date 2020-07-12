@@ -78,7 +78,7 @@ Catalogue
                                         </td>
                                         <td>
                                             <div class="button-list">
-                                                <a href="{{url('admin/addEditProduct/'.$product->id)}}" class="btn btn-success-rgba">
+                                                <a href="{{url('admin/products/addedit/'.$product->id)}}" class="btn btn-success-rgba">
                                                     <i class="ri-pencil-line"></i>
                                                 </a>
                                                 <a href="javascript:void(0)" class="btn btn-danger-rgba confirmDelete" record="delete" recordid="{{$product->id}}">
