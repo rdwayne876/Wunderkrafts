@@ -154,7 +154,7 @@
                             @if(!empty($productdata['main_image']))
                                 <div class="col-md-6 offset-md-3">
                                     <img src=" {{asset('img/product/medium/'.$productdata['main_image'])}} " width="100px">
-                                    <a href="javascript:void(0)" class="confirmDelete" record="deleteImage" recordid="{{$productdata['id']}}" <?php /* href="{{url('admin/deleteImage/'.$productdata['id'])}} " */ ?>><button type="button" class="btn btn-danger-rgba"><i class="feather icon-trash-2 mr-2"></i> Delete</button></a> 
+                                    <a href="javascript:void(0)" class="confirmDelete" record="products/delete/image" recordid="{{$productdata['id']}}" <?php /* href="{{url('admin/deleteImage/'.$productdata['id'])}} " */ ?>><button type="button" class="btn btn-danger-rgba"><i class="feather icon-trash-2 mr-2"></i> Delete</button></a> 
                                 </div>
                             @endif
                         </div> 
@@ -170,10 +170,10 @@
                                     <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
                                 </div>
                             </div>
-                            @if(!empty($productdata['product_video']))
+                            @if(!empty($productdata['video']))
                                 <div class="col-md-6 offset-md-3">
-                                    <img src=" {{asset('vid/product/'.$productdata['video'])}} " width="100px">
-                                    <a href="javascript:void(0)" class="confirmDelete" record="deleteImage" recordid="{{$productdata['id']}}" <?php /* href="{{url('admin/deleteImage/'.$productdata['id'])}} " */ ?>><button type="button" class="btn btn-danger-rgba"><i class="feather icon-trash-2 mr-2"></i> Delete</button></a> 
+                                    <a href="{{url('vid/product/'.$productdata['video'])}}">Download</a>
+                                    <a href="javascript:void(0)" class="confirmDelete" record="products/delete/video" recordid="{{$productdata['id']}}" <?php /* href="{{url('admin/deleteImage/'.$productdata['id'])}} " */ ?>><button type="button" class="btn btn-danger-rgba"><i class="feather icon-trash-2 mr-2"></i> Delete</button></a> 
                                 </div>
                             @endif
                         </div> 

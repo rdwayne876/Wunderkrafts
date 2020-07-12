@@ -196,4 +196,55 @@ class ProductController extends Controller
 
         return view('admin.products.addEdit')->with(compact('title', 'categories', 'productdata'));
     }
+
+    public function deleteImage($id) {
+        // Get  Image
+        $productImage = Product::select('main_image')->where('id', $id)->first();
+
+        //Get image path
+        $smallImagePath = 'img/product/small/';
+        $mediumImagePath = 'img/product/medium/';
+        $largeImagePath = 'img/product/large/';
+
+        //Delete image from folder
+        if(file_exists($smallImagePath.$productImage->main_image)) {
+            unlink($smallImagePath.$productImage->main_image);
+        }
+
+        if(file_exists($mediumImagePath.$productImage->main_image)) {
+            unlink($mediumImagePath.$productImage->main_image);
+        }
+
+        if(file_exists($largeImagePath.$productImage->main_image)) {
+            unlink($largeImagePath.$productImage->main_image);
+        }
+
+        // Delete from db
+        Product::where('id', $id)->update(['main_image'=>'']);
+
+        Session::flash('success', 'Image deleted successfully');
+
+        return redirect()->back();
+    }
+
+    public function deleteVideo($id) {
+        // Get  Image
+        $productVideo = Product::select('video')->where('id', $id)->first();
+
+        //Get image path
+        $videoPath = 'vid/product/';
+
+
+        //Delete image from folder
+        if(file_exists($videoPath.$productVideo->video)) {
+            unlink($videoPath.$productVideo->video);
+        }
+
+        // Delete from db
+        Product::where('id', $id)->update(['video'=>'']);
+
+        Session::flash('success', 'Video deleted successfully');
+
+        return redirect()->back();
+    }
 }
