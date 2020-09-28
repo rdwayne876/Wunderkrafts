@@ -78,10 +78,13 @@ Catalogue
                                         </td>
                                         <td>
                                             <div class="button-list">
-                                                <a href="{{url('admin/products/addedit/'.$product->id)}}" class="btn btn-success-rgba">
-                                                    <i class="ri-pencil-line"></i>
+                                                <a title="Attributes" href="{{url('admin/products/attributes/'.$product->id)}}" class="btn btn-success-rgba">
+                                                    <i class="ri-add-line"></i>
                                                 </a>
-                                                <a href="javascript:void(0)" class="btn btn-danger-rgba confirmDelete" record="delete" recordid="{{$product->id}}">
+                                                <a title="Edit Product" href="{{url('admin/products/addedit/'.$product->id)}}" class="btn btn-primary-rgba">
+                                                    <i class="ri-edit-box-line"></i>
+                                                </a>
+                                                <a title="Delete" href="javascript:void(0)" class="btn btn-danger-rgba confirmDelete" record="delete" recordid="{{$product->id}}">
                                                     <i class="ri-delete-bin-3-line"></i>
                                                 </a>
                                             </div>
