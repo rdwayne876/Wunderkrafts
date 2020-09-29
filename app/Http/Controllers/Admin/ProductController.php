@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Section;
 use App\Product;
 use App\Category;
+use App\ProductsAttribute;
 use Session;
 use Image;
 
@@ -252,11 +253,42 @@ class ProductController extends Controller
         if( $request->isMethod('post')) {
             $data = $request->all();
 
-            echo "<pre>"; print_r($data); die;
+            //echo "<pre>"; print_r($data); die;
+            foreach( $data['sku'] as $key => $value) {
+                if( !empty( $value)) {
+                    //SKU already exists check
+                    $attrCountSKU = ProductsAttribute::where('sku', $value)->count();
+                    if($attrCountSKU>0) {
+                        $message = 'SKU already exists. Please add another SKU!';
+                        session::flash('error', $message);
+                        return redirect()->back();
+                    }
+
+                    //Size already exists check
+                    $attrCountSKU = ProductsAttribute::where(['product_id'=>$id, 'size'=>$data['size'][$key]])->count();
+                    if($attrCountSKU>0) {
+                        $message = 'Size already exists. Please add another Size!';
+                        session::flash('error', $message);
+                        return redirect()->back();
+                    }
+
+                    $attribute = new ProductsAttribute;
+                    $attribute->product_id = $id;
+
+                    $attribute->sku = $value;
+                    $attribute->sku = $data['size'][$key];
+                    $attribute->price = $data['price'][$key];
+                    $attribute->stock = $data['stock'][$key];
+                    $attribute->save();
+                }
+            }
+
+            $message = 'Product attributes have been added successfully!';
+            session::flash('success', $message);
+            return redirect()->back();
         }
 
         $productdata = Product::find($id);
-
         $productdata = json_decode(json_encode($productdata), true);
         // echo "<pre>"; print_r($productdata); die;
 

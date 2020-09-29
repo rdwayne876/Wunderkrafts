@@ -86,10 +86,10 @@
                         <div class="col-md-6">
                             <div class="field_wrapper">
                                 <div>
-                                    <input id="size" type="text" name="size[]" value="" placeholder="Size"/>
-                                    <input id="sku" type="text" name="sku[]" value="" placeholder="SKU"/>
-                                    <input id="price" type="text" name="price[]" value="" placeholder="Price"/>
-                                    <input id="stock" type="text" name="stock[]" value="" placeholder="Stock"/>
+                                    <input id="size" type="text" name="size[]" value="" required="" placeholder="Size"/>
+                                    <input id="sku" type="text" name="sku[]" value="" required="" placeholder="SKU"/>
+                                    <input id="price" type="number" name="price[]" value="" required="" placeholder="Price"/>
+                                    <input id="stock" type="number" name="stock[]" value="" required="" placeholder="Stock"/>
                                     <a href="javascript:void(0);" class="add_button" title="Add field">Add</a>
                                 </div>
                             </div>
