@@ -96,12 +96,47 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="card-footer">
                         <div class="col-md-6">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>                                
                 </form>
+            </div>            
+        </div>
+
+        <div class="card m-b-30">
+            <div class="card-header">
+                <h5 class="card-title">Existing Attributes</h5>
+            </div>
+            <div class="card-body">
+                <h6 class="card-subtitle">With DataTables you can alter the ordering characteristics of the table at initialisation time.</h6>
+                <div class="table-responsive">
+                    <table id="sections" class="display table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Size</th>
+                                <th>SKU</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($productdata['attributes'] as $attribute)
+                                <tr>
+                                    <td> {{ $attribute['id'] }} </td>
+                                    <td> {{ $attribute['size'] }} </td>
+                                    <td> {{ $attribute['sku'] }} </td>
+                                    <td> {{ $attribute['price'] }} </td>
+                                    <td> {{ $attribute['stock'] }} </td>
+                                    <td></td>
+                                </tr>                       
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <!-- End col -->
