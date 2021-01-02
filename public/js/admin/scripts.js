@@ -135,8 +135,6 @@ $(document).ready(function(){
     $(".updateProductStatus").click(function() {
         var status = $(this).text();
         var product_id = $(this).attr("product_id");
-        alert(status);
-        alert(product_id);
 
         $.ajax({
             type: 'POST',
@@ -156,8 +154,31 @@ $(document).ready(function(){
         });
     });
 
-    
-    var maxField = 10; //Input fields increment limitation
+    //Update Attributes Status
+    $(".updateAttributeStatus").click(function() {
+        var status = $(this).text();
+        var attribute_id = $(this).attr("attribute_id");
+
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/updateAttributeStatus',
+            data: {status:status, attribute_id:attribute_id},
+            success:function(resp) {
+                if(resp['status'] == 0){
+                    $("#attribute-"+attribute_id).html("Inactive");
+                } else if(resp['status'] == 1) {
+                    $("#attribute-"+attribute_id).html("Active</a");
+                }
+            }, error:function() {
+                alert("Error");
+            }
+        });
+    });
+
+});
+
+var maxField = 10; //Input fields increment limitation
     var addButton = $('.add_button'); //Add button selector
     var wrapper = $('.field_wrapper'); //Input field wrapper
     var fieldHTML = '<div><div></div><div></div><input type="text" name="size[]" placeholder="Size"/>&nbsp;<input type="text" name="sku[]" placeholder="SKU"/>&nbsp;<input type="text" name="price[]" placeholder="Price"/>&nbsp;<input type="text" name="stock[]" placeholder="Stock"/><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html 
@@ -178,4 +199,3 @@ $(document).ready(function(){
         $(this).parent('div').remove(); //Remove field html
         x--; //Decrement field counter
     });
-});
