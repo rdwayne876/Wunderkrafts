@@ -230,8 +230,8 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="isFeatured">Featured</label>
                             <div class="col-lg-6">
-                                <input type="checkbox" name="is_featured" id="isFeatured" value="Yes"
-                                @if( !empty( $productdata['is_featured']) && $productdata['is_featured'] == 
+                                <input type="checkbox" name="isFeatured" id="isFeatured" value="Yes"
+                                @if( !empty( $productdata['featured']) && $productdata['featured'] == 
                                 "Yes")
                                     checked=""
                                 @endif>

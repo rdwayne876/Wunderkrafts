@@ -93,36 +93,6 @@ class ProductController extends Controller
             ];
 
             $this->validate($request, $rules, $customMessages);
-            
-            if(empty($data['is_featured'])) {
-                $is_featured = "No";
-            } else{
-                $is_featured = "Yes";
-            }
-
-            if(empty($data['product_discount'])) {
-                $data['product_discount'] = "";
-            }
-
-            if(empty($data['product_video'])) {
-                $data['product_video'] = "";
-            }
-
-            if(empty($data['productMainImage'])) {
-                $data['productMainImage'] = "";
-            }
-
-            if(empty($data['meta_title'])) {
-                $data['meta_title'] = "";
-            }
-
-            if(empty($data['meta_description'])) {
-                $data['meta_description'] = "";
-            }
-
-            if(empty($data['meta_keywords'])) {
-                $data['meta_keywords'] = "";
-            }
 
             //upload product image
             if($request->hasFile( 'main_image' )) {
@@ -177,7 +147,9 @@ class ProductController extends Controller
             $product->meta_title = $data['meta_title'];
             $product->meta_description = $data['meta_description'];
             $product->meta_keywords = $data['meta_keywords'];
-            $product->featured = $is_featured;
+            if(!empty($data['isFeatured'])) {
+                $product->featured = $data['isFeatured'];
+            }
             $product->status = $data['status'];
             $product-> save();
             Session::flash('success', $message);
@@ -339,5 +311,16 @@ class ProductController extends Controller
 
         Session::flash('success', 'Attribute deleted successfully');
         return redirect()->back();
+    }
+
+    public function addImages($id) {
+        //Find product
+        $productdata = Product::with('images')->select('id', 'name', 'code', 'color', 'main_image')
+            ->find($id);
+        $productdata = json_decode(json_encode($productdata), true);
+        // echo "<pre>"; print_r($productdata); die;
+        $title = "Product Images";
+
+        return view('admin/products/addimage')->with(compact('title','productdata'));
     }
 }

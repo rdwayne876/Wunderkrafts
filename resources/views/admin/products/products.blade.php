@@ -81,6 +81,9 @@ Catalogue
                                                 <a title="Attributes" href="{{url('admin/products/attributes/'.$product->id)}}" class="btn btn-success-rgba">
                                                     <i class="ri-add-line"></i>
                                                 </a>
+                                                <a title="Add Images" href="{{url('admin/products/addimage/'.$product->id)}}" class="btn btn-success-rgba">
+                                                    <i class="ri-camera-3-line"></i>
+                                                </a>
                                                 <a title="Edit Product" href="{{url('admin/products/addedit/'.$product->id)}}" class="btn btn-primary-rgba">
                                                     <i class="ri-edit-box-line"></i>
                                                 </a>
