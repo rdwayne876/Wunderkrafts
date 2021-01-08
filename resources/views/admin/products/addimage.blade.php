@@ -53,7 +53,7 @@
                 @endif
 
                 <form name="AddImageForm" id="AddImageForm" class="form-validate"
-                        method="post" action="{{ url('admin/products/images/'.$productdata['id'])}}" enctype="multipart/form-data">
+                        method="post" action="{{ url('admin/products/addimage/'.$productdata['id'])}}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
@@ -87,7 +87,7 @@
                         <div class="col-md-6">
                             <div class="field_wrapper">
                                 <div>
-                                    <input multiple="" id="image" type="file" name="image[]" value="" required="" />
+                                    <input multiple="" id="images" type="file" name="images[]" value="" required="" />
                                 </div>
                             </div>
                         </div>
@@ -114,7 +114,7 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>IMage</th>
+                                    <th>Image</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -123,14 +123,14 @@
                                     <input style="display: none;" type="text" name="attrId[]" value="{{$image['id']}}">
                                     <tr>
                                         <td> {{ $image['id'] }} </td>
-                                        <td> <img src=" {{asset('img/product/medium/'.$productdata['main_image'])}} " width="120px">`` </td>
+                                        <td> <img style="width:120px" src=" {{asset('img/product/medium/'.$image['image'])}} "> </td>
                                         <td>
                                             @if($image['status'] == 1)
                                                 <a class="updateImageStatus" id="image-{{ $image['id'] }}" 
-                                                    attribute_id="{{$image['id']}}" href="javascript:void(0)">Active</a> 
+                                                    image_id="{{$image['id']}}" href="javascript:void(0)">Active</a> 
                                             @else
                                                 <a class="updateImageStatus" id="image-{{ $image['id'] }}" 
-                                                    attribute_id="{{$image['id']}}" href="javascript:void(0)">Inactive</a>                                            
+                                                    image_id="{{$image['id']}}" href="javascript:void(0)">Inactive</a>                                            
                                             @endif 
                                             &nbsp;&nbsp;
                                             <a title="Delete" href="javascript:void(0)" class="btn btn-danger-rgba confirmDelete" record="products/images/delete" recordid="{{$image['id']}}">

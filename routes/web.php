@@ -61,6 +61,8 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
 
         //Images
         Route::match(['get', 'post'], 'products/addimage/{id}', 'ProductController@addImages');
+        Route::post('updateImageStatus', 'ProductController@updateImageStatus');
+        Route::get('products/images/delete/{id}', 'ProductController@deleteProductImage');
     });
 
 });

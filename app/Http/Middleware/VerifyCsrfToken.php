@@ -17,6 +17,7 @@ class VerifyCsrfToken extends Middleware
         "/admin/updateCategoryStatus",
         "/admin/appendLevel",
         "/admin/updateProductStatus",
-        "/admin/updateAttributeStatus"
+        "/admin/updateAttributeStatus",
+        "/admin/updateImageStatus"
     ];
 }

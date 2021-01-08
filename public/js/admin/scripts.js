@@ -176,9 +176,7 @@ $(document).ready(function(){
         });
     });
 
-});
-
-var maxField = 10; //Input fields increment limitation
+    var maxField = 10; //Input fields increment limitation
     var addButton = $('.add_button'); //Add button selector
     var wrapper = $('.field_wrapper'); //Input field wrapper
     var fieldHTML = '<div><div></div><div></div><input type="text" name="size[]" placeholder="Size"/>&nbsp;<input type="text" name="sku[]" placeholder="SKU"/>&nbsp;<input type="text" name="price[]" placeholder="Price"/>&nbsp;<input type="text" name="stock[]" placeholder="Stock"/><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html 
@@ -199,3 +197,32 @@ var maxField = 10; //Input fields increment limitation
         $(this).parent('div').remove(); //Remove field html
         x--; //Decrement field counter
     });
+
+    //Update Image Status
+    $(".updateImageStatus").click(function() {
+        var status = $(this).text();
+        var image_id = $(this).attr("image_id");
+
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/updateImageStatus',
+            data: {status:status, image_id:image_id},
+            success:function(resp) {
+                if(resp['status'] == 0){
+                    $("#image-"+image_id).html("Inactive");
+                } else if(resp['status'] == 1) {
+                    $("#image-"+image_id).html("Active</a");
+                }
+            }, error:function() {
+                alert("Error");
+            }
+        });
+    });
+
+});
+
+
+
+
+    
