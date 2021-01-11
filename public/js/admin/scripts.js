@@ -220,6 +220,31 @@ $(document).ready(function(){
         });
     });
 
+    // Update Brand status
+    $(".updateBrandStatus").click(function() {
+        var status = $(this).children("i").attr("status");
+        var brand_id = $(this).attr("brand_id");
+        // alert(status);
+        // alert(brand_id);
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/updateBrandStatus',
+            data: {status:status, brand_id:brand_id},
+            success:function(resp) {
+                if(resp['status']== 0){
+                    $("#brand-"+brand_id).html(
+                        "<i class='la la-toggle-off' aria-hidden='true' status='Inactive'></i>")
+                } else if(resp['status']==1) {
+                    $("#brand-"+brand_id).html(
+                        "<i class='la la-toggle-on' aria-hidden='true' status='Active'></i>")
+                }
+            }, error:function() {
+                alert("Error");
+            }
+        });
+    });
+
 });
 
 
