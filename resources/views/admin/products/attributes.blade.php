@@ -140,10 +140,14 @@
                                         <td>
                                             @if($attribute['status'] == 1)
                                                 <a class="updateAttributeStatus" id="attribute-{{ $attribute['id'] }}" 
-                                                    attribute_id="{{$attribute['id']}}" href="javascript:void(0)">Active</a> 
+                                                    attribute_id="{{$attribute['id']}}" href="javascript:void(0)">
+                                                        <i class="la la-toggle-on" aria-hidden="true" status="Active"></i>
+                                                </a> 
                                             @else
                                                 <a class="updateAttributeStatus" id="attribute-{{ $attribute['id'] }}" 
-                                                    attribute_id="{{$attribute['id']}}" href="javascript:void(0)">Inactive</a>                                            
+                                                    attribute_id="{{$attribute['id']}}" href="javascript:void(0)">
+                                                        <i class="la la-toggle-off" aria-hidden="true" status="Inactive"></i>
+                                                </a>                                            
                                             @endif 
                                             &nbsp;&nbsp;
                                             <a title="Delete" href="javascript:void(0)" class="btn btn-danger-rgba confirmDelete" record="products/attributes/delete" recordid="{{$attribute['id']}}">

@@ -67,9 +67,27 @@
                                 @if(!empty($productdata['name'])) value="{{$productdata['name']}}" @else value="{{old('product_name')}}" @endif>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="material" class="col-lg-3 col-form-label" required>Brand</label>
+                            <div class="col-lg-6">
+                                <select name="brand_id" id="brand_id" class="form-control">
+                                    <option value="">Select</option>
+                                    @foreach ( $brands as $brand )
+                                        <option value="{{ $brand['id'] }}"
+                                            @if( !empty( $productdata['brand_id']) && $productdata['brand_id'] == $brand['id'] )
+                                                selected=""
+                                            @endif>
+                                            {{ $brand['name'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        
                         
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="category">Category<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="category" required>Category<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
                                 <select class="form-control" id="category_id" name="category_id">
                                     <option value="">Please Select</option>

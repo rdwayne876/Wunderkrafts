@@ -66,7 +66,7 @@ Catalogue
                                                         brand_id="{{$brand->id}}" href="javascript:void(0)"><i class="la la-toggle-on" aria-hidden="true" status="Active"></i></a> 
                                                 @else
                                                     <a class="updateBrandStatus" id="brand-{{ $brand->id }}" 
-                                                        brand_id="{{$brand->id}}" href="javascript:void(0)"><i class="la la-toggle-off" aria-hidden="true" status="Inactive"></a>                                            
+                                                        brand_id="{{$brand->id}}" href="javascript:void(0)"><i class="la la-toggle-off" aria-hidden="true" status="Inactive"></i></a>                                            
                                                 @endif 
                                             </div>  
                                         </td>

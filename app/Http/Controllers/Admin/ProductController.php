@@ -9,8 +9,10 @@ use App\Product;
 use App\Category;
 use App\ProductsAttribute;
 use App\ProductsImage;
+use App\Brand;
 use Session;
 use Image;
+
 
 class ProductController extends Controller
 {
@@ -137,6 +139,7 @@ class ProductController extends Controller
             //save product to db
             $categoryDetails = Category::find($data['category_id']);
             $product->section_id = $categoryDetails['section_id'];
+            $product->brand_id = $data['brand_id'];
             $product->category_id = $data['category_id'];
             $product->name = $data['product_name'];
             $product->code = $data['product_code'];
@@ -167,8 +170,10 @@ class ProductController extends Controller
         $categories = Section::with('categories')->get();
         $categories = json_decode(json_encode($categories), true);
         // echo "<pre>"; print_r($categories); die;
+        $brands = Brand::where('status', 1)->get();
+        $brands = json_decode(json_encode($brands), true);
 
-        return view('admin.products.addEdit')->with(compact('title', 'categories', 'productdata'));
+        return view('admin.products.addEdit')->with(compact('title', 'categories', 'productdata', 'brands'));
     }
 
     public function deleteImage($id) {

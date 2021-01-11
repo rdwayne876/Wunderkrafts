@@ -18,7 +18,7 @@ $(document).ready(function(){
 
     // Update Section status
     $(".updateSectionStatus").click(function() {
-        var status = $(this).text();
+        var status = $(this).children("i").attr("status");
         var section_id = $(this).attr("section_id");
         // alert(status);
         // alert(section_id);
@@ -30,10 +30,10 @@ $(document).ready(function(){
             success:function(resp) {
                 if(resp['status']== 0){
                     $("#section-"+section_id).html(
-                        "<a class='updateSectionStatus' href='javascript:void(0)''>Inactive</a>")
+                        "<i class='la la-toggle-off' aria-hidden='true' status='Inactive'></i>")
                 } else if(resp['status']==1) {
                     $("#section-"+section_id).html(
-                        "<a class='updateSectionStatus' href='javascript:void(0)''>Active</a>")
+                        "<i class='la la-toggle-on' aria-hidden='true' status='Active'></i>")
                 }
             }, error:function() {
                 alert("Error");
@@ -43,7 +43,7 @@ $(document).ready(function(){
 
     //Update Categorty Status
     $(".updateCategoryStatus").click(function() {
-        var status = $(this).text();
+        var status = $(this).children("i").attr("status");
         var category_id = $(this).attr("category_id");
         // alert(status);
         // alert(category_id);
@@ -55,10 +55,10 @@ $(document).ready(function(){
             success:function(resp) {
                 if(resp['status']== 0){
                     $("#category-"+category_id).html(
-                        "<a class='updateCategoryStatus' href='javascript:void(0)''>Inactive</a>")
+                        "<i class='la la-toggle-off' aria-hidden='true' status='Inactive'></i>")
                 } else if(resp['status']==1) {
                     $("#category-"+category_id).html(
-                        "<a class='updateCategoryStatus' href='javascript:void(0)''>Active</a>")
+                        "<i class='la la-toggle-on' aria-hidden='true' status='Active'></i>")
                 }
             }, error:function() {
                 alert("Error");
@@ -133,7 +133,7 @@ $(document).ready(function(){
 
     //Update Product Status
     $(".updateProductStatus").click(function() {
-        var status = $(this).text();
+        var status = $(this).children("i").attr("status");
         var product_id = $(this).attr("product_id");
 
         $.ajax({
@@ -143,10 +143,10 @@ $(document).ready(function(){
             success:function(resp) {
                 if(resp['status']== 0){
                     $("#product-"+product_id).html(
-                        "<a class='updateProductStatus' href='javascript:void(0)''>Inactive</a>")
+                        "<i class='la la-toggle-off' aria-hidden='true' status='Inactive'></i>")
                 } else if(resp['status']==1) {
                     $("#product-"+product_id).html(
-                        "<a class='updateProductStatus' href='javascript:void(0)''>Active</a>")
+                        "<i class='la la-toggle-on' aria-hidden='true' status='Active'></i>")
                 }
             }, error:function() {
                 alert("Error");
@@ -156,7 +156,7 @@ $(document).ready(function(){
 
     //Update Attributes Status
     $(".updateAttributeStatus").click(function() {
-        var status = $(this).text();
+        var status = $(this).children("i").attr("status");
         var attribute_id = $(this).attr("attribute_id");
 
 
@@ -166,9 +166,11 @@ $(document).ready(function(){
             data: {status:status, attribute_id:attribute_id},
             success:function(resp) {
                 if(resp['status'] == 0){
-                    $("#attribute-"+attribute_id).html("Inactive");
+                    $("#attribute-"+attribute_id).html(
+                            "<i class='la la-toggle-off' aria-hidden='true' status='Inactive'></i>");
                 } else if(resp['status'] == 1) {
-                    $("#attribute-"+attribute_id).html("Active</a");
+                    $("#attribute-"+attribute_id).html(
+                        "<i class='la la-toggle-on' aria-hidden='true' status='Active'></i>");
                 }
             }, error:function() {
                 alert("Error");
@@ -200,7 +202,7 @@ $(document).ready(function(){
 
     //Update Image Status
     $(".updateImageStatus").click(function() {
-        var status = $(this).text();
+        var status = $(this).children("i").attr("status");
         var image_id = $(this).attr("image_id");
 
 
@@ -210,9 +212,11 @@ $(document).ready(function(){
             data: {status:status, image_id:image_id},
             success:function(resp) {
                 if(resp['status'] == 0){
-                    $("#image-"+image_id).html("Inactive");
+                    $("#image-"+image_id).html(
+                        "<i class='la la-toggle-off' aria-hidden='true' status='Inactive'></i>");
                 } else if(resp['status'] == 1) {
-                    $("#image-"+image_id).html("Active</a");
+                    $("#image-"+image_id).html(
+                        "<i class='la la-toggle-on' aria-hidden='true' status='Active'></i>");
                 }
             }, error:function() {
                 alert("Error");
