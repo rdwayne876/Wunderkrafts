@@ -12,10 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
 Auth::routes();
 
@@ -72,4 +73,8 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
         Route::get('products/images/delete/{id}', 'ProductController@deleteProductImage');
     });
 
+});
+
+Route::namespace('Front')->group(function(){
+    Route::get('/', 'IndexController@index');
 });
