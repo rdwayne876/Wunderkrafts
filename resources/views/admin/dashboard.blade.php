@@ -4,10 +4,10 @@ eCommerce
 @extends('layouts.admin.main')
 @section('style')
 <!-- Apex css -->
-<link href="{{ asset('assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/admin/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />
 <!-- Slick css -->
-<link href="{{ asset('assets/plugins/slick/slick.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/plugins/slick/slick-theme.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/admin/plugins/slick/slick.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/admin/plugins/slick/slick-theme.css') }}" rel="stylesheet" type="text/css" />
 @endsection 
 @section('rightbar-content')
 <!-- Start Contentbar -->    
@@ -243,10 +243,10 @@ eCommerce
 @endsection 
 @section('script')
 <!-- Apex js -->
-<script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/apexcharts/irregular-data-series.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/apexcharts/irregular-data-series.js') }}"></script>
 <!-- Slick js -->
-<script src="{{ asset('assets/plugins/slick/slick.min.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/slick/slick.min.js') }}"></script>
 <!-- Dashboard js -->
-<script src="{{ asset('assets/js/custom/custom-dashboard-ecommerce.js') }}"></script>
+<script src="{{ asset('assets/admin/js/custom/custom-dashboard-ecommerce.js') }}"></script>
 @endsection 

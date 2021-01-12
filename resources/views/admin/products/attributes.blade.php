@@ -4,7 +4,7 @@
 @extends('layouts.admin.main')
 @section('style')
 <!-- Sweet Alert css -->
-<link href="{{ asset('assets/plugins/sweet-alert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/admin/plugins/sweet-alert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 
 @endsection 
 @section('rightbar-content')
@@ -175,11 +175,11 @@
 @endsection 
 @section('script')
 <!-- Parsley js -->
-<script src="{{ asset('assets/plugins/validatejs/validate.min.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/validatejs/validate.min.js') }}"></script>
 <!-- Validate js -->
-<script src="{{ asset('assets/js/custom/custom-validate.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-form-validation.js') }}"></script>
+<script src="{{ asset('assets/admin/js/custom/custom-validate.js') }}"></script>
+<script src="{{ asset('assets/admin/js/custom/custom-form-validation.js') }}"></script>
 <!-- Sweet-Alert js -->
-<script src="{{ asset('assets/plugins/sweet-alert2/sweetalert2.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-sweet-alert.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/sweet-alert2/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('assets/admin/js/custom/custom-sweet-alert.js') }}"></script>
 @endsection 

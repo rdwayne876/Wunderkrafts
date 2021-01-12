@@ -4,12 +4,12 @@ Catalogue
 @extends('layouts.admin.main')
 @section('style')
 <!-- DataTables css -->
-<link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/admin/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 <!-- Responsive Datatable css -->
-<link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/admin/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 <!-- Sweet Alert css -->
-<link href="{{ asset('assets/plugins/sweet-alert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/admin/plugins/sweet-alert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection 
 @section('rightbar-content')
 <!-- Start Contentbar --> 
@@ -112,20 +112,20 @@ Catalogue
 @endsection 
 @section('script')
 <!-- Datatable js -->
-<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/jszip.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/pdfmake.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/vfs_fonts.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/buttons.print.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/buttons.colVis.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-table-datatable.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/datatables/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/datatables/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/datatables/jszip.min.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/datatables/pdfmake.min.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/datatables/vfs_fonts.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/datatables/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/datatables/buttons.print.min.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/datatables/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/datatables/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/admin/js/custom/custom-table-datatable.js') }}"></script>
 <!-- Sweet-Alert js -->
-<script src="{{ asset('assets/plugins/sweet-alert2/sweetalert2.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-sweet-alert.js') }}"></script>
+<script src="{{ asset('assets/admin/plugins/sweet-alert2/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('assets/admin/js/custom/custom-sweet-alert.js') }}"></script>
 @endsection 

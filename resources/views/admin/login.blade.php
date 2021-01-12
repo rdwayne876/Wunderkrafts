@@ -11,9 +11,9 @@
     <!-- Fevicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
     <!-- Start css -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/admin/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/admin/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="assets/admin/css/style.css" rel="stylesheet" type="text/css">
     <!-- End css -->
 </head>
 <body class="horizontal-layout">
@@ -96,12 +96,12 @@
     </div>
     <!-- End Containerbar -->
     <!-- Start JS -->        
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
-    <script src="{{ asset('assets/js/detect.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/modernizr.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/detect.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/jquery.slimscroll.js') }}"></script>
     <!-- End js -->
 </body>
 </html>

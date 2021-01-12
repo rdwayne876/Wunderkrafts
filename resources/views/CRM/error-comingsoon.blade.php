@@ -12,10 +12,10 @@
     <!-- Fevicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
     <!-- Start CSS -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/admin/css/icons.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/admin/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet" type="text/css">
     <!-- End CSS -->
 </head>
 <body class="vertical-layout">
@@ -47,15 +47,15 @@
     </div>
     <!-- End Containerbar --> 
     <!-- Start JS -->        
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
-    <script src="{{ asset('assets/js/detect.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/modernizr.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/detect.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/jquery.slimscroll.js') }}"></script>
     <!-- Countdown js -->
-    <script src="{{ asset('assets/plugins/jquery-countdown/jquery.countdown.min.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/custom-comingsoon.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/jquery-countdown/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/custom/custom-comingsoon.js') }}"></script>
     <!-- End js -->
 </body>
 </html>
