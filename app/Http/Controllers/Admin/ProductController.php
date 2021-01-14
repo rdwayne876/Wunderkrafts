@@ -84,7 +84,7 @@ class ProductController extends Controller
 
             //Category Validations
             $rules = [
-                'product_colour'  => 'required|regex:/^[\pL\s\-]+$/u',
+                //'product_colour'  => 'required|regex:/^[\pL\s\-]+$/u',
                 'product_price'  => 'required|numeric',
                 //'category_image' => 'mimes:jpeg,jpg,png,gif'
             ];
@@ -140,13 +140,16 @@ class ProductController extends Controller
             $categoryDetails = Category::find($data['category_id']);
             $product->section_id = $categoryDetails['section_id'];
             $product->brand_id = $data['brand_id'];
+            $product->set_id = $data['set'];
             $product->category_id = $data['category_id'];
             $product->name = $data['product_name'];
             $product->code = $data['product_code'];
-            $product->color = $data['product_colour'];
+            //$product->color = $data['product_colour'];
             $product->price = $data['product_price'];
             $product->discount = $data['product_discount'];
-            $product->size = $data['product_size'];
+            $product->gemstone = $data['gemstone'];
+            $product->material = $data['material'];
+            //$product->size = $data['product_size'];
             $product->description = $data['description'];
             $product->meta_title = $data['meta_title'];
             $product->meta_description = $data['meta_description'];
@@ -160,11 +163,12 @@ class ProductController extends Controller
             return redirect('admin/products');
         }
 
-        /* 
-        Array Filters
-        $materialArray = array('Beads', 'Stones', 'Leather');
-        pass into view when in use
-        */
+         
+        //Array Filters
+        $materialArray = array('Beads', 'Leather', 'Accrylic', 'Resin');
+        $gemstoneArray = array('Topaz', 'Malachite', 'Jade');
+        $setArray = array('none', 'Two-Piece', 'Three-Piece', 'Four-Piece');
+        
 
         //Sections with Categories and sub categories
         $categories = Section::with('categories')->get();
@@ -173,7 +177,7 @@ class ProductController extends Controller
         $brands = Brand::where('status', 1)->get();
         $brands = json_decode(json_encode($brands), true);
 
-        return view('admin.products.addEdit')->with(compact('title', 'categories', 'productdata', 'brands'));
+        return view('admin.products.addEdit')->with(compact('title', 'categories', 'productdata', 'materialArray', 'gemstoneArray', 'setArray', 'brands'));
     }
 
     public function deleteImage($id) {
@@ -242,10 +246,11 @@ class ProductController extends Controller
                         return redirect()->back();
                     }
 
-                    //Size check
+                    //Size and colour check
+                    $attrCountColour = ProductsAttribute::where(['product_id'=>$id, 'colour'=>$data['colour'][$key]])->count();
                     $attrCountSize = ProductsAttribute::where(['product_id'=>$id, 'size'=>$data['size'][$key]])->count();
-                    if($attrCountSize>0) {
-                        $message = 'Size already exists. Please add another Size!';
+                    if($attrCountSize>0 && $attrCountColour>0) {
+                        $message = 'Size and colour already exists!';
                         session::flash('error', $message);
                         return redirect()->back();
                     }
@@ -255,6 +260,7 @@ class ProductController extends Controller
 
                     $attribute->sku = $value;
                     $attribute->size= $data['size'][$key];
+                    $attribute->colour= $data['colour'][$key];
                     $attribute->price = $data['price'][$key];
                     $attribute->stock = $data['stock'][$key];
                     $attribute->status = 1;

@@ -31,7 +31,7 @@ Catalogue
 
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Brands
+                    <h5 class="card-title">Collections
                         <a href="{{url('admin/brands/addEditBrand')}}" style="float: right; display:inline-block" class="btn btn-success"><i class="ri-add-line align-middle mr-2"></i>Add Brand</a>
                     </h5>
                 </div>

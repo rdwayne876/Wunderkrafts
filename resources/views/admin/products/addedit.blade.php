@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="material" class="col-lg-3 col-form-label" required>Brand</label>
+                            <label for="material" class="col-lg-3 col-form-label" required>Collection</label>
                             <div class="col-lg-6">
                                 <select name="brand_id" id="brand_id" class="form-control">
                                     <option value="">Select</option>
@@ -126,6 +126,7 @@
                             </div>
                         </div>
 
+                        <!--
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="productColour">Product Colour<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
@@ -133,7 +134,8 @@
                                 @if(!empty($productdata['color'])) value="{{$productdata['color']}}" @else value="{{old('product_colour')}}" @endif>
                             </div>
                         </div>
-
+                        -->
+                        <!--
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="productSize">Size<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
@@ -141,6 +143,7 @@
                                 @if(!empty($productdata['size'])) value="{{$productdata['size']}}" @else value="{{old('product_size')}}" @endif>
                             </div>
                         </div>
+                        -->
 
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="price">Price<span class="text-danger">*</span></label>
@@ -203,25 +206,42 @@
                             </div>
                         </div>
 
-                        <?php /*
-                        Passing filter
+                        <!-- Passing filter -->
                         <div class="form-group row">
                             <label for="material" class="col-lg-3 col-form-label">Material</label>
                             <div class="col-lg-6">
                                 <select name="material" id="material" class="form-control">
                                     <option value="">Select</option>
                                     @foreach ( $materialArray as $material )
-                                        <option value="{{material}}"
-                                            @if( !empty( $productdata['material']) && $productdata['material'] == $material)
-                                                selected=""
-                                            @endif>
-                                            {{ $material }}
-                                        </option>
+                                        <option value="{{$material}}">{{ $material }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        */ ?>
+
+                        <div class="form-group row">
+                            <label for="gemstone" class="col-lg-3 col-form-label">Gemstone</label>
+                            <div class="col-lg-6">
+                                <select name="gemstone" id="gemstone" class="form-control">
+                                    <option value="">Select</option>
+                                    @foreach ( $gemstoneArray as $gemstone )
+                                        <option value="{{$gemstone}}">{{ $gemstone }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="set" class="col-lg-3 col-form-label">Set</label>
+                            <div class="col-lg-6">
+                                <select name="set" id="set" class="form-control">
+                                    <option value="">Select</option>
+                                    @foreach ( $setArray as $set )
+                                        <option value="{{$set}}">{{ $set }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="metaTitle">Meta Title</label>

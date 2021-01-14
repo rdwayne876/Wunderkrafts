@@ -87,6 +87,7 @@
                             <div class="field_wrapper">
                                 <div>
                                     <input id="size" type="text" name="size[]" value="" required="" placeholder="Size"/>
+                                    <input id="colour" type="text" name="colour[]" value="" required="" placeholder="Colour"/>
                                     <input id="sku" type="text" name="sku[]" value="" required="" placeholder="SKU"/>
                                     <input id="price" type="number" name="price[]" value="" required="" placeholder="Price"/>
                                     <input id="stock" type="number" name="stock[]" value="" required="" placeholder="Stock"/>
@@ -118,6 +119,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Size</th>
+                                    <th>Colour</th>
                                     <th>SKU</th>
                                     <th>Price</th>
                                     <th>Stock</th>
@@ -130,6 +132,7 @@
                                     <tr>
                                         <td> {{ $attribute['id'] }} </td>
                                         <td> {{ $attribute['size'] }} </td>
+                                        <td> {{ $attribute['colour'] }} </td>
                                         <td> {{ $attribute['sku'] }} </td>
                                         <td>
                                             <input type="number" name="price[]" value="{{ $attribute['price'] }}" required="">

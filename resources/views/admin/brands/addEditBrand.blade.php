@@ -61,7 +61,7 @@
                     method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="brandName">Brand Name<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="brandName">Collection Name<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
                                 <input type="text" class="form-control" id="brandName" name="brand_name" placeholder="Enter Brand Name" required
                                 @if(!empty($brand['name'])) value="{{$brand['name']}}" @else value="{{old('brand_name')}}" @endif>
