@@ -13,9 +13,10 @@ class IndexController extends Controller
 
         $featuredCount = Product::where('featured', 'Yes')->count();
         $featuredProducts = Product::where('featured', 'Yes')->get()->toArray();
+        $featuredProducts = array_slice($featuredProducts, 0, 6);
         //dd($featuredProducts); die;
-        $featuredProductsChunk = array_chunk($featuredProducts, 6);
+        //$featuredProductsChunk = array_chunk($featuredProducts, 6);
 
-        return view('front.index')->withcompact('page_name');
+        return view('front.index')->with(compact('page_name', 'featuredProducts'));
     }
 }

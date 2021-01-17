@@ -81,336 +81,70 @@
                 </h3>
                 <div class="ysera-product style3">
                     <ul class="row list-products auto-clear equal-container product-grid">
-                        <li class="product-item  col-lg-4 col-md-6 col-sm-6 col-xs-6 col-ts-12 style-3">
-                            <div class="product-inner equal-element">
-                                <div class="product-thumb">
-                                    <div class="product-top">
-                                        <div class="flash">
-												<span class="onnew">
-													<span class="text">
-														new
-													</span>
-												</span>
-                                        </div>
-                                        <div class="yith-wcwl-add-to-wishlist">
-                                            <div class="yith-wcwl-add-button">
-                                                <a href="#" tabindex="0">Add to Wishlist</a>
+                        @foreach($featuredProducts as $product)
+                            <li class="product-item  col-lg-4 col-md-6 col-sm-6 col-xs-6 col-ts-12 style-3">
+                                <div class="product-inner equal-element">
+                                    <div class="product-thumb">
+                                        <div class="product-top">
+                                            <div class="flash">
+                                                    <span class="onnew">
+                                                        <span class="text">
+                                                            new
+                                                        </span>
+                                                    </span>
+                                            </div>
+                                            <div class="yith-wcwl-add-to-wishlist">
+                                                <div class="yith-wcwl-add-button">
+                                                    <a href="#" tabindex="0">Add to Wishlist</a>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="thumb-inner">
+                                            <a href="#" tabindex="0">
+                                                <?php 
+                                                    $product_image_path ='img/product/small/'.$product['main_image'];
+                                                ?>
+                                                @if(!empty($product['main_image']) && file_exists($product_image_path))
+                                                    <img src="{{asset('img/product/small/'.$product['main_image'])}}" alt="img">
+                                                @else
+                                                    <img src="{{asset('img/product/small/no_image.png')}}" alt="img">
+                                                @endif
+                                            </a>
+                                        </div>
+                                        <a href="#" class="button quick-wiew-button" tabindex="0">Quick View</a>
                                     </div>
-                                    <div class="thumb-inner">
-                                        <a href="#" tabindex="0">
-                                            <img src="assets/images/product-item-black-10.jpg" alt="img">
-                                        </a>
-                                    </div>
-                                    <a href="#" class="button quick-wiew-button" tabindex="0">Quick View</a>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#" tabindex="0">Suction Return</a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
+                                    <div class="product-info">
+                                        <h5 class="product-name product_title">
+                                            <a href="#" tabindex="0">{{ $product['name']}}</a>
+                                        </h5>
+                                        <div class="group-info">
+                                            <div class="stars-rating">
+                                                <div class="star-rating">
+                                                    <span class="star-3"></span>
+                                                </div>
+                                                <div class="count-star">
+                                                    (3)
+                                                </div>
                                             </div>
-                                            <div class="count-star">
-                                                (3)
+                                            <div class="price">
+                                                <span>{{ $product['price']}}</span>
                                             </div>
                                         </div>
-                                        <div class="price">
-                                            <span>$375</span>
-                                        </div>
-                                    </div>
-                                    <div class="group-buttons">
-                                        <div class="quantity">
-                                            <div class="control">
-                                                <a class="btn-number qtyminus quantity-minus" href="#">-</a>
-                                                <input type="text" data-step="1" data-min="0" value="1" title="Qty"
-                                                       class="input-qty qty" size="4">
-                                                <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                        <div class="group-buttons">
+                                            <div class="quantity">
+                                                <div class="control">
+                                                    <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                                                    <input type="text" data-step="1" data-min="0" value="1" title="Qty"
+                                                        class="input-qty qty" size="4">
+                                                    <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                                </div>
                                             </div>
+                                            <button class="add_to_cart_button button" tabindex="0">Shop now</button>
                                         </div>
-                                        <button class="add_to_cart_button button" tabindex="0">Shop now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item style-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 col-ts-12">
-                            <div class="product-inner equal-element">
-                                <div class="product-thumb">
-                                    <div class="product-top">
-                                        <div class="flash">
-												<span class="onnew">
-													<span class="text">
-														new
-													</span>
-												</span>
-                                        </div>
-                                        <div class="yith-wcwl-add-to-wishlist">
-                                            <div class="yith-wcwl-add-button">
-                                                <a href="#" tabindex="0">Add to Wishlist</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="thumb-inner">
-                                        <a href="#" tabindex="0">
-                                            <img src="assets/images/product-item-black-2.jpg" alt="img">
-                                        </a>
-                                    </div>
-                                    <a href="#" class="button quick-wiew-button" tabindex="0">Quick View</a>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#" tabindex="0">Blowoff Valve Kit</a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <span>$375</span>
-                                        </div>
-                                    </div>
-                                    <div class="group-buttons">
-                                        <div class="quantity">
-                                            <div class="control">
-                                                <a class="btn-number qtyminus quantity-minus" href="#">-</a>
-                                                <input type="text" data-step="1" data-min="0" value="1" title="Qty"
-                                                       class="input-qty qty" size="4">
-                                                <a href="#" class="btn-number qtyplus quantity-plus">+</a>
-                                            </div>
-                                        </div>
-                                        <button class="add_to_cart_button button" tabindex="0">Shop now</button>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="product-item style-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 col-ts-12">
-                            <div class="product-inner equal-element">
-                                <div class="product-thumb">
-                                    <div class="product-top">
-                                        <div class="flash">
-												<span class="onnew">
-													<span class="text">
-														new
-													</span>
-												</span>
-                                        </div>
-                                        <div class="yith-wcwl-add-to-wishlist">
-                                            <div class="yith-wcwl-add-button">
-                                                <a href="#" tabindex="0">Add to Wishlist</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="thumb-inner">
-                                        <a href="#" tabindex="0">
-                                            <img src="assets/images/product-item-black-3.jpg" alt="img">
-                                        </a>
-                                    </div>
-                                    <a href="#" class="button quick-wiew-button" tabindex="0">Quick View</a>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#" tabindex="0">Attack Stage</a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <span>$375</span>
-                                        </div>
-                                    </div>
-                                    <div class="group-buttons">
-                                        <div class="quantity">
-                                            <div class="control">
-                                                <a class="btn-number qtyminus quantity-minus" href="#">-</a>
-                                                <input type="text" data-step="1" data-min="0" value="1" title="Qty"
-                                                       class="input-qty qty" size="4">
-                                                <a href="#" class="btn-number qtyplus quantity-plus">+</a>
-                                            </div>
-                                        </div>
-                                        <button class="add_to_cart_button button" tabindex="0">Shop now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item  col-lg-4 col-md-6 col-sm-6 col-xs-6 col-ts-12 style-3">
-                            <div class="product-inner equal-element">
-                                <div class="product-thumb">
-                                    <div class="product-top">
-                                        <div class="flash">
-												<span class="onnew">
-													<span class="text">
-														new
-													</span>
-												</span>
-                                        </div>
-                                        <div class="yith-wcwl-add-to-wishlist">
-                                            <div class="yith-wcwl-add-button">
-                                                <a href="#" tabindex="0">Add to Wishlist</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="thumb-inner">
-                                        <a href="#" tabindex="0">
-                                            <img src="assets/images/product-item-black-4.jpg" alt="img">
-                                        </a>
-                                    </div>
-                                    <a href="#" class="button quick-wiew-button" tabindex="0">Quick View</a>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#" tabindex="0">Cold Intake System</a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <span>$375</span>
-                                        </div>
-                                    </div>
-                                    <div class="group-buttons">
-                                        <div class="quantity">
-                                            <div class="control">
-                                                <a class="btn-number qtyminus quantity-minus" href="#">-</a>
-                                                <input type="text" data-step="1" data-min="0" value="1" title="Qty"
-                                                       class="input-qty qty" size="4">
-                                                <a href="#" class="btn-number qtyplus quantity-plus">+</a>
-                                            </div>
-                                        </div>
-                                        <button class="add_to_cart_button button" tabindex="0">Shop now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item style-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 col-ts-12">
-                            <div class="product-inner equal-element">
-                                <div class="product-thumb">
-                                    <div class="product-top">
-                                        <div class="flash">
-												<span class="onnew">
-													<span class="text">
-														new
-													</span>
-												</span>
-                                        </div>
-                                        <div class="yith-wcwl-add-to-wishlist">
-                                            <div class="yith-wcwl-add-button">
-                                                <a href="#" tabindex="0">Add to Wishlist</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="thumb-inner">
-                                        <a href="#" tabindex="0">
-                                            <img src="assets/images/product-item-black-5.jpg" alt="img">
-                                        </a>
-                                    </div>
-                                    <a href="#" class="button quick-wiew-button" tabindex="0">Quick View</a>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#" tabindex="0">Bottle Elegant Diamond</a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <span>$375</span>
-                                        </div>
-                                    </div>
-                                    <div class="group-buttons">
-                                        <div class="quantity">
-                                            <div class="control">
-                                                <a class="btn-number qtyminus quantity-minus" href="#">-</a>
-                                                <input type="text" data-step="1" data-min="0" value="1" title="Qty"
-                                                       class="input-qty qty" size="4">
-                                                <a href="#" class="btn-number qtyplus quantity-plus">+</a>
-                                            </div>
-                                        </div>
-                                        <button class="add_to_cart_button button" tabindex="0">Shop now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item style-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 col-ts-12">
-                            <div class="product-inner equal-element">
-                                <div class="product-thumb">
-                                    <div class="product-top">
-                                        <div class="flash">
-												<span class="onnew">
-													<span class="text">
-														new
-													</span>
-												</span>
-                                        </div>
-                                        <div class="yith-wcwl-add-to-wishlist">
-                                            <div class="yith-wcwl-add-button">
-                                                <a href="#" tabindex="0">Add to Wishlist</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="thumb-inner">
-                                        <a href="#" tabindex="0">
-                                            <img src="assets/images/product-item-black-6.jpg" alt="img">
-                                        </a>
-                                    </div>
-                                    <a href="#" class="button quick-wiew-button" tabindex="0">Quick View</a>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#" tabindex="0">Toyota Switchback</a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <span>$375</span>
-                                        </div>
-                                    </div>
-                                    <div class="group-buttons">
-                                        <div class="quantity">
-                                            <div class="control">
-                                                <a class="btn-number qtyminus quantity-minus" href="#">-</a>
-                                                <input type="text" data-step="1" data-min="0" value="1" title="Qty"
-                                                       class="input-qty qty" size="4">
-                                                <a href="#" class="btn-number qtyplus quantity-plus">+</a>
-                                            </div>
-                                        </div>
-                                        <button class="add_to_cart_button button" tabindex="0">Shop now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

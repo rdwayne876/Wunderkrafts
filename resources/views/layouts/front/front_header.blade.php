@@ -1,5 +1,6 @@
 <?php 
 use App\Section;
+use App\Product;
 $sections = Section::sections();
 //echo "<pre>"; print_r($sections);die;
 ?>
