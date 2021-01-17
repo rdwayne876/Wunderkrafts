@@ -17,7 +17,7 @@ $(document).ready(function(){
     });
 
     // Update Section status
-    $(".updateSectionStatus").click(function() {
+    $(document).on("click","updateSectionStatus", function(){
         var status = $(this).children("i").attr("status");
         var section_id = $(this).attr("section_id");
         // alert(status);
@@ -42,7 +42,7 @@ $(document).ready(function(){
     });
 
     //Update Categorty Status
-    $(".updateCategoryStatus").click(function() {
+    $(document).on("click","updateCategoryStatus", function(){
         var status = $(this).children("i").attr("status");
         var category_id = $(this).attr("category_id");
         // alert(status);
@@ -96,8 +96,7 @@ $(document).ready(function(){
     }); */
 
     /* -- Sweet Alert - Parameter -- */
-    $(".confirmDelete").click(function() { 
-
+    $(document).on("click",".confirmDelete", function(){
         var record =$(this).attr("record");
         var recordid = $(this).attr("recordid");
 
@@ -132,7 +131,7 @@ $(document).ready(function(){
     });
 
     //Update Product Status
-    $(".updateProductStatus").click(function() {
+    $(document).on("click","updateProductStatus", function(){
         var status = $(this).children("i").attr("status");
         var product_id = $(this).attr("product_id");
 
@@ -155,7 +154,7 @@ $(document).ready(function(){
     });
 
     //Update Attributes Status
-    $(".updateAttributeStatus").click(function() {
+    $(document).on("click","updateAttributeStatus", function(){
         var status = $(this).children("i").attr("status");
         var attribute_id = $(this).attr("attribute_id");
 
@@ -201,7 +200,7 @@ $(document).ready(function(){
     });
 
     //Update Image Status
-    $(".updateImageStatus").click(function() {
+    $(document).on("click","updateImageStatus", function(){
         var status = $(this).children("i").attr("status");
         var image_id = $(this).attr("image_id");
 
@@ -225,7 +224,7 @@ $(document).ready(function(){
     });
 
     // Update Brand status
-    $(".updateBrandStatus").click(function() {
+    $(document).on("click","updateBrandStatus", function(){
         var status = $(this).children("i").attr("status");
         var brand_id = $(this).attr("brand_id");
         // alert(status);
