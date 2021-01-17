@@ -42,7 +42,7 @@ $(document).ready(function(){
     });
 
     //Update Categorty Status
-    $(document).on("click","updateCategoryStatus", function(){
+    $(document).on("click",".updateCategoryStatus", function(){
         var status = $(this).children("i").attr("status");
         var category_id = $(this).attr("category_id");
         // alert(status);
@@ -131,7 +131,7 @@ $(document).ready(function(){
     });
 
     //Update Product Status
-    $(document).on("click","updateProductStatus", function(){
+    $(document).on("click",".updateProductStatus", function(){
         var status = $(this).children("i").attr("status");
         var product_id = $(this).attr("product_id");
 
@@ -154,7 +154,7 @@ $(document).ready(function(){
     });
 
     //Update Attributes Status
-    $(document).on("click","updateAttributeStatus", function(){
+    $(document).on("click",".updateAttributeStatus", function(){
         var status = $(this).children("i").attr("status");
         var attribute_id = $(this).attr("attribute_id");
 
@@ -200,7 +200,7 @@ $(document).ready(function(){
     });
 
     //Update Image Status
-    $(document).on("click","updateImageStatus", function(){
+    $(document).on("click",".updateImageStatus", function(){
         var status = $(this).children("i").attr("status");
         var image_id = $(this).attr("image_id");
 
@@ -224,7 +224,7 @@ $(document).ready(function(){
     });
 
     // Update Brand status
-    $(document).on("click","updateBrandStatus", function(){
+    $(document).on("click",".updateBrandStatus", function(){
         var status = $(this).children("i").attr("status");
         var brand_id = $(this).attr("brand_id");
         // alert(status);
