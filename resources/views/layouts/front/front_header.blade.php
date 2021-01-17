@@ -1,3 +1,9 @@
+<?php 
+use App\Section;
+$sections = Section::sections();
+//echo "<pre>"; print_r($sections);die;
+?>
+
 <header class="header style7">
     <div class="top-bar">
         <div class="container">
@@ -57,12 +63,11 @@
                                 <div class="category">
                                     <select title="cate" data-placeholder="All Categories" class="chosen-select"
                                             tabindex="1">
-                                        <option value="United States">Accessories</option>
-                                        <option value="United Kingdom">Bracelets</option>
-                                        <option value="Afghanistan">Tanzanites</option>
-                                        <option value="Aland Islands">Sofas</option>
-                                        <option value="Albania">New Arrivals</option>
-                                        <option value="Algeria">Rings</option>
+                                            @foreach( $sections as $section)
+                                                @foreach( $section['categories'] as $category)
+                                                    <option value="{{ $category['id']}}">{{ $category['category_name']}}</option>
+                                                @endforeach
+                                            @endforeach
                                     </select>
                                 </div>
                                 <div class="inner">
@@ -171,96 +176,60 @@
                         <span class="text">All Categories</span>
                     </div>
                     <div class="block-content verticalmenu-content">
+                        
                         <ul class="ysera-nav-vertical vertical-menu ysera-clone-mobile-menu">
-                            <li class="menu-item">
-                                <a href="#" class="ysera-menu-item-title" title="New Arrivals">New Arrivals</a>
-                            </li>
-                            <li class="menu-item">
-                                <a title="Hot Sale" href="#" class="ysera-menu-item-title">Hot Sale</a>
-                            </li>
-                            <li class="menu-item menu-item-has-children">
-                                <a title="Accessories" href="#" class="ysera-menu-item-title">Accessories</a>
-                                <span class="toggle-submenu"></span>
-                                <ul role="menu" class=" submenu">
-                                    <li class="menu-item">
-                                        <a title="Platinum" href="#" class="ysera-item-title">Platinum</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a title="Bracelets" href="#" class="ysera-item-title">Bracelets</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a title="New Arrivals" href="#" class="ysera-item-title">New Arrivals</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a title="Accessories" href="#" class="ysera-item-title">Accessories</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a title="Rings" href="#" class="ysera-item-title">Rings</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item">
-                                <a title="Bracelets" href="#" class="ysera-menu-item-title">Bracelets</a>
-                            </li>
-                            <li class="menu-item">
-                                <a title="By Metal" href="#" class="ysera-menu-item-title">By Metal</a>
-                            </li>
-                            <li class="menu-item">
-                                <a title="Earrings" href="#" class="ysera-menu-item-title">Earrings</a>
-                            </li>
-                            <li class="menu-item">
-                                <a title="Onyx" href="#" class="ysera-menu-item-title">Onyx</a>
-                            </li>
-                            <li class="menu-item">
-                                <a title="Pendants" href="#" class="ysera-menu-item-title">Pendants</a>
-                            </li>
+                            @foreach($sections as $section)
+                                <li class="menu-item menu-item-has-children">
+                                    <a title="{{$section['name']}}" href="#" class="ysera-menu-item-title"> {{$section['name']}} </a>
+                                    <span class="toggle-submenu"></span>
+                                    @foreach($section['categories'] as $category)
+                                    <ul role="menu" class=" submenu">
+                                        <li class="menu-item">
+                                            <a title="{{$category['category_name']}}" href="#" class="ysera-item-title"> {{$category['category_name']}} </a>
+                                        </li>
+                                    </ul>
+                                    @endforeach
+                                </li>
+                            @endforeach
+
+                            @foreach($sections as $section)
+                                @foreach($section['categories'] as $category)
+                                    @if(count($category['subcategories'])>0)
+                                        <li class="menu-item menu-item-has-children">
+                                            <a title="{{$category['category_name']}}" href="#" class="ysera-menu-item-title"> {{$category['category_name']}} </a>
+                                            <span class="toggle-submenu"></span>
+                                            @foreach($category['subcategories'] as $subcategory)
+                                            <ul role="menu" class=" submenu">
+                                                <li class="menu-item">
+                                                    <a title="{{$subcategory['category_name']}}" href="#" class="ysera-item-title"> {{$subcategory['category_name']}} </a>
+                                                </li>
+                                            </ul>
+                                            @endforeach
+                                        </li>
+                                    @else
+                                        <li class="menu-item">
+                                            <a href="#" class="ysera-menu-item-title" title="{{$category['category_name']}}">{{$category['category_name']}}</a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            @endforeach
                         </ul>
                     </div>
                 </div>
                 <div class="header-nav">
                     <div class="container-wapper">
                         <ul class="ysera-clone-mobile-menu ysera-nav main-menu " id="menu-main-menu">
-                            <li class="menu-item  menu-item-has-children">
-                                <a href="index.html" class="ysera-menu-item-title" title="Home">Home</a>
-                                <span class="toggle-submenu"></span>
-                                <ul class="submenu">
-                                    <li class="menu-item">
-                                        <a href="index.html">Home 01</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="home2.html">Home 02</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="home3.html">Home 03</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item menu-item-has-children">
-                                <a href="gridproducts.html" class="ysera-menu-item-title" title="Shop">Shop</a>
-                                <span class="toggle-submenu"></span>
-                                <ul class="submenu">
-                                    <li class="menu-item">
-                                        <a href="gridproducts.html">Grid Fullwidth</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="gridproducts_leftsidebar.html">Grid Left sidebar</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="gridproducts_bannerslider.html">Grid Bannerslider</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="listproducts.html">List</a>
-                                    </li>
-                                </ul>
+                            <li class="menu-item">
+                                <a href="#" class="ysera-menu-item-title" title="Home">Home</a>
                             </li>
                             <li class="menu-item  menu-item-has-children item-megamenu">
-                                <a href="#" class="ysera-menu-item-title" title="Pages">Pages</a>
+                                <a href="#" class="ysera-menu-item-title" title="Shop">Shop</a>
                                 <span class="toggle-submenu"></span>
                                 <div class="submenu mega-menu menu-page">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 menu-page-item">
                                             <div class="ysera-custommenu default">
-                                                <h2 class="widgettitle">Shop Pages</h2>
+                                                <h2 class="widgettitle">Kollections</h2>
                                                 <ul class="menu">
                                                     <li class="menu-item">
                                                         <a href="shoppingcart.html">Shopping Cart</a>
@@ -282,62 +251,75 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 menu-page-item">
                                             <div class="ysera-custommenu default">
-                                                <h2 class="widgettitle">Product</h2>
+                                                <h2 class="widgettitle">Materials</h2>
                                                 <ul class="menu">
                                                     <li class="menu-item">
-                                                        <a href="productdetails-fullwidth.html">Product Fullwidth</a>
+                                                        <a href="shoppingcart.html">Shopping Cart</a>
                                                     </li>
                                                     <li class="menu-item">
-                                                        <a href="productdetails-leftsidebar.html">Product left
-                                                            sidebar</a>
+                                                        <a href="checkout.html">Checkout</a>
                                                     </li>
                                                     <li class="menu-item">
-                                                        <a href="productdetails-rightsidebar.html">Product right
-                                                            sidebar</a>
+                                                        <a href="contact.html">Contact us</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="404page.html">404</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="login.html">Login/Register</a>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 menu-page-item">
+                                            <div class="ysera-custommenu default">
+                                                <h2 class="widgettitle">Gemstones</h2>
+                                                <ul class="menu">
+                                                    <li class="menu-item">
+                                                        <a href="shoppingcart.html">Shopping Cart</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="checkout.html">Checkout</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="contact.html">Contact us</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="404page.html">404</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="login.html">Login/Register</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 menu-page-item">
+                                            <div class="ysera-custommenu default">
+                                                <h2 class="widgettitle">Sets</h2>
+                                                <ul class="menu">
+                                                    <li class="menu-item">
+                                                        <a href="shoppingcart.html">Shopping Cart</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="checkout.html">Checkout</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="contact.html">Contact us</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="404page.html">404</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="login.html">Login/Register</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            <li class="menu-item  menu-item-has-children">
-                                <a href="inblog_right-siderbar.html" class="ysera-menu-item-title"
-                                   title="Blogs">Blogs</a>
-                                <span class="toggle-submenu"></span>
-                                <ul class="submenu">
-                                    <li class="menu-item menu-item-has-children">
-                                        <a href="#" class="ysera-menu-item-title" title="Blog Style">Blog Style</a>
-                                        <span class="toggle-submenu"></span>
-                                        <ul class="submenu">
-                                            <li class="menu-item">
-                                                <a href="bloggrid.html">Grid</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="bloglist.html">List</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="bloglist-leftsidebar.html">List Sidebar</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item menu-item-has-children">
-                                        <a href="#" class="ysera-menu-item-title" title="Post Layout">Post Layout</a>
-                                        <span class="toggle-submenu"></span>
-                                        <ul class="submenu">
-                                            <li class="menu-item">
-                                                <a href="inblog_left-siderbar.html">Left Sidebar</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="inblog_right-siderbar.html">Right Sidebar</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                            <li class="menu-item">
+                                <a href="#" class="ysera-menu-item-title" title="Personalize">Personalize</a>
                             </li>
                             <li class="menu-item">
                                 <a href="about.html" class="ysera-menu-item-title" title="About">About</a>
