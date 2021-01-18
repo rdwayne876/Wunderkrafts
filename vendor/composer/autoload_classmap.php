@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'AdminsTableSeeder' => $baseDir . '/database/seeds/AdminsTableSeeder.php',
     'App\\Admin' => $baseDir . '/app/Admin.php',
+    'App\\Banner' => $baseDir . '/app/Banner.php',
     'App\\Brand' => $baseDir . '/app/Brand.php',
     'App\\Category' => $baseDir . '/app/Category.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
@@ -48,6 +49,7 @@ return array(
     'App\\User' => $baseDir . '/app/User.php',
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
     'Asm89\\Stack\\CorsService' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',
+    'BannersTableSeeder' => $baseDir . '/database/seeds/BannersTableSeeder.php',
     'BrandsTableSeeder' => $baseDir . '/database/seeds/BrandsTableSeeder.php',
     'Brick\\Math\\BigDecimal' => $vendorDir . '/brick/math/src/BigDecimal.php',
     'Brick\\Math\\BigInteger' => $vendorDir . '/brick/math/src/BigInteger.php',
