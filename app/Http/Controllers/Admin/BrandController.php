@@ -78,7 +78,7 @@ class BrandController extends Controller
     }
 
     public function delete($id) {
-        //Find and delete product
+        //Find and delete brand
         Brand::where('id', $id)->delete();
 
         Session::flash('success', 'Brand deleted successfully');

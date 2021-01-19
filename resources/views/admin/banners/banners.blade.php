@@ -32,41 +32,45 @@ Catalogue
             <div class="card m-b-30">
                 <div class="card-header">
                     <h5 class="card-title">Collections
-                        <a href="{{url('admin/brands/addEditBrand')}}" style="float: right; display:inline-block" class="btn btn-success"><i class="ri-add-line align-middle mr-2"></i>Add Brand</a>
+                        <a href="{{url('admin/banners/addEditBanner')}}" style="float: right; display:inline-block" class="btn btn-success"><i class="ri-add-line align-middle mr-2"></i>Add Banner</a>
                     </h5>
                 </div>
 
                 <div class="card-body">
                     <h6 class="card-subtitle">With DataTables you can alter the ordering characteristics of the table at initialisation time.</h6>
                     <div class="table-responsive">
-                        <table id="brands" class="display table table-striped table-bordered">
+                        <table id="banners" class="display table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th>Image</th>
+                                    <th>Link</th>
+                                    <th>Title</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($brands as $brand)
+                                @foreach ($banners as $banner)
                                     <tr>
-                                        <td> {{ $brand-> id }} </td>
-                                        <td> {{ $brand-> name }} </td>
+                                        <td> {{ $banner['id'] }} </td>
+                                        <td><img src="{{asset('img/banner/'.$banner['image'])}}" width="600px"></td>
+                                        <td> {{ $banner['link'] }} </td>
+                                        <td> {{ $banner['title_one'] }} </td>
                                         <td> 
                                             <div class="button-list">
-                                                <a title="Edit Brand" href="{{url('admin/brands/addEditBrand/'.$brand->id)}}" class="btn btn-primary-rgba">
+                                                <a title="Edit Banner" href="{{url('admin/banners/addEditBanner/'.$banner['id'])}}" class="btn btn-primary-rgba">
                                                     <i class="ri-edit-box-line"></i>
                                                 </a>
-                                                <a title="Delete" href="javascript:void(0)" class="btn btn-danger-rgba confirmDelete" record="brands/delete" recordid="{{$brand->id}}">
+                                                <a href="javascript:void(0)" class="btn btn-danger-rgba confirmDelete" record="banners/delete" recordid="{{$banner['id']}}">
                                                     <i class="ri-delete-bin-3-line"></i>
                                                 </a>
 
-                                                @if ($brand->status == 1)
-                                                    <a class="updateBrandStatus" id="brand-{{ $brand->id }}" 
-                                                        brand_id="{{$brand->id}}" href="javascript:void(0)"><i class="la la-toggle-on" aria-hidden="true" status="Active"></i></a> 
+                                                @if ($banner['status'] == 1)
+                                                    <a class="updateBannerStatus" id="banner-{{ $banner['id'] }}" 
+                                                        banner_id="{{$banner['id']}}" href="javascript:void(0)"><i class="la la-toggle-on" aria-hidden="true" status="Active"></i></a> 
                                                 @else
-                                                    <a class="updateBrandStatus" id="brand-{{ $brand->id }}" 
-                                                        brand_id="{{$brand->id}}" href="javascript:void(0)"><i class="la la-toggle-off" aria-hidden="true" status="Inactive"></i></a>                                            
+                                                    <a class="updateBannerStatus" id="banner-{{ $banner['id'] }}" 
+                                                        banner_id="{{$banner['id']}}" href="javascript:void(0)"><i class="la la-toggle-off" aria-hidden="true" status="Inactive"></i></a>                                            
                                                 @endif 
                                             </div>  
                                         </td>

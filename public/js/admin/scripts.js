@@ -85,7 +85,7 @@ $(document).ready(function(){
         });
     });
 
-    // Confirm delete
+    
     /* $(".confirmDelete").click(function() {
         var name =$(this).attr("name");
 
@@ -95,7 +95,7 @@ $(document).ready(function(){
         return false;
     }); */
 
-    /* -- Sweet Alert - Parameter -- */
+    // Confirm delete
     $(document).on("click",".confirmDelete", function(){
         var record =$(this).attr("record");
         var recordid = $(this).attr("recordid");
@@ -240,6 +240,31 @@ $(document).ready(function(){
                         "<i class='la la-toggle-off' aria-hidden='true' status='Inactive'></i>")
                 } else if(resp['status']==1) {
                     $("#brand-"+brand_id).html(
+                        "<i class='la la-toggle-on' aria-hidden='true' status='Active'></i>")
+                }
+            }, error:function() {
+                alert("Error");
+            }
+        });
+    });
+
+    // Update Banner status
+    $(document).on("click",".updateBannerStatus", function(){
+        var status = $(this).children("i").attr("status");
+        var banner_id = $(this).attr("banner_id");
+        // alert(status);
+        // alert(banner_id);
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/updateBannerStatus',
+            data: {status:status, banner_id:banner_id},
+            success:function(resp) {
+                if(resp['status']== 0){
+                    $("#banner-"+banner_id).html(
+                        "<i class='la la-toggle-off' aria-hidden='true' status='Inactive'></i>")
+                } else if(resp['status']==1) {
+                    $("#banner-"+banner_id).html(
                         "<i class='la la-toggle-on' aria-hidden='true' status='Active'></i>")
                 }
             }, error:function() {
