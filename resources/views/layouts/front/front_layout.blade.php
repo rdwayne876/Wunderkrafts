@@ -33,12 +33,16 @@
     <link rel="stylesheet" href="{{ asset('assets/front/fonts/flaticon/flaticon.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/front/css/style.css')}}">
 </head>
-<body class="home">
-@include('layouts.front.front_header')
 
-@yield('content')
 
-@include('layouts.front.front_footer')
+<body @if(isset($page_name) && $page_name == 'listing') class="productsgrid-page" @endif>
+    <div @if(isset($page_name) && $page_name == 'index') class="main-content" @endif
+         @if(isset($page_name) && $page_name == 'listing') class="main-content main-content-product left-sidebar" @endif>
+        @include('layouts.front.front_header')
+
+        @yield('content')
+
+        @include('layouts.front.front_footer')
 
 <script src="{{ asset('assets/front/js/jquery-1.12.4.min.js')}}"></script>
 <script src="{{ asset('assets/front/js/jquery.plugin-countdown.min.js')}}"></script>
