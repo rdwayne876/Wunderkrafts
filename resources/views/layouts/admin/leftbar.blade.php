@@ -39,6 +39,7 @@
                         <li><a href="{{url('admin/brands')}}">Collections</a></li>
                         <li><a href="{{url('admin/categories')}}">Categories</a></li>
                         <li><a href="{{url('admin/products')}}">Products</a></li>
+                        <li><a href="{{url('admin/banners')}}">Banners</a></li>
                     </ul>
                 </li>
                 
