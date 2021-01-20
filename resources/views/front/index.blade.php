@@ -2,7 +2,7 @@
 @section('content')
 <div class="main-content">
     <div class="fullwidth-template">
-        @include('front.banners')
+        @include('front.banners.banners')
         <div class="product-in-stock-wrapp">
             <div class="container">
                 <h3 class="custommenu-title-blog white">
