@@ -19,11 +19,25 @@ class Category extends Model
     }
 
     public static function catDetails($url) {
-        $catDetails = Category::select('id', 'category_name', 'url')->with(['subcategories'=>
+        $catDetails = Category::select('id', 'category_name', 'url', 'description', 'parent_id')->with(['subcategories'=>
             function($query){
-                $query->select('id', 'parent_id')->where('status', 1);
+                $query->select('id', 'parent_id', 'category_name', 'url', 'description')->where('status', 1);
             }])
             ->where('url', $url)->first()->toArray();
+
+        if($catDetails['parent_id'] == 0) {
+            $breadcrumbs = '<li class="trail-item trail-end active">'
+                                .$catDetails['category_name'].
+                            '</li>';
+        } else {
+            $parentCategory = Category::select('category_name', 'url')->where('id', $catDetails['parent_id'])->first()->toArray();
+            $breadcrumbs = '<li class="trail-item trail-begin"><a href="'.url($parentCategory['url']).'">'
+                                .$parentCategory['category_name'].
+                            '</a></li>
+                            <li class="trail-item trail-end active">'
+                                .$catDetails['category_name'].
+                            '</li>';
+        }
             
         //dd($catDetails); die;
         $catIds = array();
@@ -33,6 +47,6 @@ class Category extends Model
         }
 
         //dd($catIds);die;
-        return array('catIds'=>$catIds, 'catDetails'=>$catDetails);
+        return array('catIds'=>$catIds, 'catDetails'=>$catDetails, 'breadcrumbs'=>$breadcrumbs);
     }
 }

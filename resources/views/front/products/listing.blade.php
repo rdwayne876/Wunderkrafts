@@ -7,11 +7,9 @@
                 <div class="breadcrumb-trail breadcrumbs">
                     <ul class="trail-items breadcrumb">
                         <li class="trail-item trail-begin">
-                            <a href="index.html">Home</a>
+                            <a href="{{url('/')}}">Home</a>
                         </li>
-                        <li class="trail-item trail-end active">
-                            Grid Products
-                        </li>
+                        <?php echo $categoryDetails['breadcrumbs']; ?>
                     </ul>
                 </div>
             </div>
@@ -33,7 +31,7 @@
                                 <option value="5">6 Products/Page</option>
                             </select>
                         </form>
-                        <form class="filter-choice select-form">s
+                        <form class="filter-choice select-form">
                             <span class="title">Sort by</span>
                             <select title="sort-by" data-placeholder="Price: Low to High" class="chosen-select">
                                 <option value="1">Price: Low to High</option>
