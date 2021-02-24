@@ -43,13 +43,7 @@
                         </form>
                         <div class="grid-view-mode">
                             <div class="inner">
-                                <a href="listproducts.html" class="modes-mode mode-list">
-                                    <span></span>
-                                    <span></span>
-                                </a>
-                                <a href="gridproducts.html" class="modes-mode mode-grid  active">
-                                    <span></span>
-                                    <span></span>
+                                <a href="javascript:void(0)" class="modes-mode mode-grid active" >
                                     <span></span>
                                     <span></span>
                                 </a>
@@ -65,9 +59,15 @@
                                     <div class="product-thumb">
                                         <div class="thumb-inner">
                                             <a href="#">
-                                                <?php 
-                                                    $product_image_path ='img/product/medium/'.$product['main_image'];
-                                                ?>
+                                                @if(isset($product['main_image']))
+                                                    <?php 
+                                                        $product_image_path ='img/product/medium/'.$product['main_image'];
+                                                    ?>
+                                                @else
+                                                    <?php 
+                                                        $product_image_path ='';
+                                                    ?>
+                                                @endif
                                                 @if(!empty($product['main_image']) && file_exists($product_image_path))
                                                     <img src="{{asset('img/product/medium/'.$product['main_image'])}}" alt="img">
                                                 @else
@@ -114,13 +114,17 @@
                     </ul>
                     <div class="pagination clearfix style3">
                         <div class="nav-link">
-                            <a href="#" class="page-numbers"><i class="icon fa fa-angle-left"
-                                                                aria-hidden="true"></i></a>
+                            {{ $categoryProducts->appends(['sort' => 'votes'])->onEachside(1)->links() }}
+                            <!-- <a href="#" class="page-numbers">
+                                <i class="icon fa fa-angle-left" aria-hidden="true"></i>
+                            </a>
+                                
                             <a href="#" class="page-numbers">1</a>
                             <a href="#" class="page-numbers">2</a>
                             <a href="#" class="page-numbers current">3</a>
-                            <a href="#" class="page-numbers"><i class="icon fa fa-angle-right"
-                                                                aria-hidden="true"></i></a>
+                            <a href="#" class="page-numbers"> 
+                                <i class="icon fa fa-angle-right" aria-hidden="true"></i>
+                            </a> -->
                         </div>
                     </div>
                 </div>

@@ -64,5 +64,7 @@
 <script src="{{ asset('assets/front/js/jquery.scrollbar.min.js')}}"></script>
 <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC3nDHy1dARR-Pa_2jjPCjvsOR4bcILYsM'></script>
 <script src="{{ asset('assets/front/js/frontend-plugin.js')}}"></script>
+<!--Custom js -->
+<script src=" {{ asset('js/front/scripts.js') }} "></script>
 </body>
 </html>

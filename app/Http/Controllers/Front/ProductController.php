@@ -19,7 +19,7 @@ class ProductController extends Controller
             $categoryDetails = Category::catDetails($url);
             //echo "<pre>"; print_r($categoryDetails);die;
 
-            $categoryProducts = Product::with('brand')->whereIn('category_id', $categoryDetails['catIds'])->where('status', 1)->get()->toArray();
+            $categoryProducts = Product::with('brand')->whereIn('category_id', $categoryDetails['catIds'])->where('status', 1)->paginate(2);
             //echo "<pre>"; print_r($categoryProducts);die;
 
             return view('front.products.listing')->with(compact('categoryDetails', 'categoryProducts', 'page_name'));

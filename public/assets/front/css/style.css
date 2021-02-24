@@ -3549,52 +3549,50 @@ blockquote .author .desc {
 }
 /*--------PAGINATION--------------*/
 .pagination {
-	display: block;
-	margin: 50px 0 0;
-	padding: 0;
+	display: block!important;
+	margin: 50px 0 0!important;
+	padding: 0!important;
 }
 .pagination.grid {
-	margin-top: 20px;
+	margin-top: 20px!important;
 }
 .pagination .page-numbers {
-	display: inline-block;
-	width: 42px;
-	height: 42px;
-	line-height: 39px;
-	text-align: center;
-	border: 1px solid #F1F1F1;
-	font-size: 16px;
-	color: #888;
-	font-weight: 500;
-	margin-left: 5px;
-	border-radius: 50%;
+	display: inline-block!important;
+	width: 42px!important;
+	height: 42px!important;
+	line-height: 39px!important;
+	text-align: center!important;
+	border: 1px solid #F1F1F1!important;
+	font-size: 16px!important;
+	color: #888!important;
+	font-weight: 500!important;
+	margin-left: 5px!important;
+	border-radius: 50%!important;
 }
-.pagination .page-numbers:first-child {
-	margin-left: 0;
-}
+
 .pagination .page-numbers.current, .pagination .page-numbers:hover {
-	color: #fff;
-	border-color: transparent;
-	background-color: #ed2885;
+	color: #fff!important;
+	border-color: transparent!important;
+	background-color: #ed2885!important;
 }
 .pagination .page-numbers .icon {
-	font-weight: 700;
+	font-weight: 700!important;
 }
 .pagination.style1 {
-	text-align: right;
+	text-align: right!important;
 }
 .pagination.style2 {
-	text-align: center;
+	text-align: center!important;
 }
 .shop-grid-content .pagination {
 	margin-top: 10px;
 }
 .content-inlookbook .pagination {
-	margin-top: 10px;
-	margin-bottom: 60px
+	margin-top: 10px!important;
+	margin-bottom: 60px!important;
 }
 .main-content-blog.mansory .pagination {
-	margin-top: 10px;
+	margin-top: 10px!important;
 }
 /* -------------------- */
 /*        SIDEBAR       */
