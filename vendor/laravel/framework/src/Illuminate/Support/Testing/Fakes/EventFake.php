@@ -71,7 +71,7 @@ class EventFake implements Dispatcher
     }
 
     /**
-     * Assert if a event was dispatched a number of times.
+     * Assert if an event was dispatched a number of times.
      *
      * @param  string  $event
      * @param  int  $times
@@ -103,6 +103,21 @@ class EventFake implements Dispatcher
         PHPUnit::assertCount(
             0, $this->dispatched($event, $callback),
             "The unexpected [{$event}] event was dispatched."
+        );
+    }
+
+    /**
+     * Assert that no events were dispatched.
+     *
+     * @return void
+     */
+    public function assertNothingDispatched()
+    {
+        $count = count(Arr::flatten($this->events));
+
+        PHPUnit::assertSame(
+            0, $count,
+            "{$count} unexpected events were dispatched."
         );
     }
 
@@ -142,11 +157,11 @@ class EventFake implements Dispatcher
     /**
      * Register an event listener with the dispatcher.
      *
-     * @param  string|array  $events
+     * @param  \Closure|string|array  $events
      * @param  mixed  $listener
      * @return void
      */
-    public function listen($events, $listener)
+    public function listen($events, $listener = null)
     {
         $this->dispatcher->listen($events, $listener);
     }

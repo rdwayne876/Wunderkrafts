@@ -15,178 +15,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="content-area shop-grid-content no-banner col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                <div class="site-main">
-                    <h3 class="custom_blog_title">
-                        {{$categoryDetails['catDetails']['category_name']}}
-                    </h3>
-                    <div class="shop-top-control">
-                        <form class="select-item select-form">
-                            <span class="title">Sort</span>
-                            <select title="sort" data-placeholder="12 Products/Page" class="chosen-select">
-                                <option value="1">12 Products/Page</option>
-                                <option value="2">9 Products/Page</option>
-                                <option value="3">10 Products/Page</option>
-                                <option value="4">8 Products/Page</option>
-                                <option value="5">6 Products/Page</option>
-                            </select>
-                        </form>
-                        <form class="filter-choice select-form">
-                            <span class="title">Sort by</span>
-                            <select title="sort-by" data-placeholder="Price: Low to High" class="chosen-select">
-                                <option value="1">Price: Low to High</option>
-                                <option value="2">Sort by popularity</option>
-                                <option value="3">Sort by average rating</option>
-                                <option value="4">Sort by newness</option>
-                                <option value="5">Sort by price: low to high</option>
-                            </select>
-                        </form>
-                        <div class="grid-view-mode">
-                            <div class="inner">
-                                <a href="javascript:void(0)" class="modes-mode mode-grid active" >
-                                    <span></span>
-                                    <span></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="row list-products auto-clear equal-container product-grid">
-                        @foreach($categoryProducts as $product)
-                            <li class="product-item product-type-variable col-lg-4 col-md-6 col-sm-6 col-xs-6 col-ts-12 style-1">
-                                <div class="product-inner equal-element">
-                                    <div class="product-top">
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="#">
-                                                @if(isset($product['main_image']))
-                                                    <?php 
-                                                        $product_image_path ='img/product/medium/'.$product['main_image'];
-                                                    ?>
-                                                @else
-                                                    <?php 
-                                                        $product_image_path ='';
-                                                    ?>
-                                                @endif
-                                                @if(!empty($product['main_image']) && file_exists($product_image_path))
-                                                    <img src="{{asset('img/product/medium/'.$product['main_image'])}}" alt="img">
-                                                @else
-                                                    <img src="{{asset('img/product/small/no_image.png')}}" alt="img">
-                                                @endif
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#">{{$product['name']}}</a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">
-                                                    (3)
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <ins>
-                                                    ${{$product['price']}}
-                                                </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
-                    <div class="pagination clearfix style3">
-                        <div class="nav-link">
-                            {{ $categoryProducts->appends(['sort' => 'votes'])->onEachside(1)->links() }}
-                            <!-- <a href="#" class="page-numbers">
-                                <i class="icon fa fa-angle-left" aria-hidden="true"></i>
-                            </a>
-                                
-                            <a href="#" class="page-numbers">1</a>
-                            <a href="#" class="page-numbers">2</a>
-                            <a href="#" class="page-numbers current">3</a>
-                            <a href="#" class="page-numbers"> 
-                                <i class="icon fa fa-angle-right" aria-hidden="true"></i>
-                            </a> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12">
                 <div class="wrapper-sidebar shop-sidebar">
                     <div class="widget woof_Widget">
-                        <div class="widget widget-categories">
-                            <h3 class="widgettitle">Categories</h3>
-                            <ul class="list-categories">
-                                <li>
-                                    <input type="checkbox" id="cb1">
-                                    <label for="cb1" class="label-text">
-                                        New Arrivals
-                                    </label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="cb2">
-                                    <label for="cb2" class="label-text">
-                                        Earrings
-                                    </label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="cb3">
-                                    <label for="cb3" class="label-text">
-                                        Tanzanites
-                                    </label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="cb4">
-                                    <label for="cb4" class="label-text">
-                                        Bracelets
-                                    </label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="cb5">
-                                    <label for="cb5" class="label-text">
-                                        Accessories
-                                    </label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="cb6">
-                                    <label for="cb6" class="label-text">
-                                        By Metal
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="widget widget_filter_price">
-                            <h4 class="widgettitle">
-                                Price
-                            </h4>
-                            <div class="price-slider-wrapper">
-                                <div data-label-reasult="Range:" data-min="0" data-max="3000" data-unit="$"
-                                     class="slider-range-price " data-value-min="0" data-value-max="1000">
-                                </div>
-                                <div class="price-slider-amount">
-                                    <span class="from">$45</span>
-                                    <span class="to">$215</span>
-                                </div>
-                            </div>
-                        </div>
                         <div class="widget widget-brand">
                             <h3 class="widgettitle">Brand</h3>
                             <ul class="list-brand">
@@ -214,6 +45,59 @@
                                     <input id="cb12" type="checkbox">
                                     <label for="cb12" class="label-text">By Metal</label>
                                 </li>
+                            </ul>
+                        </div>
+                        <div class="widget widget_filter_price">
+                            <h4 class="widgettitle">
+                                Price
+                            </h4>
+                            <div class="price-slider-wrapper">
+                                <div data-label-reasult="Range:" data-min="0" data-max="3000" data-unit="$"
+                                     class="slider-range-price " data-value-min="0" data-value-max="1000">
+                                </div>
+                                <div class="price-slider-amount">
+                                    <span class="from">$45</span>
+                                    <span class="to">$215</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget widget-categories">
+                            <h3 class="widgettitle">Materials</h3>
+                            <ul class="list-categories">
+                                @foreach($materialArray as $material)
+                                    <li>
+                                        <input class="material" type="checkbox" id="{{ $material}}" name="material[]" value="{{ $material}}">
+                                        <label for="{{ $material }}" class="label-text">
+                                           {{ $material}}
+                                        </label>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="widget widget-categories"> 
+                            <h3 class="widgettitle">Gemstones</h3>
+                            <ul class="list-categories">
+                                @foreach($gemstoneArray as $gemstone)
+                                    <li>
+                                        <input class="gemstone" type="checkbox" id="{{ $gemstone}}" name="gemstone[]" value="{{ $gemstone}}">
+                                        <label for="{{ $gemstone }}" class="label-text">
+                                           {{ $gemstone}}
+                                        </label>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="widget widget-categories">
+                            <h3 class="widgettitle">Sets</h3>
+                            <ul class="list-categories">
+                                @foreach($setArray as $set)
+                                    <li>
+                                        <input class="set" type="checkbox" id="{{ $set}}" name="set[]" value="{{ $set}}">
+                                        <label for="{{ $set }}" class="label-text">
+                                           {{ $set}}
+                                        </label>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="widget widget_filter_size">
@@ -296,6 +180,48 @@
                             </div>
                             <input type="email" class="email" placeholder="Your email letter">
                             <button type="submit" class="button submit-newsletter">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-area shop-grid-content no-banner col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="site-main">
+                    <h3 class="custom_blog_title">
+                        {{$categoryDetails['catDetails']['category_name']}}
+                    </h3>
+                    <div class="shop-top-control">
+                        <form class="select-item select-form">
+                            <span class="title">Sort</span>
+                            <select title="sort" data-placeholder="12 Products/Page" class="chosen-select">
+                                <option value="1">12 Products/Page</option>
+                                <option value="2">9 Products/Page</option>
+                                <option value="3">10 Products/Page</option>
+                                <option value="4">8 Products/Page</option>
+                                <option value="5">6 Products/Page</option>
+                            </select>
+                        </form>
+                        <form name="sortProducts"  class="filter-choice select-form">
+                            <input type="hidden" name="url" id="url" value="{{ $url }}">
+                            <span class="title">Sort by</span>
+                            <select name="sort" id="sort" title="sort-by" data-placeholder="Sort By" class="chosen-select">
+                                <option value="">Select</option>
+                                <option value="product_latest" @if(isset($_GET['sort']) && $_GET['sort'] == "product_latest") selected="" @endif>Latest Products</option>
+                                <option value="product_name_a_z" @if(isset($_GET['sort']) && $_GET['sort'] == "product_name_a_z") selected="" @endif>Name: A - Z</option>
+                                <option value="product_price_lowest" @if(isset($_GET['sort']) && $_GET['sort'] == "product_price_lowest") selected="" @endif>Price: Low to High</option>
+                                <option value="product_price_highest" @if(isset($_GET['sort']) && $_GET['sort'] == "product_price_highest") selected="" @endif>Price: High to Low</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="filter_products">
+                        @include('front.products.ajaxlisting')
+                    </div>
+                    <div class="pagination clearfix style3">
+                        <div class="nav-link">
+                            @if(isset($_GET['sort']) && !empty($_GET['sort']))
+                                {{ $categoryProducts->appends(['sort' => $_GET['sort']])->onEachside(1)->links() }}
+                            @else
+                                {{ $categoryProducts->onEachside(1)->links() }}
+                            @endif
                         </div>
                     </div>
                 </div>

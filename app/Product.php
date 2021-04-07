@@ -26,4 +26,13 @@ class Product extends Model
     public function images() {
         return $this->hasMany('App\ProductsImage');
     }
+
+    public static function productFilters(){
+
+        $productFilters['materialArray'] = array('Beads', 'Leather', 'Accrylic', 'Resin');
+        $productFilters['gemstoneArray'] = array('Topaz', 'Malachite', 'Jade');
+        $productFilters['setArray'] = array('none', 'Two-Piece', 'Three-Piece', 'Four-Piece');
+
+        return $productFilters;
+    }
 }

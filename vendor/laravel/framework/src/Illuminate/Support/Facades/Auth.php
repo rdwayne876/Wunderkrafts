@@ -24,6 +24,7 @@ use RuntimeException;
  * @method static int|string|null id()
  * @method static void login(\Illuminate\Contracts\Auth\Authenticatable $user, bool $remember = false)
  * @method static void logout()
+ * @method static void logoutCurrentDevice()
  * @method static void setUser(\Illuminate\Contracts\Auth\Authenticatable $user)
  * @method static void shouldUse(string $name);
  *
@@ -52,7 +53,7 @@ class Auth extends Facade
      */
     public static function routes(array $options = [])
     {
-        if (! array_key_exists(UiServiceProvider::class, static::$app->getLoadedProviders())) {
+        if (! static::$app->providerIsLoaded(UiServiceProvider::class)) {
             throw new RuntimeException('In order to use the Auth::routes() method, please install the laravel/ui package.');
         }
 

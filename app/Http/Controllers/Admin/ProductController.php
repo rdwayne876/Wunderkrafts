@@ -167,10 +167,11 @@ class ProductController extends Controller
 
          
         //Array Filters
-        $materialArray = array('Beads', 'Leather', 'Accrylic', 'Resin');
-        $gemstoneArray = array('Topaz', 'Malachite', 'Jade');
-        $setArray = array('none', 'Two-Piece', 'Three-Piece', 'Four-Piece');
-        
+        $productFilters = Product::productFilters();
+        //echo "<pre>"; print_r($productFilters); die;
+        $materialArray = $productFilters['materialArray'];
+        $gemstoneArray = $productFilters['gemstoneArray'];
+        $setArray = $productFilters['setArray'];
 
         //Sections with Categories and sub categories
         $categories = Section::with('categories')->get();

@@ -20,7 +20,7 @@ class AdminsTableSeeder extends Seeder
                 'type' => 'admin',
                 'mobile' => '8763547211',
                 'email' => 'dwayne@admin.com',
-                'password' => '$2y$10$SSo0w8Hq4T26qfeSGpYz4.cxHhtRws4gZYgnD2WGnA.b1sN20iCPO',
+                'password' => '$2y$10$ytJGrvEZ5hMX8WTSkVJbRuT1UMookGOjRyJlbeOn.RmUMUz1G2Ujq',
                 'image' => '',
                 'status' => 1
             ],
@@ -31,7 +31,7 @@ class AdminsTableSeeder extends Seeder
                 'type' => 'subadmin',
                 'mobile' => '8763547211',
                 'email' => 'tish@admin.com',
-                'password' => '$2y$10$SSo0w8Hq4T26qfeSGpYz4.cxHhtRws4gZYgnD2WGnA.b1sN20iCPO',
+                'password' => '$2y$10$ytJGrvEZ5hMX8WTSkVJbRuT1UMookGOjRyJlbeOn.RmUMUz1G2Ujq',
                 'image' => '',
                 'status' => 1
             ],

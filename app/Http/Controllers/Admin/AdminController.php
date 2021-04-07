@@ -21,6 +21,7 @@ class AdminController extends Controller
     }
 
     public function login(Request $request) {
+        // echo $password = Hash::make('123456');die;
         if ($request->isMethod('POST')) {
             $data = $request->all();
 

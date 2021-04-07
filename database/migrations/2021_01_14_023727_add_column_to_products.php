@@ -14,9 +14,10 @@ class AddColumnToProducts extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
+            $table->integer('brand_id')->after('section_id');
             $table->string('material')->after('discount');
             $table->string('gemstone')->after('discount');
-            $table->string('set_id')->after('brand_id');
+            $table->integer('set_id')->after('brand_id');
         });
     }
 
@@ -28,6 +29,7 @@ class AddColumnToProducts extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('brand_id');
             $table->dropColumn('material');
             $table->dropColumn('gemstone');
             $table->dropColumn('set_id');
