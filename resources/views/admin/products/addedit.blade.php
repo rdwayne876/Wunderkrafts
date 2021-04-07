@@ -232,12 +232,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="set" class="col-lg-3 col-form-label">Set</label>
+                            <label for="bundle" class="col-lg-3 col-form-label">Set</label>
                             <div class="col-lg-6">
-                                <select name="set" id="set" class="form-control">
+                                <select name="bundle" id="bundle" class="form-control">
                                     <option value="">Select</option>
-                                    @foreach ( $setArray as $set )
-                                        <option value="{{$set}}">{{ $set }}</option>
+                                    @foreach ( $bundleArray as $bundle )
+                                        <option value="{{$bundle}}">{{ $bundle }}</option>
                                     @endforeach
                                 </select>
                             </div>

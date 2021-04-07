@@ -15,6 +15,7 @@ class ProductController extends Controller
         if( $request->ajax()){
             $data = $request->all();
             //echo "<pre>"; print_r($data);die;
+            //dd($data);
 
             $url = $data['url'];
 
@@ -33,6 +34,12 @@ class ProductController extends Controller
                 //check filters
                 if(isset($data['material']) && !empty($data['material'])) {
                     $categoryProducts->whereIn('products.material', $data['material']);
+                }
+                if(isset($data['gemstone']) && !empty($data['gemstone'])) {
+                    $categoryProducts->whereIn('products.gemstone', $data['gemstone']);
+                }
+                if(isset($data['bundle']) && !empty($data['bundle'])) {
+                    $categoryProducts->whereIn('products.bundle', $data['bundle']);
                 }
 
                 //check for sort condition
@@ -80,9 +87,9 @@ class ProductController extends Controller
                 //echo "<pre>"; print_r($productFilters); die;
                 $materialArray = $productFilters['materialArray'];
                 $gemstoneArray = $productFilters['gemstoneArray'];
-                $setArray = $productFilters['setArray'];
+                $bundleArray = $productFilters['bundleArray'];
     
-                return view('front.products.listing')->with(compact('categoryDetails', 'categoryProducts', 'url','materialArray','gemstoneArray','setArray'));
+                return view('front.products.listing')->with(compact('categoryDetails', 'categoryProducts', 'url','materialArray','gemstoneArray','bundleArray'));
                 
             } else{
                 abort(404);

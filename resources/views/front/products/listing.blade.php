@@ -7,7 +7,7 @@
                 <div class="breadcrumb-trail breadcrumbs">
                     <ul class="trail-items breadcrumb">
                         <li class="trail-item trail-begin">
-                            <a href="{{url('/')}}">Home</a>
+                            <a href="{{url('/')}}">{{$categoryDetails['catDetails']['category_name']}}</a>
                         </li>
                         <?php echo $categoryDetails['breadcrumbs']; ?>
                     </ul>
@@ -90,11 +90,11 @@
                         <div class="widget widget-categories">
                             <h3 class="widgettitle">Sets</h3>
                             <ul class="list-categories">
-                                @foreach($setArray as $set)
+                                @foreach($bundleArray as $bundle)
                                     <li>
-                                        <input class="set" type="checkbox" id="{{ $set}}" name="set[]" value="{{ $set}}">
-                                        <label for="{{ $set }}" class="label-text">
-                                           {{ $set}}
+                                        <input class="bundle" type="checkbox" id="{{ $bundle}}" name="bundle[]" value="{{ $bundle}}">
+                                        <label for="{{ $bundle }}" class="label-text">
+                                           {{ $bundle}}
                                         </label>
                                     </li>
                                 @endforeach

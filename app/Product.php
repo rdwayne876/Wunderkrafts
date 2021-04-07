@@ -31,7 +31,7 @@ class Product extends Model
 
         $productFilters['materialArray'] = array('Beads', 'Leather', 'Accrylic', 'Resin');
         $productFilters['gemstoneArray'] = array('Topaz', 'Malachite', 'Jade');
-        $productFilters['setArray'] = array('none', 'Two-Piece', 'Three-Piece', 'Four-Piece');
+        $productFilters['bundleArray'] = array('none', 'Two-Piece', 'Three-Piece', 'Four-Piece');
 
         return $productFilters;
     }

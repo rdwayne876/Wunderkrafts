@@ -80,7 +80,7 @@ class ProductController extends Controller
 
         if($request->isMethod('post')) {
             $data = $request->all();
-            // echo "<pre>"; print_r($data); die;
+            //echo "<pre>"; print_r($data); die;
 
             //Category Validations
             $rules = [
@@ -140,7 +140,7 @@ class ProductController extends Controller
             $categoryDetails = Category::find($data['category_id']);
             $product->section_id = $categoryDetails['section_id'];
             $product->brand_id = $data['brand_id'];
-            $product->set_id = $data['set'];
+            $product->bundle = $data['bundle'];
             $product->category_id = $data['category_id'];
             $product->name = $data['product_name'];
             $product->code = $data['product_code'];
@@ -171,7 +171,7 @@ class ProductController extends Controller
         //echo "<pre>"; print_r($productFilters); die;
         $materialArray = $productFilters['materialArray'];
         $gemstoneArray = $productFilters['gemstoneArray'];
-        $setArray = $productFilters['setArray'];
+        $bundleArray = $productFilters['bundleArray'];
 
         //Sections with Categories and sub categories
         $categories = Section::with('categories')->get();
@@ -180,7 +180,7 @@ class ProductController extends Controller
         $brands = Brand::where('status', 1)->get();
         $brands = json_decode(json_encode($brands), true);
 
-        return view('admin.products.addEdit')->with(compact('title', 'categories', 'productdata', 'materialArray', 'gemstoneArray', 'setArray', 'brands'));
+        return view('admin.products.addEdit')->with(compact('title', 'categories', 'productdata', 'materialArray', 'gemstoneArray', 'bundleArray', 'brands'));
     }
 
     public function deleteImage($id) {
