@@ -58,7 +58,7 @@ class ProductController extends Controller
                     $categoryProducts = $categoryProducts->orderBy('id', 'Desc');
                 }
     
-                $categoryProducts = $categoryProducts->paginate(12);
+                $categoryProducts = $categoryProducts->paginate(2);
     
                 return view('front.products.ajaxlisting')->with(compact('categoryDetails', 'categoryProducts', 'url'));
                 
@@ -84,7 +84,7 @@ class ProductController extends Controller
     
                 $categoryProducts = $categoryProducts->orderBy('id', 'Desc');
     
-                $categoryProducts = $categoryProducts->paginate(12);
+                $categoryProducts = $categoryProducts->paginate(2);
 
                 //Array Filters
                 $productFilters = Product::productFilters();
