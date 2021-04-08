@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Pagination\Paginator;
 use App\Category;
 use App\Product;
+use App\ProductsAttribute;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -103,6 +104,9 @@ class ProductController extends Controller
 
     public function detail( $code, $id){
         
-        return view('front.products.detail');
+        $productDetail = Product::with( 'category', 'brand', 'attributes', 'images')->find( $id)->toArray();
+        //dd($productDetail);
+
+        return view( 'front.products.detail')->with( compact( 'productDetail'));
     }
 }

@@ -10,10 +10,10 @@
                                 <a href="index.html">Home</a>
                             </li>
                             <li class="trail-item">
-                                <a href="#">Bracelets</a>
+                                <a href="#">{{ $productDetail['category']['category_name']}}</a>
                             </li>
                             <li class="trail-item trail-end active">
-                                Splendid Diamond
+                                {{ $productDetail[ 'name']}}
                             </li>
                         </ul>
                     </div>
@@ -25,29 +25,22 @@
                         <div class="details-product">
                             <div class="details-thumd">
                                 <div class="image-preview-container image-thick-box image_preview_container">
-                                    <img id="img_zoom" data-zoom-image="assets/images/details-item-1.jpg" src="assets/images/details-item-1.jpg" alt="img">
+                                    <img id="img_zoom" data-zoom-image="{{asset('img/product/large/'.$productDetail['main_image'])}}" src="{{asset('img/product/large/'.$productDetail['main_image'])}}" alt="img">
                                     <a href="#" class="btn-zoom open_qv"><i class="fa fa-search" aria-hidden="true"></i></a>
                                 </div>
                                 <div class="product-preview image-small product_preview">
                                     <div id="thumbnails" class="thumbnails_carousel owl-carousel" data-nav="true" data-autoplay="false" data-dots="false" data-loop="false" data-margin="10" data-responsive='{"0":{"items":3},"480":{"items":3},"600":{"items":3},"1000":{"items":3}}'>
-                                        <a href="#" data-image="assets/images/details-item-1.jpg" data-zoom-image="assets/images/details-item-1.jpg" class="active">
-                                            <img src="assets/images/details-item-1.jpg" data-large-image="assets/images/details-item-1.jpg" alt="img">
-                                        </a>
-                                        <a href="#" data-image="assets/images/details-item-2.jpg" data-zoom-image="assets/images/details-item-2.jpg">
-                                            <img src="assets/images/details-item-2.jpg" data-large-image="assets/images/details-item-2.jpg" alt="img">
-                                        </a>
-                                        <a href="#" data-image="assets/images/details-item-3.jpg" data-zoom-image="assets/images/details-item-3.jpg">
-                                            <img src="assets/images/details-item-3.jpg" data-large-image="assets/images/details-item-3.jpg" alt="img">
-                                        </a>
-                                        <a href="#" data-image="assets/images/details-item-4.jpg" data-zoom-image="assets/images/details-item-4.jpg">
-                                            <img src="assets/images/details-item-4.jpg" data-large-image="assets/images/details-item-4.jpg" alt="img">
-                                        </a>
+                                        @foreach($productDetail['images'] as $image)
+                                            <a href="#" data-image="{{asset('img/product/large/'.$image['image'])}}" data-zoom-image="{{asset('img/product/large/'.$image['image'])}}" class="active">
+                                                <img src="{{asset('img/product/large/'.$image['image'])}}" data-large-image="{{asset('img/product/large/'.$image['image'])}}" alt="img">
+                                            </a>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
                             <div class="details-infor">
                                 <h1 class="product-title">
-                                    Splendid Diamond
+                                    {{ $productDetail[ 'name']}}
                                 </h1>
                                 <div class="stars-rating">
                                     <div class="star-rating">
@@ -62,7 +55,7 @@
                                     <a href="#">in Stock</a>
                                 </div>
                                 <div class="price">
-                                    <span>$45</span>
+                                    <span>${{ $productDetail['price']}}</span>
                                 </div>
                                 <div class="product-details-description">
                                     <ul>
@@ -124,7 +117,7 @@
                         <div class="tab-details-product">
                             <ul class="tab-link">
                                 <li class="active">
-                                    <a data-toggle="tab" aria-expanded="true" href="#product-descriptions">Descriptions </a>
+                                    <a data-toggle="tab" aria-expanded="true" href="#product-descriptions">Description</a>
                                 </li>
                                 <li class="">
                                     <a data-toggle="tab" aria-expanded="true" href="#information">Information </a>
@@ -136,17 +129,7 @@
                             <div class="tab-container">
                                 <div id="product-descriptions" class="tab-panel active">
                                     <p>
-                                        Quisque quis ipsum venenatis, fermentum ante volutpat, ornare enim.
-                                        Phasellus molestie risus non aliquet cursus.
-                                        Integer
-                                        vestibulum mi lorem, id hendrerit ante lobortis non.
-                                        Nunc ante ante, lobortis non pretium non, vulputate vel nisi.
-                                        Maecenas dolor elit, fringilla nec turpis ac, auctor vulputate nulla. Phasellus sed laoreet velit.
-                                    </p>
-                                    <p>
-                                        Proin fringilla urna vel mattis euismod.
-                                        Etiam sodales, massa non tincidunt iaculis, mauris libero scelerisque justo, ut rutrum lectus urna sit amet quam.
-                                        Nulla maximus vestibulum mi vitae accumsan.
+                                        {{ $productDetail['description']}}
                                     </p>
                                 </div>
                                 <div id="information" class="tab-panel">
@@ -160,9 +143,18 @@
                                             <td>White/ Black/ Teal/ Brown</td>
                                         </tr>
                                         <tr>
-                                            <td>Properties</td>
-                                            <td>Colorful Dress</td>
+                                            <td>Code</td>
+                                            <td>{{ $productDetail['code']}}</td>
                                         </tr>
+                                        <tr>
+                                            <td>Materials</td>
+                                            <td>{{ $productDetail['material']}}, {{ $productDetail['gemstone']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Set</td>
+                                            <td>{{ $productDetail['bundle']}}</td>
+                                        </tr>
+                                        
                                     </table>
                                 </div>
                                 <div id="reviews" class="tab-panel">
