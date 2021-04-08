@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function listing(Request $request) {
+    public function listing( Request $request) {
 
         if( $request->ajax()){
             $data = $request->all();
@@ -99,5 +99,10 @@ class ProductController extends Controller
                 abort(404);
             }
         }
+    }
+
+    public function detail( $code, $id){
+        
+        return view('front.products.detail');
     }
 }

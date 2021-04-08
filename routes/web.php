@@ -85,12 +85,12 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
 
 Route::namespace('Front')->group(function(){
     Route::get('/', 'IndexController@index');
-    //Route::get('/{url}', 'ProductController@listing');
 
     //get Categeory urls
     $catUrls = Category::select( 'url')->where( 'status', 1)->get()->pluck('url')->toArray();
-    //dd($catUrls);
     foreach( $catUrls as $url){
         Route::get('/'.$url, 'ProductController@listing');
     }
+    // product detail route
+    Route::get('/product/{code}/{id}', 'ProductController@detail');
 });
