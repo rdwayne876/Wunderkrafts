@@ -109,4 +109,16 @@ class ProductController extends Controller
 
         return view( 'front.products.detail')->with( compact( 'productDetail'));
     }
+
+    public function getSize( Request $request){
+        
+        if( $request->ajax()){
+            $data = $request->all();
+            //echo "<pre>"; print_r($data);die;
+
+            $getProductprice = ProductsAttribute::where(['product_id'=>$data['product_id'], 'size'=>$data['size']])->first();
+            
+            return $getProductprice->price;
+        }
+    }
 }

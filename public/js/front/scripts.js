@@ -4,6 +4,12 @@ $(document).ready(function(){
         this.form.submit();
     }); */
 
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $("#sort").on('change', function(){
         var material = get_filter("material");
         var gemstone = get_filter('gemstone');
@@ -81,5 +87,26 @@ $(document).ready(function(){
         //alert(filter);
         return filter;
     }
+
+    $('.list-size a').click(function(){
+        $('.list-size a.active').removeClass('active');
+        $(this).addClass('active');
+
+        var size = $('.list-size a.active').children("input").attr("value");
+        var  product_id = $('.list-size a.active').children("input").attr("product-id");
+        //alert( product_id);
+        //alert(test);
+        $.ajax({
+            url: '/get-size',
+            data:{ size:size, product_id:product_id},
+            type: 'post',
+            success: function( resp) {
+                $(".getAttrPrice").html("$"+resp);
+            }, error: function() {
+                alert("Error");
+            }
+        });
+    });
+
 
 });

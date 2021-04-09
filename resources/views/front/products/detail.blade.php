@@ -55,7 +55,7 @@
                                     <a href="#">in Stock</a>
                                 </div>
                                 <div class="price">
-                                    <span>${{ $productDetail['price']}}</span>
+                                    <span class="getAttrPrice">${{ $productDetail['price']}}</span>
                                 </div>
                                 <div class="product-details-description">
                                     <ul>
@@ -78,15 +78,28 @@
                                     </div>
                                     <div class="attribute attribute_size">
                                         <div class="size-text text-attribute">
-                                            Pots Size:
+                                            Size:
                                         </div>
-                                        <div class="list-size list-item">
-                                            <a href="#" class="">xs</a>
-                                            <a href="#" class="">s</a>
-                                            <a href="#" class="active">m</a>
-                                            <a href="#" class="">l</a>
-                                            <a href="#" class="">xl</a>
-                                            <a href="#" class="">xxl</a>
+                                        <div name="size" class="list-size list-item">
+                                            <a class="">
+                                                <input type="hidden" name="size" id="getSize" product-id="{{ $productDetail['id']}}" value="XS" />
+                                                xs
+                                            </a>
+                                            <a class="">
+                                                <input type="hidden" name="size" id="getSize" product-id="{{ $productDetail['id']}}" value="S" />
+                                                s
+                                            </a>
+                                            <a class="active">
+                                                <input type="hidden" name="size" id="getSize" product-id="{{ $productDetail['id']}}" value="M" />
+                                                m
+                                            </a>
+                                            <a  class="">
+                                                <input type="hidden" name="size" id="getSize" product-id="{{ $productDetail['id']}}" value="L" />
+                                                l</a>
+                                            <a  class="">
+                                                <input type="hidden" name="size" id="getSize" product-id="{{ $productDetail['id']}}" value="XL" />
+                                                xl
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

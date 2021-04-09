@@ -93,4 +93,6 @@ Route::namespace('Front')->group(function(){
     }
     // product detail route
     Route::get('/product/{code}/{id}', 'ProductController@detail');
+    // product attribute
+    Route::post('/get-size', 'ProductController@getSize');
 });
