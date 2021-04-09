@@ -107,7 +107,11 @@ class ProductController extends Controller
         $productDetail = Product::with( 'category', 'brand', 'attributes', 'images')->find( $id)->toArray();
         //dd($productDetail);
 
-        return view( 'front.products.detail')->with( compact( 'productDetail'));
+        $total_stock = ProductsAttribute::where('product_id', $id)->sum('stock');
+        $relatedProducts = Product::where('category_id', $productDetail['category']['id'])->where('id', '!=', $id)->limit(6)->inRandomOrder()->get()->toArray();
+        //dd($relatedProducts); die;
+
+        return view( 'front.products.detail')->with( compact( 'productDetail', 'relatedProducts'));
     }
 
     public function getSize( Request $request){

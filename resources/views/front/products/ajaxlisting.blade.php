@@ -38,7 +38,7 @@
                 </div>
                 <div class="product-info">
                     <h5 class="product-name product_title">
-                        <a href="#">{{$product['name']}}</a>
+                        <a href="{{ url('/product/'.$product['code'].'/'.$product['id'])}} ">{{$product['name']}}</a>
                     </h5>
                     <div class="group-info">
                         <div class="stars-rating">
