@@ -103,6 +103,36 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if (Session::has('error'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ Session::get('error')}}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>   
+                                @endif
+
+                                @if (Session::has('success'))
+                                    <div class="alert alert-success " role="alert">
+                                        {{ Session::get('success')}}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>   
+                                @endif
+
+                                @if ($errors->any())
+                                    <div class="alert alert-danger " role="alert">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </ul>   
+                                    </div>
+                                @endif
                                 <div class="group-button">
                                     <div class="yith-wcwl-add-to-wishlist">
                                         <div class="yith-wcwl-add-button">
@@ -122,7 +152,7 @@
                                             <div class="quantity">
                                                 <div class="control">
                                                     <a class="btn-number qtyminus quantity-minus" href="#">-</a>
-                                                    <input name="quantity" type="number" data-step="1" data-min="0" value="1" title="Qty" class="input-qty qty" size="4">
+                                                    <input name="quantity" type="text" data-step="1" data-min="0" value="1" title="Qty" class="input-qty qty" size="4">
                                                     <a href="#" class="btn-number qtyplus quantity-plus">+</a>
                                                 </div>
                                             </div>
