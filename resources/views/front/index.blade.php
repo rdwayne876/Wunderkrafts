@@ -29,7 +29,7 @@
                                             </div>
                                         </div>
                                         <div class="thumb-inner">
-                                            <a href="#" tabindex="0">
+                                            <a href="{{ url('/product/'.$product['code'].'/'.$product['id'])}}" tabindex="0">
                                                 <?php 
                                                     $product_image_path ='img/product/small/'.$product['main_image'];
                                                 ?>
@@ -40,11 +40,11 @@
                                                 @endif
                                             </a>
                                         </div>
-                                        <a href="#" class="button quick-wiew-button" tabindex="0">Quick View</a>
+                                        {{--<a href="#" class="button quick-wiew-button" tabindex="0">Quick View</a>--}}
                                     </div>
                                     <div class="product-info">
                                         <h5 class="product-name product_title">
-                                            <a href="#" tabindex="0">{{ $product['name']}}</a>
+                                            <a href="{{ url('/product/'.$product['code'].'/'.$product['id'])}}" tabindex="0">{{ $product['name']}}</a>
                                         </h5>
                                         <div class="group-info">
                                             <div class="stars-rating">
@@ -1491,5 +1491,6 @@
             </div>
         </div>
     </div>
+    
 </div>
 @endsection

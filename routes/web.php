@@ -79,6 +79,9 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
         Route::post('updateBannerStatus', 'BannerController@updateBannerStatus');
         Route::get('banners/delete/{id}', 'BannerController@delete');
         Route::match(['get', 'post'], 'banners/addEditBanner/{id?}', 'BannerController@addEditBanner');
+
+        //Instagram Authentication
+        Route::get('instagram-get-auth', 'InstagramAuthController@show');
     });
 
 });
@@ -95,4 +98,7 @@ Route::namespace('Front')->group(function(){
     Route::get('/product/{code}/{id}', 'ProductController@detail');
     // product attribute
     Route::post('/get-size', 'ProductController@getSize');
+
+    //add to cart
+    Route::post('/add-to-cart', "ProductController@addtocart");
 });

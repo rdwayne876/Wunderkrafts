@@ -125,4 +125,12 @@ class ProductController extends Controller
             return $getProductprice->price;
         }
     }
+
+    public function addtocart( Request $request) {
+        if($request->isMethod('post')){
+            $data = $request->all();
+            echo "<pre>"; print_r($data);die;
+            
+        }
+    }
 }

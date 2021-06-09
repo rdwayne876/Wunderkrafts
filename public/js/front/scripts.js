@@ -102,10 +102,13 @@ $(document).ready(function(){
             type: 'post',
             success: function( resp) {
                 $(".getAttrPrice").html("$"+resp);
+                $('#size').val(size)
             }, error: function() {
                 alert("Error");
             }
         });
+
+        
     });
 
 

@@ -65,7 +65,7 @@
                                     </ul>
                                 </div>
                                 <div class="variations">
-                                    <div class="attribute attribute_color">
+                                    {{--<div class="attribute attribute_color">
                                         <div class="color-text text-attribute">
                                             Color:
                                         </div>
@@ -75,7 +75,7 @@
                                             <a href="#" class="color3 active"></a>
                                             <a href="#" class="color4"></a>
                                         </div>
-                                    </div>
+                                    </div>--}}
                                     <div class="attribute attribute_size">
                                         <div class="size-text text-attribute">
                                             Size:
@@ -114,16 +114,22 @@
                                             <a id="size_chart" href="assets/images/size-chart.jpg" class="fancybox">View Size Chart</a>
                                         </div>
                                     </div>
-                                    <div class="quantity-add-to-cart">
-                                        <div class="quantity">
-                                            <div class="control">
-                                                <a class="btn-number qtyminus quantity-minus" href="#">-</a>
-                                                <input type="text" data-step="1" data-min="0" value="1" title="Qty" class="input-qty qty" size="4">
-                                                <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                    
+                                    <form action="{{ url('add-to-cart')}}" method="post">@csrf
+                                        <input type="hidden" name="product_id" value="{{ $productDetail['id']}}">
+                                        <input type="hidden" id="size" name="size">
+                                        <div class="quantity-add-to-cart">
+                                            <div class="quantity">
+                                                <div class="control">
+                                                    <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                                                    <input name="quantity" type="number" data-step="1" data-min="0" value="1" title="Qty" class="input-qty qty" size="4">
+                                                    <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                                </div>
                                             </div>
+                                            <button type="submit" class="single_add_to_cart_button button">Add to cart</button>
                                         </div>
-                                        <button class="single_add_to_cart_button button">Add to cart</button>
-                                    </div>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>
