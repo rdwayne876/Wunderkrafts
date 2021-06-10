@@ -1,3 +1,5 @@
+<?php use App\Cart; ?>
+
 @extends('layouts.front.front_layout')
 @section('content')
     <main class="site-main  main-container no-sidebar">
@@ -38,7 +40,10 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+
+                                    <?php $totalPrice = 0 ?>
                                     @foreach($userCartItems as $item)
+                                        <?php $attrPrice = Cart::getProductAtrrPrice( $item['product_id'], $item['size']); ?>
                                         <tr class="cart_item">
                                             <td class="product-remove">
                                                 <a href="#" class="remove"></a>
@@ -69,10 +74,11 @@
                                                             <span class="woocommerce-Price-currencySymbol">
                                                                 $
                                                             </span>
-                                                            45
+                                                            {{$attrPrice}}
                                                         </span>
                                             </td>
                                         </tr>
+                                        <?php $totalPrice = $totalPrice + ( $attrPrice * $item['quantity']); ?>
                                     @endforeach
                                     <tr>
                                         <td class="actions">
@@ -86,7 +92,7 @@
 															Total Price:
 														</span>
                                                 <span class="total-price">
-															$95
+															${{$totalPrice}}
 														</span>
                                             </div>
                                         </td>
