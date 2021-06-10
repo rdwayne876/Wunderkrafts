@@ -188,6 +188,9 @@ class ProductController extends Controller
     }
 
     public function cart( Request $request) {
-        return view('front.products.cart');
+        $userCartItems = Cart::userCartItems();
+        //echo "<pre>"; print_r($userCartItems);die;
+
+        return view('front.products.cart')->with(compact('userCartItems'));
     }
 }
