@@ -101,8 +101,14 @@ $(document).ready(function(){
             data:{ size:size, product_id:product_id},
             type: 'post',
             success: function( resp) {
-                $(".getAttrPrice").html("$"+resp);
-                $('#size').val(size)
+                if(resp['discounted_price']>0) {
+                    $(".getAttrPrice").html("<del>$"+resp['product_price']+"</del> $"+resp['discounted_price']);
+                    $('#size').val(size)
+                }else {
+                    $(".getAttrPrice").html("$"+resp['product_price']);
+                    $('#size').val(size)
+                }
+
             }, error: function() {
                 alert("Error");
             }

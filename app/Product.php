@@ -51,4 +51,23 @@ class Product extends Model
 
         return $discountedPrice;
     }
+
+    public static function getDiscountedAttrPrice($product_id, $size) {
+        $proAttrPrice = ProductsAttribute::where(['product_id'=>$product_id, 'size'=>$size])->first()->toArray();
+
+        $proDetails = Product::select('category_id', 'discount')->where('id', $product_id)->first()->toArray();
+        //echo "<pre>";print_r($proDetails); die;
+        $catDetails = Category::select('category_discount')->where('id', $proDetails['category_id'])->first()->toArray();
+
+        if($proDetails['discount']>0){
+            $discountedPrice = $proAttrPrice['price'] - ($proAttrPrice['price']*$proDetails['discount']/100);
+        } else if( $catDetails['category_discount']>0) {
+            $discountedPrice = $proAttrPrice['price'] - ($proAttrPrice['price']*$catDetails['category_discount']/100);
+        } else {
+            $discountedPrice = 0;
+        }
+
+        return array('product_price'=>$proAttrPrice['price'], 'discounted_price'=>$discountedPrice);
+
+    }
 }
