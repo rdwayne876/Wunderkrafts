@@ -35,4 +35,20 @@ class Product extends Model
 
         return $productFilters;
     }
+
+    public static function getDiscountedPrice($product_id) {
+        $proDetails = Product::select('category_id','price', 'discount')->where('id', $product_id)->first()->toArray();
+        //echo "<pre>";print_r($proDetails); die;
+        $catDetails = Category::select('category_discount')->where('id', $proDetails['category_id'])->first()->toArray();
+
+        if($proDetails['discount']>0){
+            $discountedPrice = $proDetails['price'] - ($proDetails['price']*$proDetails['discount']/100);
+        } else if( $catDetails['category_discount']>0) {
+            $discountedPrice = $proDetails['price'] - ($proDetails['price']*$catDetails['category_discount']/100);
+        } else {
+            $discountedPrice = 0;
+        }
+
+        return $discountedPrice;
+    }
 }

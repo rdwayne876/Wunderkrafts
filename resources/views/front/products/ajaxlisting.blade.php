@@ -1,3 +1,4 @@
+<?php use App\Product; ?>
 <ul class="row list-products auto-clear equal-container product-grid">
     @foreach($categoryProducts as $product)
         <li class="product-item product-type-variable col-lg-4 col-md-6 col-sm-6 col-xs-6 col-ts-12 style-1">
@@ -49,10 +50,20 @@
                                 (3)
                             </div>
                         </div>
+                        <?php $discountedPrice = Product::getDiscountedPrice($product['id']) ?>
                         <div class="price">
-                            <ins>
-                                ${{$product['price']}}
-                            </ins>
+                            @if($discountedPrice>0)
+                                <del>
+                                    ${{$product['price']}}
+                                </del>
+                                <ins>
+                                    ${{$discountedPrice}}
+                                </ins>
+                            @else
+                                <ins>
+                                    ${{$product['price']}}
+                                </ins>
+                            @endif
                         </div>
                     </div>
                 </div>

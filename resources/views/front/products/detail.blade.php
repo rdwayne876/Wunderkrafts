@@ -1,3 +1,5 @@
+<?php use App\Product; ?>
+
 @extends('layouts.front.front_layout')
 @section('content')
     <div class="main-content main-content-details single right-sidebar">
@@ -55,7 +57,12 @@
                                     <a href="#">in Stock</a>
                                 </div>
                                 <div class="price">
-                                    <span class="getAttrPrice">${{ $productDetail['price']}}</span>
+                                    <?php $discountedPrice = Product::getDiscountedPrice($productDetail['id']) ?>
+                                    @if($discountedPrice>0)
+                                        <span class="getAttrPrice">${{ $discountedPrice}}</span>
+                                    @else
+                                        <span class="getAttrPrice">${{ $productDetail['price']}}</span>
+                                    @endif    
                                 </div>
                                 <div class="product-details-description">
                                     <ul>
