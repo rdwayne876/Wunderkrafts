@@ -1,3 +1,4 @@
+<?php use App\Product; ?>
 @extends('layouts.front.front_layout')
 @section('content')
 <div class="main-content">
@@ -55,8 +56,20 @@
                                                     (3)
                                                 </div>
                                             </div>
+                                            <?php $discountedPrice = Product::getDiscountedPrice($product['id']) ?>
                                             <div class="price">
-                                                <span>${{ $product['price']}}</span>
+                                                @if($discountedPrice>0)
+                                                    <del>
+                                                        ${{$product['price']}}
+                                                    </del>
+                                                    <ins>
+                                                        ${{$discountedPrice}}
+                                                    </ins>
+                                                @else
+                                                    <ins>
+                                                        ${{$product['price']}}
+                                                    </ins>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="group-buttons">
@@ -685,13 +698,20 @@
                                                         (3)
                                                     </div>
                                                 </div>
+                                                <?php $discountedPrice = Product::getDiscountedPrice($product['id']) ?>
                                                 <div class="price">
-                                                    <del>
-                                                        $65
-                                                    </del>
-                                                    <ins>
-                                                        ${{$product['price']}}
-                                                    </ins>
+                                                    @if($discountedPrice>0)
+                                                        <del>
+                                                            ${{$product['price']}}
+                                                        </del>
+                                                        <ins>
+                                                            ${{$discountedPrice}}
+                                                        </ins>
+                                                    @else
+                                                        <ins>
+                                                            ${{$product['price']}}
+                                                        </ins>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
