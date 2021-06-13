@@ -61,13 +61,16 @@ class Product extends Model
 
         if($proDetails['discount']>0){
             $discountedPrice = $proAttrPrice['price'] - ($proAttrPrice['price']*$proDetails['discount']/100);
+            $discount = $proAttrPrice['price'] - $discountedPrice;
         } else if( $catDetails['category_discount']>0) {
             $discountedPrice = $proAttrPrice['price'] - ($proAttrPrice['price']*$catDetails['category_discount']/100);
+            $discount = $proAttrPrice['price'] - $discountedPrice;
         } else {
             $discountedPrice = 0;
+            $discount = 0;
         }
 
-        return array('product_price'=>$proAttrPrice['price'], 'discounted_price'=>$discountedPrice);
+        return array('product_price'=>$proAttrPrice['price'], 'discounted_price'=>$discountedPrice, 'discount'=>$discountedPrice);
 
     }
 }

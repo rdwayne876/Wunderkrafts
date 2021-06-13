@@ -1,4 +1,4 @@
-<?php use App\Cart; ?>
+<?php use App\Product; ?>
 
 @extends('layouts.front.front_layout')
 @section('content')
@@ -43,7 +43,7 @@
 
                                     <?php $totalPrice = 0 ?>
                                     @foreach($userCartItems as $item)
-                                        <?php $attrPrice = Cart::getProductAtrrPrice( $item['product_id'], $item['size']); ?>
+                                        <?php $attrPrice = Product::getDiscountedAttrPrice( $item['product_id'], $item['size']); ?>
                                         <tr class="cart_item">
                                             <td class="product-remove">
                                                 <a href="#" class="remove"></a>
@@ -74,11 +74,21 @@
                                                             <span class="woocommerce-Price-currencySymbol">
                                                                 $
                                                             </span>
-                                                            {{$attrPrice}}
+                                                            @if($attrPrice['discounted_price']>0)
+                                                                {{$attrPrice['discounted_price']}}
+                                                            @else
+                                                                {{$attrPrice['product_price']}}
+                                                            @endif
                                                         </span>
                                             </td>
                                         </tr>
-                                        <?php $totalPrice = $totalPrice + ( $attrPrice * $item['quantity']); ?>
+                                        <?php
+                                            if($attrPrice['discounted_price']>0) {
+                                                $totalPrice = $totalPrice + ( $attrPrice['discounted_price'] * $item['quantity']);
+                                            } else {
+                                                $totalPrice = $totalPrice + ( $attrPrice['product_price'] * $item['quantity']);
+                                            }
+                                        ?>
                                     @endforeach
                                     <tr>
                                         <td class="actions">
