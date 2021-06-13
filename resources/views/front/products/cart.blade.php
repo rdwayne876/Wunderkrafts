@@ -25,7 +25,10 @@
                     </h3>
                     <div class="page-main-content">
                         <div class="shoppingcart-content">
-                            @include('front.products.cartItems')
+                            <div id="AppendCartItems">
+                                @include('front.products.cartItems')
+                            </div>
+                            
                             <div class="control-cart">
                                 <button class="button btn-continue-shopping">
                                     Continue Shopping

@@ -99,9 +99,10 @@ Route::namespace('Front')->group(function(){
     // product attribute
     Route::post('/get-size', 'ProductController@getSize');
 
-    //add to cart
-    Route::post('/add-to-cart', "ProductController@addtocart");
-
     //Shopping Cart
     Route::get('/cart','ProductController@cart');
+    //add to cart
+    Route::post('/add-to-cart', "ProductController@addtocart");
+    //Update cart qty
+    Route::post('/updateCartItemQty', "ProductController@UpdateCartItemQty");
 });

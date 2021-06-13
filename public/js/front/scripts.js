@@ -118,15 +118,19 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.btnItemUpdate', function(){
-        if($(this).hasClass('qtyminus')){
-            var quantity = $("#qty").val();
-            return false;
-        }
-        if($(this).hasClass('qtyplus')){
-            var quantity = $("#qty").val();
-            return false;
-        }
 
+        var cartid = $(this).data('cartid');
+        var quantity = $("#qty").val();
+        $.ajax({
+            data:{"cartid":cartid, "qty":quantity},
+            url:'/updateCartItemQty',
+            type:'post',
+            success:function(resp){
+                $("#AppendCartItems").html(resp.view);
+            }, error:function(){
+                alert("Error");
+            }
+        });
     });
 
 });
