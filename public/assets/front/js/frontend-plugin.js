@@ -550,9 +550,9 @@ jQuery(document).ready(function ($) {
             min = parseFloat($qty.attr('min')),
             step = $qty.attr('step');
         // Format values
-        if (!currentVal || currentVal === '' || currentVal === 'NaN') currentVal = 0;
+        if (!currentVal || currentVal === '' || currentVal === 'NaN') currentVal = 1;
         if (max === '' || max === 'NaN') max = '';
-        if (min === '' || min === 'NaN') min = 0;
+        if (min === '' || min === 'NaN') min = 1;
         if (step === 'any' || step === '' || step === undefined || parseFloat(step) === 'NaN') step = 1;
         // Change the value
         if ($(this).is('.quantity-plus')) {
@@ -564,7 +564,7 @@ jQuery(document).ready(function ($) {
         } else {
             if (min && ( min == currentVal || currentVal < min )) {
                 $qty.val(min);
-            } else if (currentVal > 0) {
+            } else if (currentVal > 1) {
                 $qty.val(currentVal - parseFloat(step));
             }
         }

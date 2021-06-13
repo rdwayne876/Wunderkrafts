@@ -117,5 +117,16 @@ $(document).ready(function(){
         
     });
 
+    $(document).on('click', '.btnItemUpdate', function(){
+        if($(this).hasClass('qtyminus')){
+            var quantity = $("#qty").val();
+            return false;
+        }
+        if($(this).hasClass('qtyplus')){
+            var quantity = $("#qty").val();
+            return false;
+        }
+
+    });
 
 });
