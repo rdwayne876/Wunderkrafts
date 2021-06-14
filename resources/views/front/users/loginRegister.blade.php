@@ -27,7 +27,7 @@
 								<div class="col-lg-6 col-md-6 col-sm-12">
 									<div class="login-item">
 										<h5 class="title-login">Login your Account</h5>
-										<form class="login">
+										<form class="login" action="{{ url('/login')}}" method="post">
 											<div class="social-account">
 												<h6 class="title-social">Login with social account</h6>
 												<a href="#" class="mxh-item facebook">
@@ -40,12 +40,12 @@
 												</a>
 											</div>
 											<p class="form-row form-row-wide">
-												<label class="text">Username</label>
-												<input title="username" type="text" class="input-text">
+												<label class="text" for="username">Username</label>
+												<input name="username" id="username" title="username" type="text" class="input-text">
 											</p>
 											<p class="form-row form-row-wide">
-												<label class="text">Password</label>
-												<input title="password" type="password" class="input-text">
+												<label for="password" class="text">Password</label>
+												<input id="password" name="password" title="password" type="password" class="input-text">
 											</p>
 											<p class="lost_password">
 												<span class="inline">
@@ -63,18 +63,22 @@
 								<div class="col-lg-6 col-md-6 col-sm-12">
 									<div class="login-item">
 										<h5 class="title-login">Register now</h5>
-										<form class="register">
+										<form class="register" action="{{ url('/register')}}" method="post">@csrf
 											<p class="form-row form-row-wide">
-												<label class="text">Your email</label>
-												<input title="email" type="email" class="input-text">
+												<label for="email" class="text">Your email</label>
+												<input id="email" name="email" title="email" type="email" class="input-text">
+											</p>
+                                            <p class="form-row form-row-wide">
+												<label for="phone" class="text">Phone</label>
+												<input id="phone" name="phone" title="phone" type="text" class="input-text">
 											</p>
 											<p class="form-row form-row-wide">
-												<label class="text">Username</label>
-												<input title="name" type="text" class="input-text">
+												<label for="username" class="text">Username</label>
+												<input id="username" name="username" title="name" type="text" class="input-text">
 											</p>
 											<p class="form-row form-row-wide">
-												<label class="text">Password</label>
-												<input title="pass" type="password" class="input-text">
+												<label for="password" class="text">Password</label>
+												<input id="password" name="password" title="pass" type="password" class="input-text">
 											</p>
 											<p class="form-row">
 												<span class="inline">

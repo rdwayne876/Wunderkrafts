@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 use App\Category;
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -111,5 +111,5 @@ Route::namespace('Front')->group(function(){
     //login/register page
     Route::get('/login-register', 'UsersController@loginRegister');
     Route::post('/login', 'UsersController@loginUser');
-    Route::post('/register', 'UsersController@register');
+    Route::post('/register', 'UsersController@registerUser');
 });
