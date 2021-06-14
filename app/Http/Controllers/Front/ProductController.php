@@ -199,12 +199,24 @@ class ProductController extends Controller
         if($request->ajax()){
             $data = $request->all();
             //echo "<pre>"; print_r($data);die;
+            $cartDetails = Cart::find($data['cartid']);
+
+            $availableStock = ProductsAttribute::select('stock')->where(['product_id'=>$cartDetails['product_id'], 'size'=>$cartDetails['size']])->first();
+
+            if($data['qty']>$availableStock['stock']){
+                return response()->json([
+                    'status'=>false,
+                    'view'=>(String)View::make('front.products.cart_items')->with(compact('userCartItems'))
+                ]);
+            }
 
             Cart::where('id', $data['cartid'])->update(['quantity'=>$data['qty']]);
             $userCartItems = Cart::userCartItems();
 
-            return response()->json(['view'=>(String)View::make('front.products.cartItems')
-                ->with(compact('userCartItems'))]);
+            return response()->json([
+                'status'=>true,
+                'view'=>(String)View::make('front.products.cartItems')->with(compact('userCartItems'))
+            ]);
         }
     }
 }

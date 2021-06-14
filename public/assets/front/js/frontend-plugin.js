@@ -550,6 +550,9 @@ jQuery(document).ready(function ($) {
             min = parseFloat($qty.attr('min')),
             step = $qty.attr('step');
         // Format values
+
+        max = $("#qty").data('max');
+        
         if (!currentVal || currentVal === '' || currentVal === 'NaN') currentVal = 1;
         if (max === '' || max === 'NaN') max = '';
         if (min === '' || min === 'NaN') min = 1;
@@ -558,6 +561,7 @@ jQuery(document).ready(function ($) {
         if ($(this).is('.quantity-plus')) {
             if (max && ( max == currentVal || currentVal > max )) {
                 $qty.val(max);
+                alert("Requested Stock is unavailable");
             } else {
                 $qty.val(currentVal + parseFloat(step));
             }

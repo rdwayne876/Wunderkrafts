@@ -36,4 +36,11 @@ class Cart extends Model
 
         return $attrPrice['price'];
     }
+
+    public static function getAvailableStock($product_id, $size) {
+
+        $availableStock = ProductsAttribute::select('stock')->where(['product_id'=>$product_id, 'size'=>$size])->first()->toArray();
+
+        return $availableStock['stock'];
+    }
 }

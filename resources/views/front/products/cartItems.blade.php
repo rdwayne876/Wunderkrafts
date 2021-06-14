@@ -1,4 +1,7 @@
-<?php use App\Product; ?>
+<?php use App\Product; 
+      use App\Cart;
+?>
+
 
 <form  action="shoppingcart.html" class="cart-form">
     <table class="shop_table">
@@ -16,7 +19,9 @@
 
         <?php $totalPrice = 0 ?>
         @foreach($userCartItems as $item)
-            <?php $attrPrice = Product::getDiscountedAttrPrice( $item['product_id'], $item['size']); ?>
+            <?php   $attrPrice = Product::getDiscountedAttrPrice( $item['product_id'], $item['size']); 
+                    $availableStock = Cart::getAvailableStock($item['product_id'], $item['size']);
+            ?>
             <tr class="cart_item">
                 <td class="product-remove">
                     <a href="#" class="remove"></a>
@@ -36,7 +41,7 @@
                     <div class="quantity">
                         <div class="control">
                             <a class="btn-number btnItemUpdate qtyminus quantity-minus" href="#" data-cartid="{{$item['id']}}">-</a>
-                            <input id="qty" name="quantity" type="text" data-step="1" data-min="1" value="{{$item['quantity']}}" title="Qty"
+                            <input id="qty" name="quantity" type="text" data-step="1" data-min="1" data-max="{{$availableStock}}" value="{{$item['quantity']}}" title="Qty"
                                 class="input-qty qty" size="4">
                             <a href="#" class="btn-number btnItemUpdate qtyplus quantity-plus" data-cartid="{{$item['id']}}">+</a>
                         </div>

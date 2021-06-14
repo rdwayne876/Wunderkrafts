@@ -126,6 +126,9 @@ $(document).ready(function(){
             url:'/updateCartItemQty',
             type:'post',
             success:function(resp){
+                if(resp.status==false){
+                    alert("Product Stock is not available");
+                }
                 $("#AppendCartItems").html(resp.view);
             }, error:function(){
                 alert("Error");
