@@ -136,4 +136,22 @@ $(document).ready(function(){
         });
     });
 
+    $(document).on('click', '.itemDelete', function(){
+
+        var cartid = $(this).data('cartid');
+        var result = confirm("Are you sure you want to delete this Item?")
+        if(result){
+            $.ajax({
+                data:{"cartid":cartid},
+                url:'/deleteCartItem',
+                type:'post',
+                success:function(resp){
+                    $("#AppendCartItems").html(resp.view);
+                }, error:function(){
+                    alert("Error");
+                }
+            });
+        }
+    });
+
 });

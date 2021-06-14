@@ -24,7 +24,7 @@
             ?>
             <tr class="cart_item">
                 <td class="product-remove">
-                    <a href="#" class="remove"></a>
+                    <a href="#" class="remove itemDelete" data-cartid="{{$item['id']}}"></a>
                 </td>
                 <td class="product-thumbnail">
                     <a href="#">
