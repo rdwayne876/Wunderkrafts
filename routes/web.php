@@ -112,4 +112,7 @@ Route::namespace('Front')->group(function(){
     Route::get('/login-register', 'UsersController@loginRegister');
     Route::post('/login', 'UsersController@loginUser');
     Route::post('/register', 'UsersController@registerUser');
+
+    //logout
+    Route::post('/logout', 'UsersController@logoutUser');
 });

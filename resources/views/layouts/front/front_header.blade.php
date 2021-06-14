@@ -41,7 +41,11 @@ $sections = Section::sections();
                 </div>
                 <ul class="header-user-links">
                     <li>
-                        <a href="login.html">Login or Register</a>
+                        @if(Auth::check())
+                            <a href="{{ url('account')}}">My Account</a>
+                        @else
+                            <a href="{{ url('login-register')}}">Login or Register</a>
+                        @endif
                     </li>
                 </ul>
             </div>
