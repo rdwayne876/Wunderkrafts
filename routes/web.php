@@ -107,4 +107,9 @@ Route::namespace('Front')->group(function(){
     Route::post('/updateCartItemQty', "ProductController@updateCartItemQty");
     //delete cart item
     Route::post('/deleteCartItem', "ProductController@deleteCartItem");
+
+    //login/register page
+    Route::get('/login-register', 'UsersController@loginRegister');
+    Route::post('/login', 'UsersController@loginUser');
+    Route::post('/register', 'UsersController@register');
 });
