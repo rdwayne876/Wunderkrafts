@@ -63,7 +63,28 @@
 								<div class="col-lg-6 col-md-6 col-sm-12">
 									<div class="login-item">
 										<h5 class="title-login">Register now</h5>
-										<form class="register" action="{{ url('/register')}}" method="post">@csrf
+										@if (Session::has('error'))
+											<div class="alert alert-danger" role="alert">
+												{{ Session::get('error')}}
+												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>   
+										@endif
+
+										@if (Session::has('success'))
+											<div class="alert alert-success " role="alert">
+												{{ Session::get('success')}}
+												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>   
+										@endif
+										<form id="registerForm" class="register" action="{{ url('/register')}}" method="post">@csrf
+											<p class="form-row form-row-wide">
+												<label for="name" class="text">Your name</label>
+												<input id="name" name="name" title="name" type="text" class="input-text">
+											</p>
 											<p class="form-row form-row-wide">
 												<label for="email" class="text">Your email</label>
 												<input id="email" name="email" title="email" type="email" class="input-text">
@@ -73,17 +94,17 @@
 												<input id="phone" name="phone" title="phone" type="text" class="input-text">
 											</p>
 											<p class="form-row form-row-wide">
-												<label for="username" class="text">Username</label>
-												<input id="username" name="username" title="name" type="text" class="input-text">
+												<label for="registerPassword" class="text">Password</label>
+												<input id="registerPassword" name="registerPassword" title="pass" type="password" class="input-text">
 											</p>
 											<p class="form-row form-row-wide">
-												<label for="password" class="text">Password</label>
-												<input id="password" name="password" title="pass" type="password" class="input-text">
+												<label for="confirmPassword" class="text">Confirm Password</label>
+												<input id="confirmPassword" name="confirmPassword" title="pass" type="password" class="input-text">
 											</p>
 											<p class="form-row">
 												<span class="inline">
-													<input type="checkbox" id="cb2">
-													<label for="cb2" class="label-text">I agree to <span>Terms & Conditions</span></label>
+													<input  type="checkbox" id="registerAgree" name="registerAgree">
+													<label for="registerAgree" class="label-text">I agree to <span>Terms & Conditions</span></label>
 												</span>
 											</p>
 											<p class="">

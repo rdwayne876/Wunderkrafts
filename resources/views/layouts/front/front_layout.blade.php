@@ -46,6 +46,7 @@
         @include('layouts.front.front_footer')
 
 <script src="{{ asset('assets/front/js/jquery-1.12.4.min.js')}}"></script>
+<script src="{{ asset('assets/front/js/jquery.validate.js')}}"></script>
 <script src="{{ asset('assets/front/js/jquery.plugin-countdown.min.js')}}"></script>
 <script src="{{ asset('assets/front/js/jquery-countdown.min.js')}}"></script>
 <script src="{{ asset('assets/front/js/bootstrap.min.js')}}"></script>

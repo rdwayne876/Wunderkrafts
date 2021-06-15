@@ -29,17 +29,28 @@ class UsersController extends Controller
                 return redirect()->back();
             } else {
                 $user = new User;
-                $user->name = $data['username'];
+                $user->name = $data['name'];
                 $user->mobile = $data['phone'];
                 $user->email = $data['email'];
-                $user->password = bcrypt($data['password']);
+                $user->password = bcrypt($data['registerPassword']);
                 $user->save();
 
-                if(Auth::attempt(['email'=>$data['email'], 'password'=>$data['password']])){
+                if(Auth::attempt(['email'=>$data['email'], 'password'=>$data['registerPassword']])){
                     echo "<pre>"; print_r(Auth::user()); die;
                     return redirect('/');
                 }
             }
+        }
+    }
+
+    public function checkEmail(Request $request){
+        $data = $request->all();
+        $emailCount = User::where('email', $data['email'])->count();
+        
+        if($emailCount>0){
+            return "false";
+        } else {
+            return "true";
         }
     }
 

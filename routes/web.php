@@ -110,6 +110,8 @@ Route::namespace('Front')->group(function(){
 
     //login/register page
     Route::get('/login-register', 'UsersController@loginRegister');
+    //check email
+    Route::match(['get','post'], '/check-email', 'UsersController@checkEmail');
     Route::post('/login', 'UsersController@loginUser');
     Route::post('/register', 'UsersController@registerUser');
 

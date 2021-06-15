@@ -154,4 +154,55 @@ $(document).ready(function(){
         }
     });
 
+    $("#registerForm").validate({
+        rules: {
+            name: "required",
+            email: {
+                required: true,
+                email: true,
+                remote: "check-email"
+            },
+            phone: {
+                required: true,
+                minlength: 10,
+                maxlength: 10,
+                digits:true
+            },
+            registerPassword: {
+                required: true,
+                minlength: 8
+            },
+            confirmPassword: {
+                required: true,
+                minlength: 8,
+                equalTo: "#registerPassword"
+            },
+            registerAgree: "required"
+        },
+        messages: {
+            name: "Please enter your Firstname and Lastname",
+            email: { 
+                email: "Please enter a valid email address",
+                required: "Please enter your email address",
+                remote: "Email already in use"
+             },
+            phone: {
+                required: "Please provide a phone number",
+                minlength: "Phone must be 10 digits",
+                maxlength: "Phone must be 10 digits",
+                digits: "Please enter a valid phone number"
+            },
+            registerPassword: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 8 characters long"
+            },
+            confirmPassword: {
+                required: "Please confirm your password",
+                minlength: "Your password must be at least 8 characters long",
+                equalTo: "Please enter the same password as above"
+            }, 
+            registerAgree: "Please accept our policy",
+        }
+    });
+
 });
