@@ -205,4 +205,27 @@ $(document).ready(function(){
         }
     });
 
+    $("#registerForm").validate({
+        rules: {
+            email: {
+                required: true,
+                email: true,
+            },
+            password: {
+                required: true,
+                minlength: 8
+            }
+        },
+        messages: {
+            email: { 
+                email: "Please enter your email address",
+                required: "Please enter your email address",
+             },
+
+            password: {
+                required: "Please enter password",
+            },
+        }
+    });
+
 });

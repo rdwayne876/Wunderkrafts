@@ -36,7 +36,7 @@ class UsersController extends Controller
                 $user->save();
 
                 if(Auth::attempt(['email'=>$data['email'], 'password'=>$data['registerPassword']])){
-                    echo "<pre>"; print_r(Auth::user()); die;
+                    //echo "<pre>"; print_r(Auth::user()); die;
                     return redirect('/');
                 }
             }
@@ -51,6 +51,21 @@ class UsersController extends Controller
             return "false";
         } else {
             return "true";
+        }
+    }
+
+    public function loginUser(Request $request){
+        if($request->isMethod('post')){
+            $data = $request->all();
+            //echo "<pre>"; print_r($data); die;
+
+            if(Auth::attempt(['email'=>$data['username'], 'password'=>$data['password']])){
+                return redirect('/');
+            } else {
+                $message = "Invalid username or password";
+                Session::flash('error', $message);
+                return redirect()->back();
+            }
         }
     }
 

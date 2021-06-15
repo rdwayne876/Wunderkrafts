@@ -24,10 +24,27 @@
 						</h3>
 						<div class="customer_login">
 							<div class="row">
+								@if (Session::has('error'))
+									<div class="alert alert-danger" role="alert">
+										{{ Session::get('error')}}
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>   
+								@endif
+
+								@if (Session::has('success'))
+									<div class="alert alert-success " role="alert">
+										{{ Session::get('success')}}
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>   
+								@endif`
 								<div class="col-lg-6 col-md-6 col-sm-12">
 									<div class="login-item">
 										<h5 class="title-login">Login your Account</h5>
-										<form class="login" action="{{ url('/login')}}" method="post">
+										<form class="login" action="{{ url('/login')}}" method="post">@csrf
 											<div class="social-account">
 												<h6 class="title-social">Login with social account</h6>
 												<a href="#" class="mxh-item facebook">
@@ -63,23 +80,7 @@
 								<div class="col-lg-6 col-md-6 col-sm-12">
 									<div class="login-item">
 										<h5 class="title-login">Register now</h5>
-										@if (Session::has('error'))
-											<div class="alert alert-danger" role="alert">
-												{{ Session::get('error')}}
-												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
-											</div>   
-										@endif
-
-										@if (Session::has('success'))
-											<div class="alert alert-success " role="alert">
-												{{ Session::get('success')}}
-												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
-											</div>   
-										@endif
+										
 										<form id="registerForm" class="register" action="{{ url('/register')}}" method="post">@csrf
 											<p class="form-row form-row-wide">
 												<label for="name" class="text">Your name</label>
@@ -114,7 +115,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						-</div>
 					</div>
 				</div>
 			</div>
