@@ -111,12 +111,18 @@ $sections = Section::sections();
                             <div class="header-account ysera-submenu">
                                 <div class="header-user-form-tabs">
                                     <ul class="tab-link">
-                                        <li class="active">
-                                            <a data-toggle="tab" aria-expanded="true" href="#header-tab-login">Login</a>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="tab" aria-expanded="true" href="#header-tab-rigister">Register</a>
-                                        </li>
+                                        @if(Auth::check())
+                                            <li class="active">
+                                                <a aria-expanded="true" href="{{ url('logout')}}">Sign Out</a>
+                                            </li>
+                                        @else 
+                                            <li class="active">
+                                                <a data-toggle="tab" aria-expanded="true" href="#header-tab-login">Login</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" aria-expanded="true" href="#header-tab-rigister">Register</a>
+                                            </li>
+                                        @endif
                                     </ul>
                                     <div class="tab-container">
                                         <div id="header-tab-login" class="tab-panel active">
@@ -225,7 +231,7 @@ $sections = Section::sections();
                     <div class="container-wapper">
                         <ul class="ysera-clone-mobile-menu ysera-nav main-menu " id="menu-main-menu">
                             <li class="menu-item">
-                                <a href="#" class="ysera-menu-item-title" title="Home">Home</a>
+                                <a href="{{ url('/')}}" class="ysera-menu-item-title" title="Home">Home</a>
                             </li>
                             <li class="menu-item  menu-item-has-children item-megamenu">
                                 <a href="#" class="ysera-menu-item-title" title="Shop">Shop</a>
