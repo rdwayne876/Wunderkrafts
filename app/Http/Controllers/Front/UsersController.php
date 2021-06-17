@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\User;
 use App\Cart;
 use Session;
@@ -43,6 +44,13 @@ class UsersController extends Controller
                         $session_id = Session::get('session_id');
                         Cart::where('session_id', $session_id)->update(['user_id'=>$user_id]);
                     }
+
+                    //send register email
+                    $email = $data['email'];
+                    $messageData = ['name'=>$data['name'], 'phone'=>$data['phone'],'email'=>$data['email']];
+                    Mail::send('emails.register', $messageData, function($message) use($email){
+                        $message->to($email)->subject('Welcome to WunderKrafts!');
+                    });
                     
                     return redirect('/');
                 }
