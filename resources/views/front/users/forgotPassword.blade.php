@@ -10,7 +10,7 @@
 								<a href="index.html">Home</a>
 							</li>
 							<li class="trail-item trail-end active">
-								Authentication
+								Password Reset
 							</li>
 						</ul>
 					</div>
@@ -20,7 +20,7 @@
 				<div class="content-area col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="site-main">
 						<h3 class="custom_blog_title">
-							Authentication
+							Forgot Password?
 						</h3>
 						<div class="customer_login">
 							<div class="row">
@@ -43,7 +43,21 @@
 								@endif
 								<div class="col-lg-6 col-md-6 col-sm-12">
 									<div class="login-item">
-										<h5 class="title-login">Login your Account</h5>
+										<h5 class="title-login">Enter your email address to reset your Password</h5>
+										<form id="forgotPasswordForm" class="login" action="{{ url('/forgot-password')}}" method="post">@csrf
+											<p class="form-row form-row-wide">
+												<label class="text" for="username">Email</label>
+												<input name="username" id="username" title="username" type="text" class="input-text" required="">
+											</p>
+											<p class="form-row">
+												<input type="submit" class="button-submit" value="Submit">
+											</p>
+										</form>
+									</div>
+								</div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+									<div class="login-item">
+										<h5 class="title-login">Login</h5>
 										<form class="login" action="{{ url('/login')}}" method="post">@csrf
 											<div class="social-account">
 												<h6 class="title-social">Login with social account</h6>
@@ -77,44 +91,8 @@
 										</form>
 									</div>
 								</div>
-								<div class="col-lg-6 col-md-6 col-sm-12">
-									<div class="login-item">
-										<h5 class="title-login">Register now</h5>
-										<form id="registerForm" class="register" action="{{ url('/register')}}" method="post">@csrf
-											<p class="form-row form-row-wide">
-												<label for="name" class="text">Your name</label>
-												<input id="name" name="name" title="name" type="text" class="input-text">
-											</p>
-											<p class="form-row form-row-wide">
-												<label for="email" class="text">Your email</label>
-												<input id="email" name="email" title="email" type="email" class="input-text">
-											</p>
-                                            <p class="form-row form-row-wide">
-												<label for="phone" class="text">Phone</label>
-												<input id="phone" name="phone" title="phone" type="text" class="input-text">
-											</p>
-											<p class="form-row form-row-wide">
-												<label for="registerPassword" class="text">Password</label>
-												<input id="registerPassword" name="registerPassword" title="pass" type="password" class="input-text">
-											</p>
-											<p class="form-row form-row-wide">
-												<label for="confirmPassword" class="text">Confirm Password</label>
-												<input id="confirmPassword" name="confirmPassword" title="pass" type="password" class="input-text">
-											</p>
-											<p class="form-row">
-												<span class="inline">
-													<input  type="checkbox" id="registerAgree" name="registerAgree">
-													<label for="registerAgree" class="label-text">I agree to <span>Terms & Conditions</span></label>
-												</span>
-											</p>
-											<p class="">
-												<input type="submit" class="button-submit" value="Register Now">
-											</p>
-										</form>
-									</div>
-								</div>
 							</div>
-						</div>
+						-</div>
 					</div>
 				</div>
 			</div>

@@ -151,4 +151,45 @@ class UsersController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+    public function forgotPassword(Request $request){
+
+        if($request->isMethod('POST')){
+            $data = $request->all();
+            //echo "<pre>"; print_r($data); die;
+
+            $emailCount = User::where('email', $data['username'])->count();
+            if($emailCount == 0){
+                $message = "Email address not found";
+                Session::flash('error', $message);
+                Session::forget('success');
+
+                return redirect()->back();
+            }
+
+            $randomPassword = str_random(8);
+            $newPassword = bcrypt($randomPassword);
+
+            User::where('email', $data['username'])->update(['password'=>$newPassword]);
+
+            $userName = User::Select('name')->where('email', $data['username'])->first();
+            $email = $data['username'];
+            $name = $userName->name;
+            $messageData = [
+                'email' => $email,
+                'name' => $name,
+                'password' => $randomPassword
+            ];
+
+            Mail::send('emails.forgotPassword', $messageData, function($message)use($email){
+                $message->to($email)->subject('New Password - WunderKrafts');
+            });
+
+            $message = "Please check your email for new password!";
+            Session::flash('success', $message);
+            Session::forget('error');
+            return redirect('login-register');
+        }
+        return view('front.users.forgotPassword');
+    }
 }
