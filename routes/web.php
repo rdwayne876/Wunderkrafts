@@ -114,6 +114,8 @@ Route::namespace('Front')->group(function(){
     Route::match(['get','post'], '/check-email', 'UsersController@checkEmail');
     Route::post('/login', 'UsersController@loginUser');
     Route::post('/register', 'UsersController@registerUser');
+    //confirm accoutn
+    Route::match(['GET','POST'], '/confirm/{code}', 'UsersController@confirmAccount');
 
     //logout
     Route::get('/logout', 'UsersController@logoutUser');

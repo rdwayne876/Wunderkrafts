@@ -56,25 +56,54 @@ class UsersController extends Controller
                 return redirect()->back();
 
 
-                /*if(Auth::attempt(['email'=>$data['email'], 'password'=>$data['registerPassword']])){
+                if(Auth::attempt(['email'=>$data['email'], 'password'=>$data['registerPassword']])){
                     //echo "<pre>"; print_r(Auth::user()); die;
                     if(!empty(Session::get('session_id'))){
                         $user_id = Auth::user()->id;
                         $session_id = Session::get('session_id');
                         Cart::where('session_id', $session_id)->update(['user_id'=>$user_id]);
                     }
-
-                    //send register email
-                    $email = $data['email'];
-                    $messageData = ['name'=>$data['name'], 'phone'=>$data['phone'],'email'=>$data['email']];
-                    Mail::send('emails.register', $messageData, function($message) use($email){
-                        $message->to($email)->subject('Welcome to WunderKrafts!');
-                    });
                     
                     return redirect('/');
-                }*/
+                }
             }
         }
+    }
+
+    public function confirmAccount($email){
+
+        Session::forget('error');
+        Session::forget('success');
+
+        //decode email
+        $email = base64_decode($email);
+
+        //check if user account exists
+        $userCount = User::where('email', $email)->count();
+        if($userCount>0){
+            //check if user account already activated
+            $userDetails = User::where('email', $email)->first();
+            if($userDetails->status == 1){
+                $message = "Your email account has already been activated. Please login.";
+                Session::put('error', $message);
+                return redirect('login-register');
+            } else{
+                User::where('email', $email)->update(['status'=>1]);
+
+                //send register email
+                $messageData = ['name'=>$userDetails['name'], 'phone'=>$userDetails['phone'],'email'=>$userDetails['email']];
+                Mail::send('emails.register', $messageData, function($message) use($email){
+                    $message->to($email)->subject('Welcome to WunderKrafts!');
+                });
+
+                $message = "Your account has been activated. Please login to continue";
+                Session::flash('success', $message);
+                return redirect('login-register');
+            }
+        } else{
+            abort(404);
+        }
+
     }
 
     public function checkEmail(Request $request){
