@@ -147,6 +147,70 @@ class UsersController extends Controller
         }
     }
 
+    public function account(Request $request){
+
+        return view('front.users.account');
+    }
+
+    public function profile(Request $request){
+        $user_id = Auth::user()->id;
+        $userDetails = User::find($user_id)->toArray();
+
+        if($request->isMethod('post')){
+            $data = $request->all();
+            //echo "<pre>"; print_r($data); die;
+
+            $user = User::find($user_id);
+            $user-> name = $data['name'];
+            $user-> email = $data['email'];
+            $user-> mobile = $data['phone'];
+            $user->save();
+
+            return redirect()->back();
+        }
+
+        return view('front.users.profile')->with(compact('userDetails'));
+    }
+    
+    public function address(){
+
+        $user_id = Auth::user()->id;
+        $userDetails = User::find($user_id)->toArray();
+
+        return view('front.users.address')->with(compact('userDetails'));
+    }
+
+    public function addAddress(Request $request){
+
+        if($request->isMethod('post')){
+            $data = $request->all();
+            //echo "<pre>"; print_r($data); die;
+
+            $user_id =  Auth::user()->id;
+            $user = User::find($user_id);
+            $user-> country = $data['country'];
+            $user-> address = $data['address1'];
+            $user-> city = $data['city'];
+            $user-> state = $data['state'];
+            $user-> zipcode = $data['zip'];
+            $user-> save();
+
+            return redirect('/account/address');
+
+        }
+        
+        return view('front.users.addAddress');
+    }
+
+    public function updatePassword(Request $request) {
+        $data = $request->all();
+        $user_id =  Auth::user()->id;
+
+        $user = User::find($user_id);
+        echo "<pre>"; print_r($user); die;
+
+    }
+
     public function logoutUser(){
         Auth::logout();
         return redirect('/');

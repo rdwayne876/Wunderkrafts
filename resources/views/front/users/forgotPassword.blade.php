@@ -58,18 +58,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
 									<div class="login-item">
 										<h5 class="title-login">Login</h5>
-										<form class="login" action="{{ url('/login')}}" method="post">@csrf
-											<div class="social-account">
-												<h6 class="title-social">Login with social account</h6>
-												<a href="#" class="mxh-item facebook">
-													<i class="icon fa fa-facebook-square" aria-hidden="true"></i>
-													<span class="text">FACEBOOK</span>
-												</a>
-												<a href="#" class="mxh-item twitter">
-													<i class="icon fa fa-twitter" aria-hidden="true"></i>
-													<span class="text">TWITTER</span>
-												</a>
-											</div>
+										<form id="loginForm" class="login" action="{{ url('/login')}}" method="post">@csrf
 											<p class="form-row form-row-wide">
 												<label class="text" for="username">Username</label>
 												<input name="username" id="username" title="username" type="text" class="input-text">

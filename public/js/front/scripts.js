@@ -205,26 +205,96 @@ $(document).ready(function(){
         }
     });
 
-    $("#registerForm").validate({
+    $("#loginForm").validate({
         rules: {
-            email: {
+            username: {
                 required: true,
                 email: true,
             },
             password: {
                 required: true,
                 minlength: 8
-            }
+            },
+            
         },
         messages: {
-            email: { 
-                email: "Please enter your email address",
+            username: { 
+                email: "Please enter a valid email address",
                 required: "Please enter your email address",
              },
 
             password: {
                 required: "Please enter password",
             },
+        }
+    });
+
+    $("#editProfile").validate({
+        ignore:[],
+        rules: {
+            name: {
+                required: true,
+                accept: "[a-zA-Z]+"
+            },
+            email: {
+                required: true,
+                email: true,
+            },
+            phone: {
+                required: true,
+                minlength: 10,
+                maxlength: 10,
+                digits:true
+            }
+        },
+        messages: {
+            name: {
+                required: "Please enter your Firstname and Lastname",
+                accept: "Please enter valid name"
+            },
+            phone: {
+                required: "Please provide a phone number",
+                minlength: "Phone must be 10 digits",
+                maxlength: "Phone must be 10 digits",
+                digits: "Please enter a valid phone number"
+            },
+            email: { 
+                email: "Please enter a valid email address",
+                required: "Please enter your email address",
+             },
+        }
+    });
+
+    $("#resetPasswordForm").validate({
+        ignore:[],
+        rules: {
+            currentPassword: {
+                required: true,
+                minlength: 8,
+            },
+            newPassword: {
+                required: true,
+                minlength: 8,
+            },
+            confirmPassword: {
+                required: true,
+                minlength: 8,
+                equalTo: "#newPassword"
+            }
+        },
+        messages: {
+            currentPassword: {
+                required: "Please enter password",
+            },
+            newPassword: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 8 characters long"
+            },
+            confirmPassword: {
+                required: "Please confirm your password",
+                minlength: "Your password must be at least 8 characters long",
+                equalTo: "Please enter the same password as above"
+            }
         }
     });
 

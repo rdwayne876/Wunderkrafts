@@ -117,7 +117,12 @@ Route::namespace('Front')->group(function(){
     //confirm account
     Route::match(['GET','POST'], '/confirm/{code}', 'UsersController@confirmAccount');
     //password reset
+    Route::post('/update-password', 'UsersController@updatePassword');
     Route::match(['GET', 'POST'], '/forgot-password', "UsersController@forgotPassword");
+    Route::get('/account', "UsersController@account");
+    Route::match(['GET', 'POST'], '/account/profile', "UsersController@profile");
+    Route::get('/account/address', 'UsersController@address');
+    Route::match(['GET', 'POST'], '/account/address/add-address', "UsersController@addAddress");
 
 
     //logout
