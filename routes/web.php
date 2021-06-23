@@ -109,20 +109,26 @@ Route::namespace('Front')->group(function(){
     Route::post('/deleteCartItem', "ProductController@deleteCartItem");
 
     //login/register page
-    Route::get('/login-register', 'UsersController@loginRegister');
+    Route::get('/login-register', [ 'as'=>'login', 'uses'=>'UsersController@loginRegister']);
     //check email
     Route::match(['get','post'], '/check-email', 'UsersController@checkEmail');
     Route::post('/login', 'UsersController@loginUser');
     Route::post('/register', 'UsersController@registerUser');
     //confirm account
     Route::match(['GET','POST'], '/confirm/{code}', 'UsersController@confirmAccount');
+
+    Route::group(['middleware'=>['auth']], function(){
+        Route::post('/update-password', 'UsersController@updatePassword');
+        Route::get('/account', "UsersController@account");
+        Route::match(['GET', 'POST'], '/account/profile', "UsersController@profile");
+        Route::get('/account/address', 'UsersController@address');
+        Route::match(['GET', 'POST'], '/account/address/add-address', "UsersController@addAddress");
+    });
+
     //password reset
-    Route::post('/update-password', 'UsersController@updatePassword');
+    
     Route::match(['GET', 'POST'], '/forgot-password', "UsersController@forgotPassword");
-    Route::get('/account', "UsersController@account");
-    Route::match(['GET', 'POST'], '/account/profile', "UsersController@profile");
-    Route::get('/account/address', 'UsersController@address');
-    Route::match(['GET', 'POST'], '/account/address/add-address', "UsersController@addAddress");
+    
 
 
     //logout
