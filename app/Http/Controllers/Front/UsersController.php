@@ -9,6 +9,7 @@ use App\User;
 use App\Cart;
 use Session;
 use Auth;
+use App\Country;
 
 class UsersController extends Controller
 {
@@ -182,6 +183,9 @@ class UsersController extends Controller
 
     public function addAddress(Request $request){
 
+        $countries = Country::where('status', 1)->get()->toArray();
+        //dd($countries); die;
+
         if($request->isMethod('post')){
             $data = $request->all();
             //echo "<pre>"; print_r($data); die;
@@ -196,10 +200,9 @@ class UsersController extends Controller
             $user-> save();
 
             return redirect('/account/address');
-
         }
         
-        return view('front.users.addAddress');
+        return view('front.users.addAddress')->with(compact('countries'));
     }
 
     public function updatePassword(Request $request) {

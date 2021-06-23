@@ -53,7 +53,12 @@
 										<form id="editProfile" class="register" action="{{ url('/account/address/add-address')}}" method="post">@csrf
 											<p class="form-row form-row-wide">
 												<label class="text" for="country">Country</label>
-												<input name="country" id="country" title="Country" type="text" class="input-text" >
+												<select class="customcss" name="country" id="country" >
+													<option value="">Select Country</option>
+														@foreach( $countries as $country)
+															<option value="{{$country['country_name']}}">{{$country['country_name']}}</option>
+														@endforeach
+												</select>
 											</p>
                                             <p class="form-row form-row-wide">
 												<label for="address1" class="text">Address</label>

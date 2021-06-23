@@ -2576,6 +2576,12 @@ blockquote .author .desc {
 	background-color: #fff;
 	border-radius: 0;
 }
+
+.customer_login .customcss {
+	height: 42px;
+    border-radius: 0;
+	width:100%;
+}
 /* -------------------- */
 /*      Short Code      */
 /* -------------------- */
