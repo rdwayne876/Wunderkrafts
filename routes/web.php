@@ -124,13 +124,8 @@ Route::namespace('Front')->group(function(){
         Route::get('/account/address', 'UsersController@address');
         Route::match(['GET', 'POST'], '/account/address/add-address', "UsersController@addAddress");
     });
-
     //password reset
-    
     Route::match(['GET', 'POST'], '/forgot-password', "UsersController@forgotPassword");
-    
-
-
     //logout
     Route::get('/logout', 'UsersController@logoutUser');
 });

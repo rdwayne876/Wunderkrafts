@@ -91,14 +91,14 @@ $sections = Section::sections();
                             <a href="javascript:void(0);" class="shopcart-icon" data-ysera="ysera-dropdown">
                                 Cart
                                 <span class="count">
-									0
+                                {{totalCartItems()}}
 									</span>
                             </a>
                             <div class="no-product ysera-submenu">
                                 <p class="text">
                                     You have
                                     <span>
-											 0 item(s)
+                                    {{totalCartItems()}} item(s)
 										</span>
                                     in your bag
                                 </p>
