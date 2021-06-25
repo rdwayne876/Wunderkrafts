@@ -273,6 +273,31 @@ $(document).ready(function(){
         });
     });
 
+    // Update Coupon status
+    $(document).on("click",".updateCouponStatus", function(){
+        var status = $(this).children("i").attr("status");
+        var coupon_id = $(this).attr("coupon_id");
+        // alert(status);
+        // alert(coupon_id);
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/updateCouponStatus',
+            data: {status:status, coupon_id:coupon_id},
+            success:function(resp) {
+                if(resp['status']== 0){
+                    $("#coupon-"+coupon_id).html(
+                        "<i class='la la-toggle-off' aria-hidden='true' status='Inactive'></i>")
+                } else if(resp['status']==1) {
+                    $("#coupon-"+coupon_id).html(
+                        "<i class='la la-toggle-on' aria-hidden='true' status='Active'></i>")
+                }
+            }, error:function() {
+                alert("Error");
+            }
+        });
+    });
+
 });
 
 

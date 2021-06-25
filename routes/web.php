@@ -80,8 +80,12 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
         Route::get('banners/delete/{id}', 'BannerController@delete');
         Route::match(['get', 'post'], 'banners/addEditBanner/{id?}', 'BannerController@addEditBanner');
 
+        //Coupons
+        Route::get('coupons', 'CouponsController@coupons');
+
         //Instagram Authentication
         Route::get('instagram-get-auth', 'InstagramAuthController@show');
+        Route::post('updateCouponStatus', 'CouponsController@updateCouponStatus');
     });
 
 });

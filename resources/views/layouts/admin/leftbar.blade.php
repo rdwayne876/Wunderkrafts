@@ -40,6 +40,7 @@
                         <li><a href="{{url('admin/categories')}}">Categories</a></li>
                         <li><a href="{{url('admin/products')}}">Products</a></li>
                         <li><a href="{{url('admin/banners')}}">Banners</a></li>
+                        <li><a href="{{url('admin/coupons')}}">Coupons</a></li>
                     </ul>
                 </li>
                 
