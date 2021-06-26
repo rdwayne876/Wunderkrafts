@@ -86,6 +86,7 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
         //Instagram Authentication
         Route::get('instagram-get-auth', 'InstagramAuthController@show');
         Route::post('updateCouponStatus', 'CouponsController@updateCouponStatus');
+        Route::match(['get', 'post'], 'coupons/addEditCoupon/{id?}', 'CouponsController@addEditCoupon');
     });
 
 });

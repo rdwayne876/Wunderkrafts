@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Coupon;
 use Illuminate\Http\Request;
+use App\Section;
+use App\Coupon;
+
+
 
 class CouponsController extends Controller
 {
@@ -32,4 +35,20 @@ class CouponsController extends Controller
                 ['status'=>$status, 'coupon_id'=>$data['coupon_id']]);
         }
     }
+
+    public function addEditCoupon($id=null){
+        if($id==""){
+            $coupon = new Coupon;
+            $title = "Add Coupon";
+        }else{
+            $coupon = Coupon::find($id);
+            $title = "Edit Coupon";
+        }
+
+        //Sections with Categories and sub categories
+        $categories = Section::with('categories')->get()->toArray();
+
+        return view('admin.coupons.addEditCoupon')->with(compact('title', 'coupon', 'categories'));
+    }
+        
 }

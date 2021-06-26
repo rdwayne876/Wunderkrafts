@@ -298,6 +298,14 @@ $(document).ready(function(){
         });
     });
 
+    $("#manualCoupon").click(function(){
+        $("#couponField").show();
+    });
+
+    $("#automaticCoupon").click(function(){
+        $("#couponField").hide();
+    });
+
 });
 
 
