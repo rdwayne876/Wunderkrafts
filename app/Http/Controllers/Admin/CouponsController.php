@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Section;
 use App\Coupon;
+use App\User;
 
 
 
@@ -36,7 +37,7 @@ class CouponsController extends Controller
         }
     }
 
-    public function addEditCoupon($id=null){
+    public function addEditCoupon(Request $request, $id=null){
         if($id==""){
             $coupon = new Coupon;
             $title = "Add Coupon";
@@ -45,10 +46,16 @@ class CouponsController extends Controller
             $title = "Edit Coupon";
         }
 
+        if($request->isMethod('post')){
+            $data = $request->all();
+            dd($data); die;
+        }
+
         //Sections with Categories and sub categories
         $categories = Section::with('categories')->get()->toArray();
+        $users = User::select('email')->where('status', 1)->get()->toArray();
 
-        return view('admin.coupons.addEditCoupon')->with(compact('title', 'coupon', 'categories'));
+        return view('admin.coupons.addEditCoupon')->with(compact('title', 'coupon', 'categories', 'users'));
     }
         
 }

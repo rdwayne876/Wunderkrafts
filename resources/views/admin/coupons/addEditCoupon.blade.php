@@ -10,6 +10,8 @@
     <!-- Tagsinput css -->
     <link href="{{asset('assets/admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.css')}}" rel="stylesheet" type="text/css">
+    <!-- Datepicker css -->
+    <link href="{{asset('assets/admin/plugins/datepicker/datepicker.min.css')}}" rel="stylesheet" type="text/css">
     <!-- End css -->
 @endsection 
 @section('rightbar-content')
@@ -68,7 +70,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="couponImage">Coupon Option</label>
+                            <label class="col-lg-3 col-form-label" for="coupon_option">Coupon Option</label>
                             <div class="col-lg-6">
                                 <div class="form-check form-check-inline">
                                   <input class="form-check-input" type="radio" name="coupon_option" id="automaticCoupon" value="Automatic">
@@ -84,7 +86,7 @@
                         <div class="form-group row" style="display:none;" id="couponField">
                             <label class="col-lg-3 col-form-label" for="coupon-code">Coupon Code<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="couponCode" name="coupon_code" placeholder="Enter Coupon Code" required
+                                <input type="text" class="form-control" id="couponCode" name="coupon_code" placeholder="Enter Coupon Code"
                                 @if(!empty($coupon['coupon_code'])) value="{{$coupon['coupon_code']}}" @else value="{{old('coupon_code')}}" @endif>
                             </div>
                         </div>
@@ -112,18 +114,61 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="couponTitleOne">Coupon Sub-Header<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="users" required>Select Users<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="couponTitleTwo" name="coupon_title_two" placeholder="Enter Coupon Sub-Header" required
-                                @if(!empty($coupon['title_two'])) value="{{$coupon['title_two']}}" @else value="{{old('title_two')}}" @endif>
+                                <select class="select2-multi-select form-control" name="users[]" multiple="multiple">
+                                    <option value="">Please Select</option>
+                                    @foreach($users as $user)
+                                        <option value="{{$user['email']}}">{{$user['email']}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" for="couponTitleOne">Coupon Text<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" for="coupon_type">Coupon Type</label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="couponText" name="coupon_text" placeholder="Enter Coupon Text" required
-                                @if(!empty($coupon['text'])) value="{{$coupon['text']}}" @else value="{{old('text')}}" @endif>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="coupon_type" id="automaticCoupon" value="single">
+                                  <label class="form-check-label" for="coupon_type">Multi-Use</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="coupon_type" id="manualCoupon" value="multiple">
+                                  <label class="form-check-label" for="coupon_type">Single Use</label>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="amount_type">Amount Type</label>
+                            <div class="col-lg-6">
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="amount_type" id="percentageCoupon" value="Percentage">
+                                  <label class="form-check-label" for="amount_type">Percentage</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="amount_type" id="fixedCoupon" value="Fixed">
+                                  <label class="form-check-label" for="amount_type">Fixed</label>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="amount">Coupon Amount<span class="text-danger">*</span></label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="amount" name="amount" placeholder="Enter coupon amount" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="coupon_expire_date">Expire Date<span class="text-danger">*</span></label>
+                            <div class="col-lg-6">
+                                <div class="input-group">                                  
+                                    <input name="coupon_expire_date" type="text" id="autoclose-date" class="datepicker-here form-control" placeholder="dd/mm/yyyy" aria-describedby="basic-addon3"/>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon3"><i class="ri-calendar-line"></i></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -162,6 +207,9 @@
 <script src="{{asset('assets/admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js')}}"></script>
 <script src="{{asset('assets/admin/plugins/bootstrap-tagsinput/typeahead.bundle.js')}}"></script>
 <script src="{{asset('assets/admin/js/custom/custom-form-select.js')}}"></script>
+<script src="{{asset('assets/admin/plugins/datepicker/datepicker.min.js')}}"></script>
+<script src="{{asset('assets/admin/plugins/datepicker/i18n/datepicker.en.js')}}"></script>
+<script src="{{asset('assets/admin/js/custom/custom-form-datepicker.js')}}"></script>
 <!-- Core js -->
 <script src="{{asset('assets/js/core.js')}}"></script>
 <!-- End js -->

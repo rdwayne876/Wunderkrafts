@@ -305,7 +305,6 @@ $(document).ready(function(){
     $("#automaticCoupon").click(function(){
         $("#couponField").hide();
     });
-
 });
 
 
