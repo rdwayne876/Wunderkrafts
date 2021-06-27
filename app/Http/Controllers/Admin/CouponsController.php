@@ -41,11 +41,20 @@ class CouponsController extends Controller
         if($id==""){
             $coupon = new Coupon;
             $title = "Add Coupon";
+            $selCats = array();
+            $selUsers = array();
             $message = "Coupon added successfully";
+            $selDate = "";
         }else{
             $coupon = Coupon::find($id);
             $title = "Edit Coupon";
-            $message = "Coupon added successfully";
+            $selCats = explode(',', $coupon['categories']);
+            $selUsers = explode(',', $coupon['users']);
+            $date = explode('-', $coupon['expire_date']);
+            $selDate = $date[2].'/'.$date[1].'/'.$date[0];
+            //dd($selDate);
+            $message = "Coupon updated successfully";
+            
         }
 
         if($request->isMethod('post')){
@@ -106,7 +115,15 @@ class CouponsController extends Controller
         $categories = Section::with('categories')->get()->toArray();
         $users = User::select('email')->where('status', 1)->get()->toArray();
 
-        return view('admin.coupons.addEditCoupon')->with(compact('title', 'coupon', 'categories', 'users'));
+        return view('admin.coupons.addEditCoupon')->with(compact('title', 'coupon', 'categories', 'users', 'selCats', 'selUsers', 'selDate'));
+    }
+
+    public function delete($id) {
+        //Find and delete brand
+        Coupon::where('id', $id)->delete();
+
+        Session::flash('success', 'Coupon deleted successfully');
+        return redirect()->back();
     }
         
 }
