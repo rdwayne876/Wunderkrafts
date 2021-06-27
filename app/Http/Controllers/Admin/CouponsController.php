@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Section;
 use App\Coupon;
 use App\User;
-
+use Session;
 
 
 class CouponsController extends Controller
@@ -41,14 +41,45 @@ class CouponsController extends Controller
         if($id==""){
             $coupon = new Coupon;
             $title = "Add Coupon";
+            $message = "Coupon added successfully";
         }else{
             $coupon = Coupon::find($id);
             $title = "Edit Coupon";
+            $message = "Coupon added successfully";
         }
 
         if($request->isMethod('post')){
             $data = $request->all();
-            dd($data); die;
+            //dd($data); die;
+            if(isset($data['users'])){
+                $users =  implode(',', $data['users']);
+            }
+            if(isset($data['users'])){
+                $categories =  implode(',', $data['categories']);
+            }
+            if($data['coupon_option'] == "Automatic") {
+                $coupon_code = str_random(8);
+            } else{
+                $coupon_code = $data['coupon_code'];
+            }
+
+            $coupon_expire_date = explode('/', $data['coupon_expire_date']);
+            $expire_date = $coupon_expire_date[2].'-'.$coupon_expire_date[1].'-'.$coupon_expire_date[0];
+            //dd($expire_date);
+
+            $coupon->coupon_option = $data['coupon_option'];
+            $coupon->coupon_code = $coupon_code;
+            $coupon->categories = $categories;
+            $coupon->users = $users;
+            $coupon->coupon_type = $data['coupon_type'];
+            $coupon->amount_type = $data['amount_type'];
+            $coupon->amount = $data['amount'];
+            $coupon->expire_date = $expire_date;
+            $coupon->status = $data['status'];
+            $coupon->save();
+
+            session::flash('success', $message);
+            return redirect('admin/coupons');
         }
 
         //Sections with Categories and sub categories
