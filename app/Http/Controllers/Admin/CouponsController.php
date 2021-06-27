@@ -50,11 +50,31 @@ class CouponsController extends Controller
 
         if($request->isMethod('post')){
             $data = $request->all();
+
+            $rules = [
+                'categories' => 'required',
+                'coupon_option' => 'required',
+                'coupon_type' => 'required',
+                'amount_type' => 'required',
+                'coupon_expire_date' => 'required'
+
+            ];
+            $customMessage = [
+                'categories.required' => 'Select categories',
+                'coupon_option.required' => 'Select Coupon Option',
+                'coupon_type.required' => 'Select Coupon Type',
+                'amount_type.required' => 'Select Amount Type',
+                'amount.required' => 'Enter Amount',
+                'coupon_expire_date.required' => 'Set Coupon expire date',
+            ];
+            $this->validate($request, $rules, $customMessage);
             //dd($data); die;
             if(isset($data['users'])){
                 $users =  implode(',', $data['users']);
+            }else{
+                $users = "";
             }
-            if(isset($data['users'])){
+            if(isset($data['categories'])){
                 $categories =  implode(',', $data['categories']);
             }
             if($data['coupon_option'] == "Automatic") {
@@ -65,7 +85,7 @@ class CouponsController extends Controller
 
             $coupon_expire_date = explode('/', $data['coupon_expire_date']);
             $expire_date = $coupon_expire_date[2].'-'.$coupon_expire_date[1].'-'.$coupon_expire_date[0];
-            //dd($expire_date);
+            //dd($categories);
 
             $coupon->coupon_option = $data['coupon_option'];
             $coupon->coupon_code = $coupon_code;

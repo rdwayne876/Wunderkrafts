@@ -156,7 +156,7 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label" for="amount">Coupon Amount<span class="text-danger">*</span></label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" id="amount" name="amount" placeholder="Enter coupon amount" required>
+                                <input type="text" class="form-control" id="amount" name="amount" placeholder="Enter coupon amount">
                             </div>
                         </div>
 
