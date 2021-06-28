@@ -258,7 +258,41 @@ class ProductController extends Controller
                     'message'=>'Coupon is not valid',
                     'view'=>(String)View::make('front.products.cartItems')->with(compact('userCartItems'))]);
             } else{
+                $couponDetails = Coupon::where('coupon_code', $data['code'])->first();
 
+                if($couponDetails->status == 0) {
+                    $message = 'This coupon is inactive';
+                }
+
+                $expire_date = $couponDetails->expire_date;
+                $current_date =  date('Y-m-d');
+                if($expire_date< $current_date){
+                    $message =  "This coupon is expired";
+                }
+
+                $catArray = explode(",", $couponDetails->categories);
+                $userCartItems = Cart::userCartItems();
+
+                foreach( $userArr as $key => $user){
+                    $getUserID = User::Select('id')->where('email', $user)->first()->toArray();
+                    $userID[] = $getUserID['id'];
+                }
+                foreach( $userCartItems as $key => $item){
+                    if(!in_array($item['product']['category_id'], $catArray)){
+                        $message = 'This coupon is not valid for products in your cart';
+                    }
+                    if(!in_array($item['user_id'], $userID)){
+                        $message = "This coupoun in not Vailid";
+                    }
+                }
+
+                if(isset($message)) {
+                    $userCartItems = Cart::userCartItems();
+                    return response()->json([
+                        'status'=>false, 
+                        'message'=>$message,
+                        'view'=>(String)View::make('front.products.cartItems')->with(compact('userCartItems'))]);
+                }
             }
         }
     }

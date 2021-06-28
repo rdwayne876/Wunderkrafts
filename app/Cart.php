@@ -15,11 +15,11 @@ class Cart extends Model
     public static function userCartItems(){
         if( Auth::check()){
             $userCartItems = Cart::with(['product'=>function($query){
-                $query->select('id', 'name', 'code', 'main_image');
+                $query->select('id', 'category_id', 'name', 'code', 'main_image');
             }])->where('user_id', Auth::user()->id)->orderBy('id', 'Desc')->get()->toArray();
         }else {
             $userCartItems = Cart::with(['product'=>function($query){
-                $query->select('id', 'name', 'code', 'main_image');
+                $query->select('id', 'category_id', 'name', 'code', 'main_image');
             }])->where('session_id', Session::get('session_id'))->orderBy('id', 'Desc')->get()->toArray();
         }
         
