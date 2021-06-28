@@ -311,6 +311,7 @@ $(document).ready(function(){
                     alert(resp.message);
                 }
                 $("#AppendCartItems").html(resp.view);
+                $(".coupon-price").text("$"+resp.orderTotal);
             }, error:function(){
                 alert("Error");
             }

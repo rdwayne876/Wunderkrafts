@@ -79,7 +79,7 @@
                     <span class="title">
                         Total Price:
                     </span>
-                    <span class="total-price">
+                    <span class="total-price coupon-price">
                         ${{$totalPrice}}
                     </span>
                 </div>

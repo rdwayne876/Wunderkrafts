@@ -94,7 +94,7 @@ class CouponsController extends Controller
 
             $coupon_expire_date = explode('/', $data['coupon_expire_date']);
             $expire_date = $coupon_expire_date[2].'-'.$coupon_expire_date[1].'-'.$coupon_expire_date[0];
-            //dd($categories);
+            //dd($data);
 
             $coupon->coupon_option = $data['coupon_option'];
             $coupon->coupon_code = $coupon_code;

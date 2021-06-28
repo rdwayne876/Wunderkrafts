@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\View;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
@@ -13,6 +12,7 @@ use App\Category;
 use App\Product;
 use App\Coupon;
 Use App\Cart;
+use App\User;
 use Session;
 use Auth;
 
@@ -272,6 +272,8 @@ class ProductController extends Controller
 
                 $catArray = explode(",", $couponDetails->categories);
                 $userCartItems = Cart::userCartItems();
+                $userArr = explode(",", $couponDetails->users);
+                $total_amount = 0;
 
                 foreach( $userArr as $key => $user){
                     $getUserID = User::Select('id')->where('email', $user)->first()->toArray();
@@ -284,13 +286,40 @@ class ProductController extends Controller
                     if(!in_array($item['user_id'], $userID)){
                         $message = "This coupoun in not Vailid";
                     }
+
+                    $attrPrice = Product::getDiscountedAttrPrice($item['product_id'], $item['size']);
+                    //echo "<pre>"; print_r($attrPrice);die;
+                    $total_amount = $total_amount + ($attrPrice['discounted_price'] * $item['quantity']);
+                    
                 }
+
 
                 if(isset($message)) {
                     $userCartItems = Cart::userCartItems();
                     return response()->json([
-                        'status'=>false, 
+                        'status'=>flase, 
                         'message'=>$message,
+                        'view'=>(String)View::make('front.products.cartItems')->with(compact('userCartItems'))]);
+                } else {
+                    if($couponDetails->amount_type == "Fixed"){
+                        $couponAmount = $couponDetails->amount;
+                    } else{
+                        $couponAmount = $total_amount * ($couponDetails->amount/100);
+                    }
+
+                    $orderTotal = $total_amount - $couponAmount;
+                    //echo "<pre>"; print_r($orderTotal);die;
+
+                    Session::put('couponAmount', $couponAmount);
+                    Session::put('couponCode', $data['code']);
+
+                    $message = 'Coupon applied successfully';
+
+                    $userCartItems = Cart::userCartItems();
+                    return response()->json([
+                        'status'=>true, 
+                        'message'=>$message,
+                        'orderTotal'=>$orderTotal,
                         'view'=>(String)View::make('front.products.cartItems')->with(compact('userCartItems'))]);
                 }
             }
