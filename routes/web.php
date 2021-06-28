@@ -113,6 +113,8 @@ Route::namespace('Front')->group(function(){
     Route::post('/updateCartItemQty', "ProductController@updateCartItemQty");
     //delete cart item
     Route::post('/deleteCartItem', "ProductController@deleteCartItem");
+    // apply coupon
+    Route::post('/apply-coupon', "ProductController@applyCoupon");
 
     //login/register page
     Route::get('/login-register', [ 'as'=>'login', 'uses'=>'UsersController@loginRegister']);

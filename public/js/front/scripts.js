@@ -297,4 +297,23 @@ $(document).ready(function(){
             }
         }
     });
+
+    //Apply coupon
+    $("a.coupBtn").click(function(){
+        var code = $("#code").val();
+        //alert(code);
+        $.ajax({
+            type: 'post',
+            data: {code: code},
+            url: '/apply-coupon', 
+            success: function(resp){
+                if(resp.message !=""){
+                    alert(resp.message);
+                }
+                $("#AppendCartItems").html(resp.view);
+            }, error:function(){
+                alert("Error");
+            }
+        })
+    });
 });

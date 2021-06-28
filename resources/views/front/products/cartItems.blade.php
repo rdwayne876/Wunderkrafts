@@ -70,18 +70,18 @@
         @endforeach
         <tr>
             <td class="actions">
-                <div class="coupon">
-                    <label class="coupon_code">Coupon Code:</label>
-                    <input type="text" class="input-text" placeholder="Promotion code here">
-                    <a href="#" class="button"></a>
-                </div>
+                    <div class="coupon">
+                        <label class="coupon_code">Coupon Code:</label>
+                        <input name="code" id="code" type="text" class="input-text" placeholder="Promotion code here">
+                        <a href="#"class="button coupBtn"></a>
+                    </div>    
                 <div class="order-total">
-                            <span class="title">
-                                Total Price:
-                            </span>
+                    <span class="title">
+                        Total Price:
+                    </span>
                     <span class="total-price">
-                                ${{$totalPrice}}
-                            </span>
+                        ${{$totalPrice}}
+                    </span>
                 </div>
             </td>
         </tr>

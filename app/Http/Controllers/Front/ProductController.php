@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\View;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Http\Request;
+use App\ProductsAttribute;
 use App\Category;
 use App\Product;
-use App\ProductsAttribute;
-use Illuminate\Http\Request;
-use Session;
+use App\Coupon;
 Use App\Cart;
+use Session;
 use Auth;
 
 class ProductController extends Controller
@@ -239,4 +241,26 @@ class ProductController extends Controller
                 'view'=>(String)View::make('front.products.cartItems')->with(compact('userCartItems'))]);
         }
     }
+
+    public function applyCoupon(Request $request){
+        if($request->ajax()){
+            $data = $request->all();
+
+            //echo "<pre>"; print_r($data);die;
+            $couponCount = Coupon::where('coupon_code', $data['code'])->count();
+
+            if($couponCount == 0){
+
+                $userCartItems = Cart::userCartItems();
+                
+                return response()->json([
+                    'status'=>false, 
+                    'message'=>'Coupon is not valid',
+                    'view'=>(String)View::make('front.products.cartItems')->with(compact('userCartItems'))]);
+            } else{
+
+            }
+        }
+    }
+
 }
